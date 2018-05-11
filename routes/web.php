@@ -27,6 +27,14 @@ Auth::routes();
 	Route::post('tuyendung/register', 'Tuyendung\TuyendungRegistController@submitRegist')->name('tuyendung.register.submit');
 	Route::post('tuyendung/logout', 'Tuyendung\TuyendungLoginController@logout')->name('tuyendung.logout');
 
+	// login admin
+	Route::get('admin/login', 'Admin\AdminLoginController@showLoginForm')->name('admin.login');
+	Route::post('admin/login', 'Admin\AdminLoginController@submitLogin')->name('admin.login.submit'); 
+	// regist
+	Route::get('admin/register', 'Admin\AdminRegistController@showRegistForm')->name('admin.register');
+	Route::post('admin/register', 'Admin\AdminRegistController@submitRegist')->name('admin.register.submit');
+	Route::post('admin/logout', 'Admin\AdminLoginController@logout')->name('admin.logout'); 
+
 	// Nhóm route dành cho mọi người dùng (Những trang không cần đăng nhập)
 	Route::group(['prefix' => ''], function() {
 	    //
@@ -43,6 +51,12 @@ Auth::routes();
 	Route::group(['prefix' => 'tuyendung', 'middleware'  => 'auth:tuyendung'], function() {
 	    //
 	    Route::get('/', 'Tuyendung\TuyendungController@index')->name('tuyendung.home');
+	});
+
+	// Nhóm route dành cho admin người quản trị hệ thống
+	Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
+	    //
+	    Route::get('', 'Admin\AdminController@index')->name('admin.home');
 	});
 	
 

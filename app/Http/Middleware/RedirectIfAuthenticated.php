@@ -23,6 +23,11 @@ class RedirectIfAuthenticated
                     return redirect(route('tuyendung.home'));
                 }
                 break;
+            case 'admin':
+                if (Auth::guard($guard)->check()) {
+                    return redirect(route('admin.home'));
+                }
+                break;
             default:
                 if (Auth::guard($guard)->check()) {
                     return redirect('/home');

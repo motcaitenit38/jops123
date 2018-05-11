@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('tuyendung/') }}">
+                <a class="navbar-brand" href="{{ url('admin/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,28 +40,28 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @if (Auth::guest('admin'))
-                            <li><a class="nav-link" href="{{ route('tuyendung.login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('tuyendung.register') }}">{{ __('Register') }}</a></li>
-                        @elseif(Auth::guard('tuyendung')->check() && Route::is('tuyendung*'))
+                         @if (Auth::guest('admin'))
+                        <li><a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a></li>
+                        <li><a class="nav-link" href="{{ route('admin.register') }}">{{ __('Register') }}</a></li>
+                        @elseif(Auth::guard('admin')->check() && Route::is('admin*'))
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('tuyendung.logout') }}"
+                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('tuyendung.logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
-                        @endif
+                        @endguest
                     </ul>
                 </div>
             </div>

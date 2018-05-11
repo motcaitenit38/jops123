@@ -50,6 +50,9 @@ class Handler extends ExceptionHandler
             case 'tuyendung':
                 $login = 'tuyendung.login';
                 break;
+            case 'admin':
+                $login = 'admin.login';
+                break;
 
             default:
                 $login = 'login';

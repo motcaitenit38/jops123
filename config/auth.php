@@ -55,6 +55,16 @@ return [
             'driver' => 'token',
             'provider' => 'tuyendungs',
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -83,6 +93,11 @@ return [
         'tuyendungs' => [
             'driver' => 'eloquent',
             'model' => App\Tuyendung::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
         ],
 
         // 'users' => [
@@ -115,6 +130,12 @@ return [
 
         'tuyendungs' => [
             'provider' => 'tuyendungs',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
         ],

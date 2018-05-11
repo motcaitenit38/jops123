@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Tuyendung;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 
 
-class TuyendungLoginController extends Controller
+class AdminLoginController extends Controller
 {
     //
 	public function __contruct(){
-		$this->middleware('guest:tuyendung');
+		$this->middleware('guest:admin');
 	}
 
 	public function showLoginForm(){
-		return view('tuyendung.login');
+		return view('admin.login');
 	}
 
 	public function submitLogin(Request $request){
@@ -31,8 +31,8 @@ class TuyendungLoginController extends Controller
         
         $email = $request['email'];
         $password = $request['password'];
-        if(Auth::guard('tuyendung')->attempt([ 'email'=>$email, 'password'=>$password], $request->remember)){
-            return redirect()->route('tuyendung.home');
+        if(Auth::guard('admin')->attempt([ 'email'=>$email, 'password'=>$password], $request->remember)){
+            return redirect()->route('admin.home');
         }else{
             return redirect()->back()->withInput()->with('thongbao','Email hoặc mật khẩu không đúng');;
         }
@@ -40,13 +40,12 @@ class TuyendungLoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::guard('tuyendung')->logout();
-
+        Auth::guard('admin')->logout();
         if (!Auth::check() && !Auth::guard('tuyendung')->check() && !Auth::guard('admin')->check()) {
             $request->session()->flush();
             $request->session()->regenerate();
         }
-        
-        return redirect(route('tuyendung.login'));
+
+        return redirect(route('admin.login'));
     }
 }
