@@ -46,7 +46,8 @@ class LoginController extends Controller
         if (!Auth::check() && !Auth::guard('tuyendung')->check() && !Auth::guard('admin')->check()) {
             $request->session()->flush();
             $request->session()->regenerate();
-        }              
+        } 
+             
         return redirect('');
     }
     

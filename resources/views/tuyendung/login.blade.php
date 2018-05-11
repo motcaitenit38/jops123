@@ -49,6 +49,12 @@
                             </div>
                         </div>
 
+                        @if(session('thongbao'))
+                        <div class="alert alert-success">
+                            {{session('thongbao')}}
+                        </div>
+                        @endif
+
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
