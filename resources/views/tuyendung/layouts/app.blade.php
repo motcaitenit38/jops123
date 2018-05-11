@@ -43,13 +43,13 @@
                         @if (Auth::guest('admin'))
                             <li><a class="nav-link" href="{{ route('tuyendung.login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('tuyendung.register') }}">{{ __('Register') }}</a></li>
-                        @elseif(Auth::guard('tuyendung')->check() && Route::is('tuyendung*'))
+                       {{--  @elseif(Auth::guard('tuyendung')->check() && Route::is('tuyendung*'))
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                                </a> --}}
 
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('tuyendung.logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -59,8 +59,8 @@
                                     <form id="logout-form" action="{{ route('tuyendung.logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
-                            </li>
+                                </div> --}}
+                            {{-- </li> --}}
                         @endif
                     </ul>
                 </div>
