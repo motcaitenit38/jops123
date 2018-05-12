@@ -7,11 +7,12 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>Quản trị hệ thống</title>
-   <link rel="shortcut icon" href="favicon.png">
+   <link rel="shortcut icon" href="{{ asset('template/favicon.png') }}">
    <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
    <link href="{{ asset('template/css/font-awesome.min.css') }}" rel="stylesheet">
    <link href="{{ asset('template/css/admin.css') }}" rel="stylesheet">
    <link href="{{ asset('template/css/introjs.min.css') }}" rel="stylesheet">
+   <link href="{{ asset('template/css/select2.min.css') }}" rel="stylesheet">
    
    <!--Hỗ trợ IE nhận dạng thẻ HTML5-->
       <!--[if lt IE 9]>
@@ -36,7 +37,7 @@
                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                     <li><a href="#"><i class="fa fa-user"></i> Chỉnh sửa tài khoản</a></li>
+                     <li><a href="{{ route('tuyendung.addinfo') }}"><i class="fa fa-user"></i> Thông tin công ty</a></li>
                      <li><a href="{{ route('tuyendung.logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i>
@@ -100,7 +101,7 @@
          </div>
       </div>
 
-      @yield('noidung');
+      @yield('noidung')
 
       <!--END #main-->
    </div>
@@ -108,7 +109,9 @@
    <script type="text/javascript" src="{{ asset('template/js/jquery-1.10.2.min.js') }}"></script>
    <script type="text/javascript" src="{{ asset('template/js/bootstrap.min.js') }}"></script>
    <script type="text/javascript" src="{{ asset('template/js/intro.min.js') }}"></script>
+   <script type="text/javascript" src="{{ asset('template/js/select2.min.js') }}"></script>
    <script type="text/javascript" src="{{ asset('template/js/admin.js') }}"></script>
+   
 
    @yield('script')
 </body>

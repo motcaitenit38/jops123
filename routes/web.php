@@ -51,6 +51,10 @@ Auth::routes();
 	Route::group(['prefix' => 'tuyendung', 'middleware'  => 'auth:tuyendung'], function() {
 	    //
 	    Route::get('/', 'Tuyendung\TuyendungController@index')->name('tuyendung.home');
+	    Route::get('danhsach', 'Tuyendung\TuyendunginfoController@getthongtin');
+
+	    Route::get('addinfo', 'Tuyendung\TuyendunginfoController@getAdd')->name('tuyendung.addinfo');
+	    Route::post('addinfo', 'Tuyendung\TuyendunginfoController@postAdd')->name('tuyendung.addinfo.submit');
 	});
 
 	// Nhóm route dành cho admin người quản trị hệ thống
