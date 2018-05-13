@@ -37,7 +37,7 @@
                <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                     <li><a href="{{ route('tuyendung.addinfo') }}"><i class="fa fa-user"></i> Thông tin công ty</a></li>
+                     <li><a href="{{ route('info.create') }}"><i class="fa fa-user"></i> Thông tin công ty</a></li>
                      <li><a href="{{ route('tuyendung.logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i>

@@ -57,24 +57,21 @@ class TuyendungInfoController extends Controller
 		// bắt đầu xử lý chèn bảng trung gian quan hệ nhiều nhiều
 		// Lấy mảng dữ liệu ngành nghề khi insert từ input 
 		$nganhnghe = $request->nganhnghe; 
-		// lấy id thông tin nhà tuyển dụng vừa insert phía trên
-		$id_thongtintuyendung = $info->id;
-		// insert dữ liệu vào bảng trung gian 
-		$trunggian = InfoTuyendung::find($id_thongtintuyendung)->nganhnghe()->attach($nganhnghe);		
-		// kết thúc xử lý chèn bảng trung gian 
-
-		return redirect()->route('tuyendung.thongtin');
+		$info->nganhnghe()->sync($nganhnghe);				
+		// kết thúc xử lý chèn bảng trung gian
+		return redirect()->route('tuyendung.thongtin', $info->id);
 	}
 
 
-	public function getthongtin(){
-		// lấy thông tin của nhà tuyển dụng theo id đang đăng nhập
-		$info = Tuyendung::find(Auth::user()->id)->thongtin()->get();
-		foreach ($info as $value) {
-			$idthongtintuyendung = $value['id'];
-		}
-		// truyền dữ liệu sang xem danh sách, lấy tên nghành với theo id thông tin tuyển dụng
-		$truong = InfoTuyendung::find($idthongtintuyendung)->nganhnghe()->get();
-     	return view('tuyendung.tuyendung-info.get', ['info'=>$info, 'tennganh' =>$truong]);
+	public function getthongtin($id){
+		// echo (Auth::user()->id);
+		$info = InfoTuyendung::where('idtuyendung','=',Auth::user()->id)->get();
+		// foreach ($info->nganhnghe1() as $value) {
+			echo $info->id->pivot->id;
+		// }
+
+		// dd($info);
+		// $truong = InfoTuyendung::find($idthongtintuyendung)->nganhnghe()->get();
+     	// return view('tuyendung.tuyendung-info.get', ['info'=>$info]);
 	}
 }

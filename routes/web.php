@@ -25,6 +25,7 @@ Auth::routes();
 	// regist
 	Route::get('tuyendung/register', 'Tuyendung\TuyendungRegistController@showRegistForm')->name('tuyendung.register');
 	Route::post('tuyendung/register', 'Tuyendung\TuyendungRegistController@submitRegist')->name('tuyendung.register.submit');
+	// logout
 	Route::post('tuyendung/logout', 'Tuyendung\TuyendungLoginController@logout')->name('tuyendung.logout');
 
 	// login admin
@@ -49,12 +50,15 @@ Auth::routes();
 	});
 	// Nhóm route dành cho nhà tuyển dụng (Chỉ đăng nhập nhà tuyển dụng mới truy cập được)
 	Route::group(['prefix' => 'tuyendung', 'middleware'  => 'auth:tuyendung'], function() {
-	    //
-	    Route::get('/', 'Tuyendung\TuyendungController@index')->name('tuyendung.home');
-	    Route::get('danhsach', 'Tuyendung\TuyendunginfoController@getthongtin')->name('tuyendung.thongtin');
+		// route quản lý người dùng tuyển dụng
+		Route::resource('/', 'Tuyendung\UserTuyendungController');
+	    // route quản lý thông tin người dùng tuyển dụng
+	    Route::resource('info', 'Tuyendung\InfoTuyendungController');
+	    // Route::get('/', 'Tuyendung\TuyendungController@index')->name('tuyendung.home');
+	    // Route::get('danhsach', 'Tuyendung\TuyendunginfoController@getthongtin')->name('tuyendung.thongtin');
 
-	    Route::get('addinfo', 'Tuyendung\TuyendunginfoController@getAdd')->name('tuyendung.addinfo');
-	    Route::post('addinfo', 'Tuyendung\TuyendunginfoController@postAdd')->name('tuyendung.addinfo.submit');
+	    // Route::get('addinfo', 'Tuyendung\TuyendunginfoController@getAdd')->name('tuyendung.addinfo');
+	    // Route::post('addinfo', 'Tuyendung\TuyendunginfoController@postAdd')->name('tuyendung.addinfo.submit');
 	    
 	});
 

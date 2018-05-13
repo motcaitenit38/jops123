@@ -8,7 +8,7 @@
       <div class="alert alert-info">
         <strong>Info!</strong>Thông tin công ty.
       </div>
-      <form id="post-form" class="form-horizontal col-xl-9 col-lg-10 col-md-12 col-sm-12" method="post" action="{{ route('tuyendung.addinfo.submit')}}" enctype="multipart/form-data" role="form">
+      <form id="post-form" class="form-horizontal col-xl-9 col-lg-10 col-md-12 col-sm-12" method="post" action="{{ route('info.store')}}" enctype="multipart/form-data" role="form">
         @csrf
         <div class="form-group">
           <label for="company_name" class="col-sm-4 control-label required">Tên công ty</label>

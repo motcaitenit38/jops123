@@ -16,7 +16,6 @@ class InfoTuyendung extends Model
    public function nganhnghe(){
    	return $this->belongsToMany('App\Tuyendung\Nganhnghe', 'info_nganhs');
    }
-
    
 
 
