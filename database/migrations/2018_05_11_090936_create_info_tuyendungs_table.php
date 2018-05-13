@@ -18,13 +18,12 @@ class CreateInfoTuyendungsTable extends Migration
             $table->string('tencongty');
             $table->string('quymo');
             $table->string('diachi');
-            $table->string('dienthoai');
-            $table->string('nganhnghe');
+            $table->string('dienthoai');            
             $table->string('namthanhlap');
             $table->text('gioithieu');
             $table->string('avata');
             $table->integer('idtuyendung')->unsigned();
-            $table->foreign('idtuyendung')->references('id')->on('tuyendungs')->onUpdate('cascade');
+            $table->foreign('idtuyendung')->references('id')->on('tuyendungs')->onDelete('cascade');
             $table->timestamps();
         });
     }

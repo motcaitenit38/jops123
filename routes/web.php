@@ -38,7 +38,7 @@ Auth::routes();
 	// Nhóm route dành cho mọi người dùng (Những trang không cần đăng nhập)
 	Route::group(['prefix' => ''], function() {
 	    //
-	    Route::get('/', 'HomeController@index')->name('timviec.home');
+	    Route::get('/', 'HomeController@index')->name('timviec.home');	    
 	});
 
 	// Nhóm route dành cho người tìm việc (chỉ đăng nhập tìm việc mới truy cập được)
@@ -51,10 +51,11 @@ Auth::routes();
 	Route::group(['prefix' => 'tuyendung', 'middleware'  => 'auth:tuyendung'], function() {
 	    //
 	    Route::get('/', 'Tuyendung\TuyendungController@index')->name('tuyendung.home');
-	    Route::get('danhsach', 'Tuyendung\TuyendunginfoController@getthongtin');
+	    Route::get('danhsach', 'Tuyendung\TuyendunginfoController@getthongtin')->name('tuyendung.thongtin');
 
 	    Route::get('addinfo', 'Tuyendung\TuyendunginfoController@getAdd')->name('tuyendung.addinfo');
 	    Route::post('addinfo', 'Tuyendung\TuyendunginfoController@postAdd')->name('tuyendung.addinfo.submit');
+	    
 	});
 
 	// Nhóm route dành cho admin người quản trị hệ thống

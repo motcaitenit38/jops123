@@ -3,7 +3,6 @@
 namespace App\Tuyendung;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Tuyendung;
 
 class InfoTuyendung extends Model
 {
@@ -13,5 +12,12 @@ class InfoTuyendung extends Model
    public function tuyendung(){
    	return $this->belongsTo('App\Tuyendung', 'idtuyendung', 'id');
    }
+
+   public function nganhnghe(){
+   	return $this->belongsToMany('App\Tuyendung\Nganhnghe', 'info_nganhs');
+   }
+
+   
+
 
 }

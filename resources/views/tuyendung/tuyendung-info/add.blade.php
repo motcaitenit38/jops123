@@ -10,8 +10,6 @@
       </div>
       <form id="post-form" class="form-horizontal col-xl-9 col-lg-10 col-md-12 col-sm-12" method="post" action="{{ route('tuyendung.addinfo.submit')}}" enctype="multipart/form-data" role="form">
         @csrf
-        <input name="id" type="hidden" value="0">
-
         <div class="form-group">
           <label for="company_name" class="col-sm-4 control-label required">Tên công ty</label>
           <div class="col-md-6 col-sm-8">
@@ -22,10 +20,9 @@
           <label for="type_product" class="col-sm-4 control-label required">Quy mô công ty</label>
           <div class="col-md-6 col-sm-8">
             <select name="quymo" id="type_product" class="form-control js-example-basic-multiple">
-              <option value="0">Vui lòng chọn</option>
-              <option value="1">Loại sản phẩm 1</option>
-              <option value="2">Loại sản phẩm 2</option>
-              <option value="3">Loại sản phẩm 3</option>
+              @foreach($quymo as $quymo)
+              <option value="{{ $quymo->id}}">{{ $quymo->giatri}}</option>
+              @endforeach
             </select>
           </div>
         </div>
@@ -45,10 +42,9 @@
           <label for="fax" class="col-sm-4 control-label required">Ngành nghề</label>
           <div class="col-md-6 col-sm-8">
             <select name="nganhnghe[]" multiple="multiple" id="type_product" class="form-control js-example-basic-multiple">
-              <option value="1">Vui lòng chọn</option>
-              <option value="2">Loại sản phẩm 1</option>
-              <option value="3">Loại sản phẩm 2</option>
-              <option value="4">Loại sản phẩm 3</option>
+              @foreach($nganhnghe as $nganhnghe)
+              <option value="{{$nganhnghe->id}}">{{$nganhnghe->tennganh}}</option>
+              @endforeach
             </select>
           </div>
         </div> 
