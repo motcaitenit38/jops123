@@ -1,5 +1,6 @@
 @extends('tuyendung.layouts.template')
 @section('noidung')
+@foreach($thongtin as $thongtin)
 <div class="col-xl-12">
   <form id="post-form" class="form-group col-md-12" method="post" action="{{ route('info.update', $thongtin->id)}}" enctype="multipart/form-data" role="form">
     @method('PUT')
@@ -70,28 +71,22 @@
     <div class="form-group row">
       <label for="fax" class="col-sm-2 control-label required">Ngành nghề</label>
       <div class="col-sm-8">
-
-        <select name="nganhnghe[]" multiple="multiple" id="type_product" class="form-control js-multi-select2">
-
-          {{-- Duyệt tất cả ngành nghề trong bảng ngành nghề --}}
+        <select name="nganhnghe[]" id="multiple" multiple>
+          {{-- lặp danh sách ngành nghề của user cần sửa --}}
+        @foreach($thongtin->nganhnghe as $nganhnghesua)
+            {{-- lặp danh sách ngành nghề có trong bảng ngành nghề --}}
           @foreach($nganhnghe as $danhsachnganh)
-            {{-- In ra tất cả ngành nghề trong bảng ngành nghề --}}
-            <option value="{{ $danhsachnganh->id}}">{{ $danhsachnganh->tennganh}}</option>
-              {{-- Duyệt những ngành nghề có trong user cần để sửa thông tin --}}
-            @foreach($thongtin->nganhnghe as $nganhnghesua)
-                {{-- Kiểm tra điều kiện nếu id trùng nhau thì cho nó selected --}}
-              @if( $nganhnghesua->id == $danhsachnganh->id )
-                  {{-- in ra danh sách trùng nhau và set selected --}}
-                <option value="{{ $danhsachnganh->id}}" selected="selected">{{ $danhsachnganh->tennganh}}</option>
-
-              @endif
-
-            @endforeach
-
+            
+              {{-- in ra các option, nếu id ngành nghề có trong user trùng với id trong bảng ngành nghề
+                thì cho nó selected
+                --}}
+            <option value="{{ $danhsachnganh->id}}" {{ ($danhsachnganh->id == $nganhnghesua->id) ? 'selected="selected"' : "" }}>{{ $danhsachnganh->tennganh}}</option>
+              
           @endforeach
 
-        </select>
+        @endforeach
 
+        </select>
       </div>
     </div>
     <div class="form-group row">
@@ -119,12 +114,18 @@
     </div>
   </form>
 </div>
-{{-- @endforeach --}}
+
+
+@endforeach
+
+
 @endsection
 @section('script')
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.js-multi-select2').select2();
-    });
-  </script>
+<script type="text/javascript">
+$( document ).ready(function() {
+    new SlimSelect({
+  select: '#multiple'
+})
+});
+</script>
 @endsection

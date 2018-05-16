@@ -12,8 +12,10 @@
     <link href="{{ asset('template/css/fontawesome-all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('template/css/admin.css') }}" rel="stylesheet">
     <link href="{{ asset('template/css/introjs.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('template/css/select2.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('template/css/select2.min.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.15.0/slimselect.min.css" rel="stylesheet"></link>
     <!--Hỗ trợ IE nhận dạng thẻ HTML5-->
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
@@ -126,7 +128,8 @@
     <script type="text/javascript" src="{{ asset('template/js/popper.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('template/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('template/js/intro.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('template/js/select2.min.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset('template/js/select2.min.js') }}"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.15.0/slimselect.min.js"></script>
     <script type="text/javascript" src="{{ asset('template/js/admin.js') }}"></script>
     @yield('script')
     <script type="text/javascript">

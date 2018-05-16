@@ -28,6 +28,8 @@ class InfoTuyendungController extends Controller
         }
         else {
             $infotuyendung = InfoTuyendung::where('idtuyendung', '=', Auth::user()->id)->get();
+
+            // dd($infotuyendung);
             return view('tuyendung.tuyendung-info.get', ['info' => $infotuyendung]);
         }
     }
@@ -130,7 +132,8 @@ class InfoTuyendungController extends Controller
         $nganhnghe = Nganhnghe::all();
         $quymo     = Quymocongty::all();
         
-        $thongtin = InfoTuyendung::findOrFail($id);
+        $thongtin = InfoTuyendung::findOrFail($id)->get();
+        
         // return view('tuyendung.tuyendung-info.edit',['thongtin'=>$thongtin]);
         return view('tuyendung.tuyendung-info.edit',['thongtin'=>$thongtin, 'quymo'=>$quymo, 'nganhnghe'=>$nganhnghe]);
     }
