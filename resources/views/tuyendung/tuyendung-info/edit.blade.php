@@ -1,85 +1,130 @@
 @extends('tuyendung.layouts.template')
-
 @section('noidung')
-<div id="main">
- <ol class="breadcrumb">
-  <li><a href="index.html"><i class="fa fa-home"></i> Trang quản trị</a></li>
-  <li class="active"><a href="post.html">Bài viết</a></li>
-  <li class="active"><a href="new-post.html">Thêm bài viết mới</a></li>
-</ol>
-<div class="col-xs-12">
-  <form id="post-form" class="form-horizontal col-xl-9 col-lg-10 col-md-12 col-sm-12" method="post" action="#" enctype="multipart/form-data" role="form">
-   <input name="id" type="hidden" value="0">
-   <div class="form-group">
-    <label for="title" class="col-sm-2 control-label required">Tiêu đề</label>
-    <div class="col-sm-10">
-     <input name="title" type="text" value="" class="form-control" id="title" placeholder="Tên bài viết ( ~ 70 ký tự )" required="" maxlength="100">
-   </div>
- </div>
- <div class="form-group">
-  <label for="keywords" class="col-sm-2 control-label">Từ khóa</label>
-  <div class="col-sm-10">
-   <input name="keywords" type="text" value="" class="form-control" id="keywords" placeholder="meta keywords" maxlength="255">
- </div>
+<div class="col-xl-12">
+  <form id="post-form" class="form-group col-md-12" method="post" action="{{ route('info.update', $thongtin->id)}}" enctype="multipart/form-data" role="form">
+    @method('PUT')
+    @csrf
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label required">Tên công ty</label>
+      <div class="col-sm-4">
+        <input name="tencongty" type="text" class="form-control" id="staticEmail" placeholder="Tên công ty" required="" value="{{ $thongtin->tencongty }}" >
+        
+        @if ($errors->has('tencongty'))
+        <div class="alert alert-danger" role="alert">
+          {{ $errors->first('tencongty') }}
+        </div>
+        @endif
+        
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="type_product" class="col-sm-2 control-label required">Quy mô công ty</label>
+      <div class="col-sm-4">
+        <select name="quymo" id="type_product" class="form-control js-example-basic-multiple">
+          @foreach($quymo as $quymo)
+          @if($quymo->id == $thongtin->quymo->id)
+          {
+          <option value="{{ $thongtin->quymo->id}}" selected="selected">{{ $thongtin->quymo->giatri }}</option>
+          }
+          @else
+          <option value="{{ $quymo->id}}">{{ $quymo->giatri}}</option>
+          @endif
+          
+          @endforeach
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="address" class="col-sm-2 control-label required">Địa chỉ</label>
+      <div class="col-sm-4">
+        <input name="diachi" type="text" class="form-control" id="address" placeholder="Địa chỉ công ty" required="" value="{{ $thongtin->diachi}}">
+        @if ($errors->has('diachi'))
+        <div class="alert alert-danger" role="alert">
+          {{ $errors->first('diachi') }}
+        </div>
+        @endif
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="phone" class="col-sm-2 control-label required">Điện thoại</label>
+      <div class="col-sm-4">
+        <input name="dienthoai" type="text" class="form-control" id="phone" placeholder="Điện thoại liên hệ" required="" value="{{ $thongtin->dienthoai}}">
+        @if ($errors->has('dienthoai'))
+        <div class="alert alert-danger" role="alert">
+          {{ $errors->first('dienthoai') }}
+        </div>
+        @endif
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="phone" class="col-sm-2 control-label required">Năm thành lập</label>
+      <div class="col-sm-4">
+        <input name="namthanhlap" type="text" class="form-control" id="phone" placeholder="Năm thành lập" required="" value="{{ $thongtin->namthanhlap}}" >
+        @if ($errors->has('namthanhlap'))
+        <div class="alert alert-danger" role="alert">
+          {{ $errors->first('namthanhlap') }}
+        </div>
+        @endif
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="fax" class="col-sm-2 control-label required">Ngành nghề</label>
+      <div class="col-sm-8">
+
+        <select name="nganhnghe[]" multiple="multiple" id="type_product" class="form-control js-multi-select2">
+
+          {{-- Duyệt tất cả ngành nghề trong bảng ngành nghề --}}
+          @foreach($nganhnghe as $danhsachnganh)
+            {{-- In ra tất cả ngành nghề trong bảng ngành nghề --}}
+            <option value="{{ $danhsachnganh->id}}">{{ $danhsachnganh->tennganh}}</option>
+              {{-- Duyệt những ngành nghề có trong user cần để sửa thông tin --}}
+            @foreach($thongtin->nganhnghe as $nganhnghesua)
+                {{-- Kiểm tra điều kiện nếu id trùng nhau thì cho nó selected --}}
+              @if( $nganhnghesua->id == $danhsachnganh->id )
+                  {{-- in ra danh sách trùng nhau và set selected --}}
+                <option value="{{ $danhsachnganh->id}}" selected="selected">{{ $danhsachnganh->tennganh}}</option>
+
+              @endif
+
+            @endforeach
+
+          @endforeach
+
+        </select>
+
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="website" class="col-sm-2 control-label required">Sơ lược về công ty</label>
+      <div class="col-sm-8">
+        <textarea name="gioithieu" rows="5" class="form-control" id="description" placeholder="Mô tả nội dung trang web (~ 120 kí tự)" >{{ $thongtin->gioithieu }}</textarea>
+        @if ($errors->has('gioithieu'))
+        <div class="alert alert-danger" role="alert">
+          {{ $errors->first('gioithieu') }}
+        </div>
+        @endif
+      </div>
+    </div>
+    <div class="form-group row" >
+      <label class="col-sm-2 control-label">Ảnh</label>
+      <div class="col-sm-4">
+        <input name="avata" type="file" class="form-control" id="phone" placeholder="Năm thành lập" >
+      </div>
+    </div>
+    <div class="form-group rowr" style="text-align: center;">
+      <div class="col-sm-8">
+        <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i> Lưu thay đổi</button>
+        <a class="btn btn-warning" href="#"><i class="fa fa-reply"></i> Trở về</a>
+      </div>
+    </div>
+  </form>
 </div>
-<div class="form-group">
-  <label for="description" class="col-sm-2 control-label">Mô tả</label>
-  <div class="col-sm-10">
-   <textarea name="description" class="form-control" id="description" placeholder="meta description ( ~ 160 ký tự )" maxlength="255"></textarea>
- </div>
-</div>
-<div class="form-group">
-  <label for="content" class="col-sm-2 control-label">Nội dung</label>
-  <div class="col-sm-10">
-   <textarea name="content" rows="5" class="form-control ckeditor" id="content" placeholder="Nội dung bài viết" ></textarea>
- </div>
- <div class="form-group" >
-   <label class="col-sm-2 control-label">Ảnh</label>
-   <div class="col-sm-10 col-sm-offset-2">
-    <ul class="nav nav-tabs" role="tablist">
-     <li class="active"><a href="#img-file" role="tab" data-toggle="tab">Upload từ máy tính</a></li>
-     <li><a href="#img-url" role="tab" data-toggle="tab">Lấy từ URL</a></li>
-   </ul>
-   <div class="tab-content" style="margin-top: 15px; min-height: 100px;">
-    <div class="tab-pane active" id="img-file">
-      <label for="image" class="col-sm-3 control-label">Từ máy tính</label>
-      <div class="col-sm-9">
-       <input name="image" type="file" class="form-control" id="image" accept="image/*">
-     </div>
-   </div>
-   <div class="tab-pane" id="img-url">
-    <label for="url" class="col-sm-3 control-label"> Từ URL</label>
-    <div class="col-sm-9">
-     <input name="image" type="text" value="" class="form-control" id="url" placeholder="Đường dẫn tới hình ảnh" maxlength="255">
-   </div>
- </div>
-</div>
-</div>
-</div>
-<div class="col-sm-offset-2 col-sm-10">
-  <button type="submit" class="btn btn-submit"><small><i class="fa fa-plus"></i></small> Thêm mới</button>
-  <button type="submit" class="btn btn-danger"><small><i class="fa fa-save"></i></small> Lưu nháp</button>
-  <a class="btn btn-warning" href="#"><small><i class="fa fa-reply"></i></small> Trở về</a>
-</div>
-</div>
-</form>
-</div>
-</div>
-<!--END #main-->
-</div>
+{{-- @endforeach --}}
 @endsection
-
 @section('script')
-
-<script>
-    var editor = CKEDITOR.replace( 'content', {
-    filebrowserBrowseUrl : 'plugins/ckfinder/ckfinder.html',
-    filebrowserImageBrowseUrl : 'plugins/ckfinder/ckfinder.html?type=Images',
-    filebrowserFlashBrowseUrl : 'plugins/ckfinder/ckfinder.html?type=Flash',
-    filebrowserUploadUrl : 'plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl : 'plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-    filebrowserFlashUploadUrl : 'plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-});
-CKFinder.setupCKEditor( editor, '../' );
-</script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.js-multi-select2').select2();
+    });
+  </script>
 @endsection

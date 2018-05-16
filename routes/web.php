@@ -40,6 +40,7 @@ Auth::routes();
 	Route::group(['prefix' => ''], function() {
 	    //
 	    Route::get('/', 'HomeController@index')->name('timviec.home');	    
+	    Route::get('array', 'HomeController@array');	    
 	});
 
 	// Nhóm route dành cho người tìm việc (chỉ đăng nhập tìm việc mới truy cập được)
@@ -51,14 +52,9 @@ Auth::routes();
 	// Nhóm route dành cho nhà tuyển dụng (Chỉ đăng nhập nhà tuyển dụng mới truy cập được)
 	Route::group(['prefix' => 'tuyendung', 'middleware'  => 'auth:tuyendung'], function() {
 		// route quản lý người dùng tuyển dụng
-		Route::resource('/', 'Tuyendung\UserTuyendungController');
+		Route::resource('/', 'Tuyendung\TuyendungController');
 	    // route quản lý thông tin người dùng tuyển dụng
 	    Route::resource('info', 'Tuyendung\InfoTuyendungController');
-	    // Route::get('/', 'Tuyendung\TuyendungController@index')->name('tuyendung.home');
-	    // Route::get('danhsach', 'Tuyendung\TuyendunginfoController@getthongtin')->name('tuyendung.thongtin');
-
-	    // Route::get('addinfo', 'Tuyendung\TuyendunginfoController@getAdd')->name('tuyendung.addinfo');
-	    // Route::post('addinfo', 'Tuyendung\TuyendunginfoController@postAdd')->name('tuyendung.addinfo.submit');
 	    
 	});
 

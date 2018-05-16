@@ -16,7 +16,8 @@ class CreateInfoTuyendungsTable extends Migration
         Schema::create('info_tuyendungs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tencongty');
-            $table->string('quymo');
+            $table->integer('idquymo')->unsigned();
+            $table->foreign('idquymo')->references('id')->on('quymocongties');
             $table->string('diachi');
             $table->string('dienthoai');            
             $table->string('namthanhlap');

@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function array(){
+        $a = 'truong';
+        $b = 'le';
+        $array = [];
+        $array['ho'] =$b;
+        $array['ten'] =$a;
+        dd($array);
+        return view('welcome')->with('array',$array);
+    }
 }

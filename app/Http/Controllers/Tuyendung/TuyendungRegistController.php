@@ -42,7 +42,7 @@ class TuyendungRegistController extends Controller
     	$tuyendung->email = $request['email'];
     	$tuyendung->password = bcrypt($request['password']);
     	$tuyendung->save();
-    	return redirect(route('tuyendung.home'));
+    	return redirect(route('index'));
 
     }
 }

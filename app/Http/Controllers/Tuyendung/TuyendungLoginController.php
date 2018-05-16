@@ -32,7 +32,7 @@ class TuyendungLoginController extends Controller
         $email = $request['email'];
         $password = $request['password'];
         if(Auth::guard('tuyendung')->attempt([ 'email'=>$email, 'password'=>$password], $request->remember)){
-            return redirect()->route('tuyendung.home');
+            return redirect()->route('index');
         }else{
             return redirect()->back()->withInput()->with('thongbao','Email hoặc mật khẩu không đúng');;
         }

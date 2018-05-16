@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Tuyendung;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Tuyendung\InfoTuyendung;
+use App\Nganhnghe;
+use App\Tuyendung\Info_Nganh;
+use App\Tuyendung;
+use App\Quymocongty;
+use Auth;
 
 class UserTuyendungController extends Controller
 {
@@ -15,7 +21,8 @@ class UserTuyendungController extends Controller
     public function index()
     {
         //
-        return view('tuyendung.home');
+        
+        
     }
 
     /**
