@@ -43,7 +43,7 @@
               {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="{{ route('info.create') }}"><i class="fas fa-user"></i>Thông tin công ty</a>
+              <a class="dropdown-item" href="{{ route('info.index') }}"><i class="fas fa-user"></i>Thông tin công ty</a>
               <a class="dropdown-item" href="{{ route('tuyendung.logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                 <i class="fas fa-power-off"></i>
@@ -111,7 +111,7 @@
           <div class="row text-center">
             @if(isset($alert))
               @if(isset($thongbao))
-                  <div class="alert alert-{{ $alert }} col-md-12" role="alert">
+                  <div class="alert alert-{{ $alert }} col-md-12 thongbao" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       <strong>Thông báo!</strong> {{ $thongbao }}
                   </div>
@@ -134,7 +134,7 @@
     @yield('script')
     <script type="text/javascript">
     window.setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+    $(".thongbao").fadeTo(500, 0).slideUp(500, function(){
     $(this).remove();
     });
     }, 4000);

@@ -64,6 +64,11 @@
         <option value="{{$nganhnghe->id}}">{{$nganhnghe->tennganh}}</option>
         @endforeach
       </select>
+      @if ($errors->has('nganhnghe'))
+      <div class="alert alert-danger" role="alert">
+        {{ $errors->first('nganhnghe') }}
+      </div>
+      @endif
     </div>
   </div>
   

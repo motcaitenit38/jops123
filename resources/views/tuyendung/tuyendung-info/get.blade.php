@@ -1,7 +1,7 @@
 @extends('tuyendung.layouts.template')
 @section('noidung')
 
-@foreach($info as $info)
+{{-- @foreach($info as $info) --}}
 
 <div class="container">
     <h2 class="text-center"><span class="badge badge-info">Thông tin công ty</span></h2>
@@ -86,7 +86,7 @@
         </div>
     </div>
 </div>
-@endforeach
+{{-- @endforeach --}}
 @endsection
 @section('script')
 @endsection

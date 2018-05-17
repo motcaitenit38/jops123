@@ -27,9 +27,7 @@ class InfoTuyendungController extends Controller
             return redirect()->route('info.create');
         }
         else {
-            $infotuyendung = InfoTuyendung::where('idtuyendung', '=', Auth::user()->id)->get();
-
-            // dd($infotuyendung);
+            $infotuyendung = InfoTuyendung::where('idtuyendung', '=', Auth::user()->id)->first();
             return view('tuyendung.tuyendung-info.get', ['info' => $infotuyendung]);
         }
     }
@@ -50,7 +48,7 @@ class InfoTuyendungController extends Controller
             return view('tuyendung.tuyendung-info.add',['nganhnghe'=>$nganhnghe, 'quymo'=>$quymo, 'alert' => 'danger', 'thongbao' => 'Bạn chưa hoàn thành hồ sơ, vui lòng hoàn thành hồ sơ trước']);
             }
         else {
-            $infotuyendung = InfoTuyendung::where('idtuyendung', '=', Auth::user()->id)->get();
+            $infotuyendung = InfoTuyendung::where('idtuyendung', '=', Auth::user()->id)->first();
             return view('tuyendung.tuyendung-info.get', ['info' => $infotuyendung]);
         }
     }
@@ -115,9 +113,7 @@ class InfoTuyendungController extends Controller
      */
     public function show($id)
     {
-        $infotuyendung = InfoTuyendung::where('idtuyendung', '=', $id)->get();
-        // echo $id;
-        // dd($infotuyendung);
+        $infotuyendung = InfoTuyendung::where('idtuyendung', '=', $id)->first();
         return view('tuyendung.tuyendung-info.get', ['info' => $infotuyendung, 'alert' => 'success', 'thongbao' => 'Cập nhật hồ sơ hành công']);
     }
 
@@ -129,9 +125,7 @@ class InfoTuyendungController extends Controller
      */
     public function edit($id)
     {
-        // echo $id;
         $nganhnghe = Nganhnghe::all();
-        // dd($nganhnghe);
         
         $quymo     = Quymocongty::all();
         
