@@ -1,6 +1,5 @@
 @extends('tuyendung.layouts.template')
 @section('noidung')
-@foreach($thongtin as $thongtin)
 <div class="col-xl-12">
   <form id="post-form" class="form-group col-md-12" method="post" action="{{ route('info.update', $thongtin->id)}}" enctype="multipart/form-data" role="form">
     @method('PUT')
@@ -71,21 +70,10 @@
     <div class="form-group row">
       <label for="fax" class="col-sm-2 control-label required">Ngành nghề</label>
       <div class="col-sm-8">
-        <select name="nganhnghe[]" id="multiple" multiple>
-          {{-- lặp danh sách ngành nghề của user cần sửa --}}
-        @foreach($thongtin->nganhnghe as $nganhnghesua)
-            {{-- lặp danh sách ngành nghề có trong bảng ngành nghề --}}
-          @foreach($nganhnghe as $danhsachnganh)
-            
-              {{-- in ra các option, nếu id ngành nghề có trong user trùng với id trong bảng ngành nghề
-                thì cho nó selected
-                --}}
-            <option value="{{ $danhsachnganh->id}}" {{ ($danhsachnganh->id == $nganhnghesua->id) ? 'selected="selected"' : "" }}>{{ $danhsachnganh->tennganh}}</option>
-              
+        <select class="js-example-basic-multiple form-control" name="nganhnghe[]" multiple="multiple" >
+          @foreach($nganhnghe as $nganhnghe)
+          <option value="{{ $nganhnghe->id}}" {{ array_key_exists($nganhnghe->id, $nganhnghe_user)? 'selected = "selected"' : '' }}>{{ $nganhnghe->tennganh}}</option>
           @endforeach
-
-        @endforeach
-
         </select>
       </div>
     </div>
@@ -114,18 +102,11 @@
     </div>
   </form>
 </div>
-
-
-@endforeach
-
-
 @endsection
 @section('script')
 <script type="text/javascript">
-$( document ).ready(function() {
-    new SlimSelect({
-  select: '#multiple'
-})
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
 });
 </script>
 @endsection

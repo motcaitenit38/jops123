@@ -129,13 +129,23 @@ class InfoTuyendungController extends Controller
      */
     public function edit($id)
     {
+        // echo $id;
         $nganhnghe = Nganhnghe::all();
+        // dd($nganhnghe);
+        
         $quymo     = Quymocongty::all();
         
-        $thongtin = InfoTuyendung::findOrFail($id)->get();
         
-        // return view('tuyendung.tuyendung-info.edit',['thongtin'=>$thongtin]);
-        return view('tuyendung.tuyendung-info.edit',['thongtin'=>$thongtin, 'quymo'=>$quymo, 'nganhnghe'=>$nganhnghe]);
+        $thongtin = InfoTuyendung::findOrFail($id);
+
+        // Lấy tất cả ngành nghề của user cho vào 1 mảng và truyền sang view
+        // Bên view kiểm tra key có tồn tại hay không để in ra.
+        $nganhnghe_user = array();
+        foreach($thongtin->nganhnghe()->get() as $value) {
+            $nganhnghe_user[$value->id] = $value->tennganh;
+        }
+
+        return view('tuyendung.tuyendung-info.edit',['thongtin'=>$thongtin, 'quymo'=>$quymo, 'nganhnghe'=>$nganhnghe, 'nganhnghe_user'=>$nganhnghe_user]);
     }
 
     /**
@@ -188,10 +198,6 @@ class InfoTuyendungController extends Controller
         $info->nganhnghe()->sync($nganhnghe);               
         // kết thúc xử lý chèn bảng trung gian
         // Truyền id user tuyển dụng cho route show thông tin
-        // return redirect()->route('info.show', $info->id);
-        // return redirect()->route('info.index');
-        // $infotuyendung = InfoTuyendung::where('idtuyendung', '=', $id)->get();
-        // return view('tuyendung.tuyendung-info.get', ['info' => $infotuyendung, 'alert' => 'success', 'thongbao' => 'Thành công']);
         return redirect()->route('info.show', $info->idtuyendung);
 
     }

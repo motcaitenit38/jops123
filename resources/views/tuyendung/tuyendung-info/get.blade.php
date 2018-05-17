@@ -1,6 +1,8 @@
 @extends('tuyendung.layouts.template')
 @section('noidung')
+
 @foreach($info as $info)
+
 <div class="container">
     <h2 class="text-center"><span class="badge badge-info">Thông tin công ty</span></h2>
     <div class="row justify-content-md-center">
