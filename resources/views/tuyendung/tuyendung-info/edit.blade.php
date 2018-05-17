@@ -1,4 +1,5 @@
 @extends('tuyendung.layouts.template')
+@section('title','Sửa hồ sơ công ty')
 @section('noidung')
 <div class="col-xl-12">
   <form id="post-form" class="form-group col-md-12" method="post" action="{{ route('info.update', $thongtin->id)}}" enctype="multipart/form-data" role="form">
@@ -106,7 +107,12 @@
 @section('script')
 <script type="text/javascript">
 $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
+$('.js-example-basic-multiple').select2({
+  language: "vi",
+  placeholder: 'Chọn ngành nghề của công ty',
+   maximumSelectionLength: 5,
+   allowClear: true
+});
 });
 </script>
 @endsection

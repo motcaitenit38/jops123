@@ -45,7 +45,7 @@ class InfoTuyendungController extends Controller
         if (empty($infotuyendung)) {
             $nganhnghe = Nganhnghe::all();
             $quymo     = Quymocongty::all();
-            return view('tuyendung.tuyendung-info.add',['nganhnghe'=>$nganhnghe, 'quymo'=>$quymo, 'alert' => 'danger', 'thongbao' => 'Bạn chưa hoàn thành hồ sơ, vui lòng hoàn thành hồ sơ trước']);
+            return view('tuyendung.tuyendung-info.add',['nganhnghe'=>$nganhnghe, 'quymo'=>$quymo]);
             }
         else {
             $infotuyendung = InfoTuyendung::where('idtuyendung', '=', Auth::user()->id)->first();
@@ -102,7 +102,7 @@ class InfoTuyendungController extends Controller
         // kết thúc xử lý chèn bảng trung gian
         // Truyền id user tuyển dụng cho route show thông tin
         // return redirect()->route('info.show', $info->id);
-        return redirect()->route('info.show', $info->idtuyendung);
+        return redirect()->route('info.index');
     }
 
     /**
@@ -192,7 +192,7 @@ class InfoTuyendungController extends Controller
         $info->nganhnghe()->sync($nganhnghe);               
         // kết thúc xử lý chèn bảng trung gian
         // Truyền id user tuyển dụng cho route show thông tin
-        return redirect()->route('info.show', $info->idtuyendung);
+        return redirect()->route('info.index');
 
     }
 

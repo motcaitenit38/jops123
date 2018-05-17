@@ -1,11 +1,12 @@
 @extends('tuyendung.layouts.template')
+@section('title','Cập nhật hồ sơ công ty')
 @section('noidung')
-<form id="post-form" class="form-group col-md-12" method="post" action="{{ route('info.store')}}" enctype="multipart/form-data" role="form">
+<form id="post-form" class="form-group col-md-12" method="post" action="{{ route('info.store')}}" enctype="multipart/form-data" role="form" data-parsley-validate>
   @csrf
   <div class="form-group row">
     <label for="company_name" class="col-sm-2 col-form-label required">Tên công ty</label>
     <div class="col-sm-4">
-      <input name="tencongty" type="text" class="form-control" id="company_name" placeholder="Tên công ty" required="" >
+      <input name="tencongty" type="text" class="form-control" id="company_name" placeholder="Tên công ty" required Minlength ="5">
       @if ($errors->has('tencongty'))
       <div class="alert alert-danger" role="alert">
         {{ $errors->first('tencongty') }}
@@ -101,8 +102,12 @@
 @section('script')
 <script type="text/javascript">
 $(document).ready(function() {
-$('.js-example-basic-multiple').select2();
+$('.js-example-basic-multiple').select2({
+  language: "vi",
+  placeholder: 'Chọn ngành nghề của công ty',
+   maximumSelectionLength: 5,
+   allowClear: true
 });
-</script>
+});
 </script>
 @endsection

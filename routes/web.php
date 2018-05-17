@@ -40,7 +40,7 @@ Auth::routes();
 	Route::group(['prefix' => ''], function() {
 	    //
 	    Route::get('/', 'HomeController@index')->name('timviec.home');	    
-	    Route::get('array', 'HomeController@array');	    
+	    Route::get('diachi', 'HomeController@diachi');	    
 	});
 
 	// Nhóm route dành cho người tìm việc (chỉ đăng nhập tìm việc mới truy cập được)

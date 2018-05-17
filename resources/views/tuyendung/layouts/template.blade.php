@@ -6,14 +6,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quản trị hệ thống</title>
+    <title>@yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('template/favicon.png') }}">
     <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('template/css/fontawesome-all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('template/css/admin.css') }}" rel="stylesheet">
     <link href="{{ asset('template/css/introjs.min.css') }}" rel="stylesheet">
     <link href="{{ asset('template/css/select2.min.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('template/css/style.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.15.0/slimselect.min.css" rel="stylesheet"></link>
     <!--Hỗ trợ IE nhận dạng thẻ HTML5-->
@@ -129,6 +129,8 @@
     <script type="text/javascript" src="{{ asset('template/js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('template/js/intro.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('template/js/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/select2/translation/vi.js') }}"></script>
+    
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.15.0/slimselect.min.js"></script> --}}
     <script type="text/javascript" src="{{ asset('template/js/admin.js') }}"></script>
     @yield('script')

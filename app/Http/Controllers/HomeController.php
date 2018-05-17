@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Diachi\Tinhthanhpho;
+use App\Diachi\Quanhuyen;
+use App\Diachi\Xaphuong;
 
 class HomeController extends Controller
 {
@@ -26,13 +29,13 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function array(){
-        $a = 'truong';
-        $b = 'le';
-        $array = [];
-        $array['ho'] =$b;
-        $array['ten'] =$a;
-        dd($array);
-        return view('welcome')->with('array',$array);
+    public function diachi(){
+        $tinh = Quanhuyen::find(542)->tinhthanhpho()->get()->toArray();
+        dd($tinh);
+
+        foreach ($tinh[0]->Quanhuyen() as $value) {
+            echo $value;
+        }
+        
     }
 }

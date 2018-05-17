@@ -1,19 +1,20 @@
 @extends('tuyendung.layouts.template')
+@section('title','Hồ sơ chi tiết công ty')
 @section('noidung')
 
 {{-- @foreach($info as $info) --}}
 
 <div class="container">
-    <h2 class="text-center"><span class="badge badge-info">Thông tin công ty</span></h2>
+    <h2 class="text-center"><span class="badge badge-info">Thông tin công ty: {!! $info->tencongty !!}</span></h2>
     <div class="row justify-content-md-center">
-        <div class="col-md-4">
-            <h4 class="text-center">Hình đại diện</h4 class="text-center">
-            <div class="avata">
-                <img class="img-fluid" src="https://startbootstrap.com/assets/img/templates/creative.jpg">
+        <div class="col-md-12" style="margin-bottom: 20px;">            
+            <div class="avata text-center">
+                <img class="img-fluid img-responsive" src="https://startbootstrap.com/assets/img/templates/creative.jpg">
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="row">
+        
+        <div class="col-md-6 col-md-offset-3" style="margin-bottom: 20px;">
+            <div class="row" style="margin-bottom: 20px;">
                 <div class="col-md-6">
                     <div class="text-right">Tên công ty:</div>
                 </div>
@@ -24,7 +25,7 @@
                 </div>
             </div>
             <hr class="my-4">
-            <div class="row">
+            <div class="row" style="margin-bottom: 20px;">
                 <div class="col-md-6">
                     <div class="text-right">Điện thoại:</div>
                 </div>
@@ -81,6 +82,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-12 text-center">
             <a href="{{ asset('tuyendung/info/'.$info->id.'/edit') }}" class="btn btn-warning">Sửa thông tin</a>
         </div>
