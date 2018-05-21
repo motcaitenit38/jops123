@@ -16,4 +16,8 @@ class Nganhnghe extends Model
    public function infonganh(){
    	return $this->belongsToMany('App\Tuyendung\InfoTuyendung', 'info_nganhs');
    }
+
+   public function chitietcongviec(){
+    	return $this->belongsToMany('App\Tuyendung\Chitietcongviec','chitietcongviec_nganh');
+    }
 }

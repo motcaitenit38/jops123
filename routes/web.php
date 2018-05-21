@@ -10,58 +10,39 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+	 Route::group(['prefix' => '/'], function() {
+	 		
+	     Route::get('/', 'HomeController@home');
+	    
+	     Route::get('diachi/quanhuyen/{idthanhpho}', 'DiadiemController@getquanhuyen');	    
+	     Route::get('diachi/xaphuong/{idquanhuyen}', 'DiadiemController@getxaphuong');
+	    	// trang kết quả tìm kiếm
 
-Route::get('/', function () {
-	return view('welcome');
-});
-
-Auth::routes();
-
-
-
-// login, register logout trang tuyen dung
-	Route::get('tuyendung/login', 'Tuyendung\TuyendungLoginController@showLoginForm')->name('tuyendung.login');
-	Route::post('tuyendung/login', 'Tuyendung\TuyendungLoginController@submitLogin')->name('tuyendung.login.submit'); 
-	// regist
-	Route::get('tuyendung/register', 'Tuyendung\TuyendungRegistController@showRegistForm')->name('tuyendung.register');
-	Route::post('tuyendung/register', 'Tuyendung\TuyendungRegistController@submitRegist')->name('tuyendung.register.submit');
-	// logout
-	Route::post('tuyendung/logout', 'Tuyendung\TuyendungLoginController@logout')->name('tuyendung.logout');
-
-	// login admin
-	Route::get('admin/login', 'Admin\AdminLoginController@showLoginForm')->name('admin.login');
-	Route::post('admin/login', 'Admin\AdminLoginController@submitLogin')->name('admin.login.submit'); 
-	// regist
-	Route::get('admin/register', 'Admin\AdminRegistController@showRegistForm')->name('admin.register');
-	Route::post('admin/register', 'Admin\AdminRegistController@submitRegist')->name('admin.register.submit');
-	Route::post('admin/logout', 'Admin\AdminLoginController@logout')->name('admin.logout'); 
-
-	// Nhóm route dành cho mọi người dùng (Những trang không cần đăng nhập)
-	Route::group(['prefix' => ''], function() {
-	    //
-	    Route::get('/', 'HomeController@index')->name('timviec.home');	    
-	    Route::get('diachi', 'HomeController@diachi');	    
+	    	// Route::resource('timkiems', 'TimkiemController');
 	});
-
 	// Nhóm route dành cho người tìm việc (chỉ đăng nhập tìm việc mới truy cập được)
 	Route::group(['prefix' => 'timviec', 'middleware' => 'auth'], function() {
-	    //
-	    Route::get('', 'Auth\HomeController@index')->name('timviec.home');
+		Route::get('','Auth\HomeController@index');
+	    Route::resource('info-timviec', 'Timviec\Timviec_infoController');
 
 	});
 	// Nhóm route dành cho nhà tuyển dụng (Chỉ đăng nhập nhà tuyển dụng mới truy cập được)
 	Route::group(['prefix' => 'tuyendung', 'middleware'  => 'auth:tuyendung'], function() {
 		// route quản lý người dùng tuyển dụng
-		Route::resource('/', 'Tuyendung\TuyendungController');
+		Route::get('/','Tuyendung\TuyendungController@home')->name('tuyendung.index');
 	    // route quản lý thông tin người dùng tuyển dụng
 	    Route::resource('info', 'Tuyendung\InfoTuyendungController');
+	    // route quản lý dánh sách công việc
+	    Route::resource('post', 'Tuyendung\Tuyendung_postController');
+	    Route::get('trangthai', 'Tuyendung\Tuyendung_postController@trangthaicongviec')->name('post.trangthai');
 	    
 	});
 
 	// Nhóm route dành cho admin người quản trị hệ thống
 	Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
-	    //
 	    Route::get('', 'Admin\AdminController@index')->name('admin.home');
 	});
 	
 
+// include vao day tach rieng cho de nhin 
+include('route_authenticate.php');

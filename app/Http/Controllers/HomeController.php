@@ -1,41 +1,38 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Diachi\Tinhthanhpho;
-use App\Diachi\Quanhuyen;
-use App\Diachi\Xaphuong;
+use App\Tuyendung\Tuyendung_post;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
-        return view('home');
+        $tinh = Tinhthanhpho::all();
+        return view('home',['tinh'=>$tinh]);
     }
 
-    public function diachi(){
-        $tinh = Quanhuyen::find(542)->tinhthanhpho()->get()->toArray();
-        dd($tinh);
+    public function timkiem(Request $request){
 
-        foreach ($tinh[0]->Quanhuyen() as $value) {
-            echo $value;
+        $abc = $request->timkiem;
+        $tp = $request->diachi;
+        if($abc == ''){
+            $congviec = Chitietcongviec::paginate(10);
+            return view('timkiem.ketqua',['congviecs'=>$congviec]);
         }
-        
+        else{
+            $congviec = Chitietcongviec::where('tencongviec','like', '%'.$abc.'%')->where('diadiem_tp',$tp)->orderBy('id','desc')->paginate(10);
+            return view('timkiem.ketqua',['congviecs'=>$congviec]);
+        }
     }
+
+
 }

@@ -48,12 +48,12 @@ return [
 
         'tuyendung' => [
             'driver' => 'session',
-            'provider' => 'tuyendungs',
+            'provider' => 'tuyendung_users',
         ],
 
         'tuyendung-api' => [
             'driver' => 'token',
-            'provider' => 'tuyendungs',
+            'provider' => 'tuyendung_users',
         ],
 
         'admin' => [
@@ -90,9 +90,9 @@ return [
             'model' => App\User::class,
         ],
 
-        'tuyendungs' => [
+        'tuyendung_users' => [
             'driver' => 'eloquent',
-            'model' => App\Tuyendung::class,
+            'model' => App\Tuyendung_user::class,
         ],
 
         'admins' => [
@@ -128,8 +128,8 @@ return [
             'expire' => 60,
         ],
 
-        'tuyendungs' => [
-            'provider' => 'tuyendungs',
+        'tuyendung_users' => [
+            'provider' => 'tuyendung_users',
             'table' => 'password_resets',
             'expire' => 60,
         ],

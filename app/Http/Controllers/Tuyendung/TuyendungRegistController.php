@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Tuyendung;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
-use App\Tuyendung;
+use App\Tuyendung_user;
 
 class TuyendungRegistController extends Controller
 {
@@ -21,7 +21,7 @@ class TuyendungRegistController extends Controller
     public function submitRegist(Request $request){
     	$this->validate($request,[
     		'name' => 'required|max:255|min:5',
-            'email' => 'required|email|max:255|unique:tuyendungs',
+            'email' => 'required|email|max:255|unique:tuyendung_users',
             'password' => 'required|min:6|confirmed',
     	],
     	[
@@ -37,12 +37,12 @@ class TuyendungRegistController extends Controller
             'password.confirmed' => '2 mật khẩu không khớp'
 
     	]);
-    	$tuyendung = new Tuyendung;
+    	$tuyendung = new Tuyendung_user;
     	$tuyendung->name = $request['name'];
     	$tuyendung->email = $request['email'];
     	$tuyendung->password = bcrypt($request['password']);
     	$tuyendung->save();
-    	return redirect(route('index'));
+    	return redirect(route('tuyendung.login'));
 
     }
 }

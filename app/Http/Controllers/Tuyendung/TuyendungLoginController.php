@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tuyendung;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Tuyendung\Tuyendung_user;
 
 
 class TuyendungLoginController extends Controller
@@ -32,7 +33,7 @@ class TuyendungLoginController extends Controller
         $email = $request['email'];
         $password = $request['password'];
         if(Auth::guard('tuyendung')->attempt([ 'email'=>$email, 'password'=>$password], $request->remember)){
-            return redirect()->route('index');
+            return redirect()->route('tuyendung.index');
         }else{
             return redirect()->back()->withInput()->with('thongbao','Email hoặc mật khẩu không đúng');;
         }

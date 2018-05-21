@@ -1,4 +1,4 @@
-@extends('tuyendung.layouts.template')
+@extends('tuyendung.template.app')
 @section('title','Sửa hồ sơ công ty')
 @section('noidung')
 <div class="col-xl-12">
@@ -7,65 +7,44 @@
     @csrf
     <div class="form-group row">
       <label for="staticEmail" class="col-sm-2 col-form-label required">Tên công ty</label>
-      <div class="col-sm-4">
+      <div class="col-sm-8">
         <input name="tencongty" type="text" class="form-control" id="staticEmail" placeholder="Tên công ty" required="" value="{{ $thongtin->tencongty }}" >
-        
-        @if ($errors->has('tencongty'))
-        <div class="alert alert-danger" role="alert">
-          {{ $errors->first('tencongty') }}
-        </div>
-        @endif
-        
       </div>
-    </div>
+    </div>    
     <div class="form-group row">
-      <label for="type_product" class="col-sm-2 control-label required">Quy mô công ty</label>
-      <div class="col-sm-4">
-        <select name="quymo" id="type_product" class="form-control js-example-basic-multiple">
-          @foreach($quymo as $quymo)
-          @if($quymo->id == $thongtin->quymo->id)
+      <label for="type_product" class="col-sm-2 control-label required">Thành phố</label>
+      <div class="col-sm-8">
+        <select name="diachi_tp" id="type_product" class="form-control  js-example-basic-multiple">
+          @foreach($diadiem_tp as $diadiem_tp)
+          @if($diadiem_tp->thanhpho_id == $thongtin->diadiem_tp->thanhpho_id)
           {
-          <option value="{{ $thongtin->quymo->id}}" selected="selected">{{ $thongtin->quymo->giatri }}</option>
+          <option value="{{ $thongtin->diadiem_tp->thanhpho_id  }}" selected >{{ $thongtin->diadiem_tp->name }}</option>
           }
           @else
-          <option value="{{ $quymo->id}}">{{ $quymo->giatri}}</option>
-          @endif
-          
+          <option value="{{ $diadiem_tp->thanhpho_id}}">{{ $diadiem_tp->name}}</option>
+          @endif          
           @endforeach
         </select>
       </div>
     </div>
     <div class="form-group row">
       <label for="address" class="col-sm-2 control-label required">Địa chỉ</label>
-      <div class="col-sm-4">
-        <input name="diachi" type="text" class="form-control" id="address" placeholder="Địa chỉ công ty" required="" value="{{ $thongtin->diachi}}">
-        @if ($errors->has('diachi'))
-        <div class="alert alert-danger" role="alert">
-          {{ $errors->first('diachi') }}
-        </div>
-        @endif
+      <div class="col-sm-8">
+        <input name="diachicuthe" type="text" class="form-control" id="address" placeholder="Địa chỉ công ty" required="" value="{{ $thongtin->diachicuthe}}">
       </div>
     </div>
     <div class="form-group row">
       <label for="phone" class="col-sm-2 control-label required">Điện thoại</label>
-      <div class="col-sm-4">
+      <div class="col-sm-8">
         <input name="dienthoai" type="text" class="form-control" id="phone" placeholder="Điện thoại liên hệ" required="" value="{{ $thongtin->dienthoai}}">
-        @if ($errors->has('dienthoai'))
-        <div class="alert alert-danger" role="alert">
-          {{ $errors->first('dienthoai') }}
-        </div>
-        @endif
+        
       </div>
     </div>
     <div class="form-group row">
-      <label for="phone" class="col-sm-2 control-label required">Năm thành lập</label>
-      <div class="col-sm-4">
-        <input name="namthanhlap" type="text" class="form-control" id="phone" placeholder="Năm thành lập" required="" value="{{ $thongtin->namthanhlap}}" >
-        @if ($errors->has('namthanhlap'))
-        <div class="alert alert-danger" role="alert">
-          {{ $errors->first('namthanhlap') }}
-        </div>
-        @endif
+      <label for="phone" class="col-sm-2 col-form-label required">Website công ty</label>
+      <div class="col-sm-8">
+        <input name="website" type="text" class="form-control" id="phone" placeholder="Website công ty" required="" value={{ $thongtin->website }}>
+        
       </div>
     </div>
     <div class="form-group row">
@@ -82,17 +61,14 @@
       <label for="website" class="col-sm-2 control-label required">Sơ lược về công ty</label>
       <div class="col-sm-8">
         <textarea name="gioithieu" rows="5" class="form-control" id="description" placeholder="Mô tả nội dung trang web (~ 120 kí tự)" >{{ $thongtin->gioithieu }}</textarea>
-        @if ($errors->has('gioithieu'))
-        <div class="alert alert-danger" role="alert">
-          {{ $errors->first('gioithieu') }}
-        </div>
-        @endif
+        
       </div>
     </div>
     <div class="form-group row" >
       <label class="col-sm-2 control-label">Ảnh</label>
-      <div class="col-sm-4">
+      <div class="col-sm-8">
         <input name="avata" type="file" class="form-control" id="phone" placeholder="Năm thành lập" >
+        
       </div>
     </div>
     <div class="form-group rowr" style="text-align: center;">
@@ -108,10 +84,10 @@
 <script type="text/javascript">
 $(document).ready(function() {
 $('.js-example-basic-multiple').select2({
-  language: "vi",
-  placeholder: 'Chọn ngành nghề của công ty',
-   maximumSelectionLength: 5,
-   allowClear: true
+language: "vi",
+placeholder: 'Chọn ngành nghề của công ty',
+maximumSelectionLength: 5,
+allowClear: true
 });
 });
 </script>
