@@ -17,7 +17,6 @@
     <link href="{{ asset('search/css/line-font.css') }}" rel="stylesheet">
     <link href="{{ asset('search/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('search/css/bootsnav.css') }}" rel="stylesheet">
-    <link href="{{ asset('search/css/style.css') }}" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" id="jssDefault" href="{{ asset('search/css/colors/green-style.css') }}">
     <link href="{{ asset('search/css/responsiveness.css') }}" rel="stylesheet"> 
+     <link href="{{ asset('search/css/style.css') }}" rel="stylesheet">
 </head>

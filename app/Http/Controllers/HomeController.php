@@ -20,16 +20,16 @@ class HomeController extends Controller
         return view('home',['tinh'=>$tinh]);
     }
 
-    public function timkiem(Request $request){
+    public function search(Request $request){
 
         $abc = $request->timkiem;
         $tp = $request->diachi;
         if($abc == ''){
-            $congviec = Chitietcongviec::paginate(10);
+            $congviec = Tuyendung_post::paginate(10);
             return view('timkiem.ketqua',['congviecs'=>$congviec]);
         }
         else{
-            $congviec = Chitietcongviec::where('tencongviec','like', '%'.$abc.'%')->where('diadiem_tp',$tp)->orderBy('id','desc')->paginate(10);
+            $congviec = Tuyendung_post::where('tencongviec','like', '%'.$abc.'%')->where('diadiem_tp',$tp)->orderBy('id','desc')->paginate(10);
             return view('timkiem.ketqua',['congviecs'=>$congviec]);
         }
     }
