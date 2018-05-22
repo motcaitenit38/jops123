@@ -27,7 +27,7 @@
 				<div class="get-touch">
 					<h4>{{ $thongtincongty->tencongty }}</h4>
 					<ul>
-						<li><i class="fa fa-map-marker"></i><span>{{ $thongtincongty->tencongty }}</span></li>
+						<li><i class="fa fa-map-marker"></i><span>{{ $thongtincongty->diadiem_tp->name }}</span></li>
 						<li><i class="fa fa-envelope"></i><span>{{ $thongtincongty->diadiem_tp->name }}</span></li>
 						<li><i class="fa fa-globe"></i><span>microft.com</span></li>
 						<li><i class="fa fa-phone"></i><span>0 123 456 7859</span></li>
