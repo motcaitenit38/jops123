@@ -5,8 +5,8 @@
                     <div class="modal-body">
                         <div class="tab" role="tabpanel">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#login" role="tab" data-toggle="tab">Sign In</a></li>
-                                <li role="presentation"><a href="#register" role="tab" data-toggle="tab">Sign Up</a></li>
+                                <li role="presentation" class="active"><a href="#login" role="tab" data-toggle="tab">Đăng nhập</a></li>
+                                <li role="presentation"><a href="#register" role="tab" data-toggle="tab">Đăng ký</a></li>
                             </ul>
                             <div class="tab-content" id="myModalLabel2">
                                 <div role="tabpanel" class="tab-pane fade in active" id="login"><img src="{{ asset('search/img/logo.png') }}" class="img-responsive" alt="" />

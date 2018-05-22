@@ -36,6 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+
         $this->middleware('guest')->except('logout');
     }
 
@@ -43,7 +44,7 @@ class LoginController extends Controller
     {
         $this->guard('web')->logout();
 
-        if ( !Auth::guard('tuyendung')->check() && !Auth::guard('admin')->check()) {
+        if ( !Auth::guard('web')->check() && !Auth::guard('tuyendung')->check() && !Auth::guard('admin')->check()) {
             $request->session()->flush();
             $request->session()->regenerate();
         } 

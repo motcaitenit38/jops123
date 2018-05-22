@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('tuyendung.index') }}"><img src="{{ asset('td/img/logo.png') }}" class="img-responsive" alt=""></a>
+            <a class="navbar-brand" href="{{ route('info-timviec.index') }}"><img src="{{ asset('td/img/logo.png') }}" class="img-responsive" alt=""></a>
         </div>
         <div class="navbar-collapse">
             <ul class="nav navbar-top-links navbar-right">
