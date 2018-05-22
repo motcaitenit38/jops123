@@ -5,7 +5,7 @@
     <div class="container bg-blue">
         <form class="bt-form" action="{{ route('home.search') }}" method="GET">
             <div class="col-md-6 col-sm-6">
-                <input type="text" class="form-control" placeholder="Skills, Designations, Keyword">
+                <input type="text" class="form-control" placeholder="Skills, Designations, Keyword" name="search">
             </div>
             
             <div class="col-md-3 col-sm-6">
