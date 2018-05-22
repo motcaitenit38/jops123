@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
         $this->guard('web')->logout();
 
-        if (!Auth::check() && !Auth::guard('tuyendung')->check() && !Auth::guard('admin')->check()) {
+        if ( !Auth::guard('tuyendung')->check() && !Auth::guard('admin')->check()) {
             $request->session()->flush();
             $request->session()->regenerate();
         } 

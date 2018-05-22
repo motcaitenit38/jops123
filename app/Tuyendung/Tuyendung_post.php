@@ -18,4 +18,9 @@ class Tuyendung_post extends Model
     public function capbac(){
     	return $this->belongsTo('App\Capbac','capbac_id','id');
     }
+
+    public function kinhnghiem(){
+        return $this->belongsTo('App\kinhnghiem','kinhnghiem_id','id');
+    }
+
 }

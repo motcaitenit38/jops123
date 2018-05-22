@@ -1,4 +1,5 @@
 @extends('timkiem.template.ketquatimkiem')
+@section('tieudesite','Kết quả tìm kiếm')
 @section('noidung')
 <section class="bottom-search-form">
     <div class="container bg-blue">
@@ -58,14 +59,14 @@
                             <article class="advance-search-job">
                                 <div class="row no-mrg">
                                     <div class="col-md-6 col-sm-6">
-                                        <a href="new-job-detail.html" title="job Detail">
+                                        <a href="{{ route('home.chitiet',$congviec->id) }}" title="job Detail">
                                             <div class="advance-search-img-box"><img src="img/com-2.jpg" class="img-responsive" alt=""></div>
                                         </a>
-                                        <div class="advance-search-caption"><a href="new-job-detail.html" title="Job Dtail"><h4>{{ $congviec->tencongviec }}</h4></a><span>Google Ltd</span></div>
+                                        <div class="advance-search-caption"><a href="{{ route('home.chitiet',$congviec->id) }}" title="Job Dtail"><h4>{{ $congviec->tencongviec }}</h4></a><span>{{ $tencongty }}</span></div>
                                     </div>
                                     <div class="col-md-4 col-sm-4">
                                         <div class="advance-search-job-locat">
-                                            <p><i class="fa fa-map-marker"></i>QBL Park, C40</p>
+                                            <p><i class="fa fa-map-marker"></i>@foreach($congviec->nganhnghe as $nganhnghe) {{ $nganhnghe->tennganh }},@endforeach</p>
                                         </div>
                                     </div>
                                     <div class="col-md-2 col-sm-2"><a href="javascript:void(0)" data-toggle="modal" data-target="#apply-job" class="btn advance-search" title="apply">Apply</a></div>

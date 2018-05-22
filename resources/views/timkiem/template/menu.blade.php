@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed navbar-transparent white bootsnav">
     <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"><i class="fa fa-bars"></i></button>
-        <div class="navbar-header"> <a class="navbar-brand" href="index.html"><img src="{{ asset('search/img/logo.png') }}" class="logo logo-display" alt=""><img src="{{ asset('search/img/logo-white.png') }}" class="logo logo-scrolled" alt=""></a> </div>
+        <div class="navbar-header"> <a class="navbar-brand" href="{{ asset('/') }}"><img src="{{ asset('search/img/logo.png') }}" class="logo logo-display" alt=""><img src="{{ asset('search/img/logo-white.png') }}" class="logo logo-scrolled" alt=""></a> </div>
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-left" data-in="fadeInDown" data-out="fadeOutUp">
                 <li class="active">

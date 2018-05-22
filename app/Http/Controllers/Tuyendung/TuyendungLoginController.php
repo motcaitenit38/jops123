@@ -42,8 +42,7 @@ class TuyendungLoginController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('tuyendung')->logout();
-
-        if (!Auth::check() && !Auth::guard('tuyendung')->check()) {
+        if (!Auth::check() && !Auth::guard('admin')->check()) {
             $request->session()->flush();
             $request->session()->regenerate();
         }

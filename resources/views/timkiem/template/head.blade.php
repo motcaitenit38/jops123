@@ -5,7 +5,7 @@
     <meta name="description" content="Best Responsive job portal template build on Latest Bootstrap.">
     <meta name="keywords" content="job, nob board, job portal, job listing">
     <meta name="robots" content="index,follow">
-    <title>Job Stock - Responsive Job Portal Bootstrap Template | ThemezHub</title>
+    <title>@yield('tieudesite')</title>
     <link rel="stylesheet" href="{{ asset('search/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('search/css/bootstrap-theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('search/css/bootstrap-select.min.css') }}">

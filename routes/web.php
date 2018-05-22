@@ -14,12 +14,11 @@
 	 		
 	     Route::get('/', 'HomeController@home');
 	     Route::get('kq','HomeController@search')->name('home.search');
+	     Route::get('cong-viec/{id}','HomeController@chitiet')->name('home.chitiet');
+	     
 	    
 	     Route::get('diachi/quanhuyen/{idthanhpho}', 'DiadiemController@getquanhuyen');	    
 	     Route::get('diachi/xaphuong/{idquanhuyen}', 'DiadiemController@getxaphuong');
-	    	// trang kết quả tìm kiếm
-
-	    	// Route::resource('timkiems', 'TimkiemController');
 	});
 	// Nhóm route dành cho người tìm việc (chỉ đăng nhập tìm việc mới truy cập được)
 	Route::group(['prefix' => 'timviec', 'middleware' => 'auth'], function() {
