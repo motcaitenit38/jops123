@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Diachi\Tinhthanhpho;
-use App\Tuyendung\Tuyendung_post;
-use App\Nganhnghe;
-use App\Tuyendung\Tuyendung_info;
+use App\Address;
 
 class HomeController extends Controller
 {
@@ -19,8 +16,8 @@ class HomeController extends Controller
      */
     public function home()
     {
-        $tinh = Tinhthanhpho::all();
-        return view('home', ['tinh' => $tinh]);
+        $adress = Address::all();
+        return view('home', ['adress' => $adress]);
     }
 
     public function search(Request $request)

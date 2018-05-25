@@ -9,8 +9,8 @@
         <div class="col-md-3 no-padd">
             <div class="input-group">
                 <select class="form-control" name="diachi">
-                    @foreach($tinh as $tinh)
-                        <option value="{{ $tinh->thanhpho_id }}">{{ $tinh->name }}</option>
+                    @foreach($adress as $adress)
+                        <option value="{{ $adress->thanhpho_id }}">{{ $adress->name }}</option>
                     @endforeach
                 </select>
             </div>

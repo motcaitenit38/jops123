@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'timviec';
+    protected $redirectTo = 'seeker';
 
     /**
      * Create a new controller instance.
@@ -44,7 +44,7 @@ class LoginController extends Controller
     {
         $this->guard('web')->logout();
 
-        if (!Auth::guard('web')->check() && !Auth::guard('tuyendung')->check() && !Auth::guard('admin')->check()) {
+        if (!Auth::guard('web')->check() && !Auth::guard('employer')->check()) {
             $request->session()->flush();
             $request->session()->regenerate();
         }

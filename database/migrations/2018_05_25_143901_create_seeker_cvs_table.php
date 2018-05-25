@@ -26,7 +26,7 @@
                 $table->integer('career_id');
                 $table->text('description');
                 $table->string('attach_cv');
-                $table->integer('status');
+                $table->integer('status')->default(0);
             $table->timestamps();
         });
         }
