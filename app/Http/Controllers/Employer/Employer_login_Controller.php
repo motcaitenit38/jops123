@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Tuyendung;
+namespace App\Http\Controllers\Employer;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
-use App\Tuyendung\Tuyendung_user;
+use App\Employer;
 
-
-class TuyendungLoginController extends Controller
+class Employer_login_Controller extends Controller
 {
     //
     public function __contruct()
     {
-        $this->middleware('guest:tuyendung');
+        $this->middleware('guest:employer');
     }
 
     public function showLoginForm()
     {
-        return view('tuyendung.login');
+        return view('employer.login');
     }
 
     public function submitLogin(Request $request)
@@ -35,8 +34,8 @@ class TuyendungLoginController extends Controller
 
         $email = $request['email'];
         $password = $request['password'];
-        if (Auth::guard('tuyendung')->attempt(['email' => $email, 'password' => $password], $request->remember)) {
-            return redirect()->route('tuyendung.index');
+        if (Auth::guard('employer')->attempt(['email' => $email, 'password' => $password], $request->remember)) {
+            return redirect()->route('employer.index');
         } else {
             return redirect()->back()->withInput()->with('thongbao', 'Email hoặc mật khẩu không đúng');;
         }
@@ -44,12 +43,13 @@ class TuyendungLoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::guard('tuyendung')->logout();
-        if (!Auth::guard('web')->check() && !Auth::guard('tuyendung')->check() && !Auth::guard('admin')->check()) {
+        Auth::guard('employer')->logout();
+        if (!Auth::guard('web')->check() && !Auth::guard('employer')->check()) {
             $request->session()->flush();
             $request->session()->regenerate();
         }
 
-        return redirect(route('tuyendung.login'));
+        return redirect(route('employer.login'));
     }
+
 }

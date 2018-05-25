@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Employer extends Authenticatable
 {
     use Notifiable;
 
@@ -19,10 +19,6 @@ class User extends Authenticatable
         'email',
         'password',
         'active',
-        'phone_number',
-        'address',
-        'avatar',
-        'active'
     ];
 
     /**
@@ -35,4 +31,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+//    quan hệ 1-1 với hồ sơ công ty (1 công ty có 1 hồ sơ)
+
+    public function employer_info()
+    {
+        return $this->hasOne('App\Employter\Employer_info','employer_id','id');
+    }
 }
