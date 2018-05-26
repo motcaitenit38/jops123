@@ -12,7 +12,8 @@
     <section class="detail-desc">
         <div class="container white-shadow">
             <div class="row">
-                <div class="detail-pic"><img src="{{ asset('/'.$jop->employer_info->logo)  }}" class="img" alt="" /><a href="#" class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a></div>
+                <div class="detail-pic"><img src="{{ asset('/'.$jop->employer_info->logo)  }}" class="img" alt=""/><a
+                            href="#" class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a></div>
                 <div class="detail-status"><span>2 Days Ago</span></div>
             </div>
             <div class="row bottom-mrg">
@@ -21,12 +22,20 @@
                         <h3>{{ $jop->jop_name }}</h3>
                         <p>{{ $jop->employer_info->company_name }}</p>
                         <ul>
-                            <li><i class="fa fa-briefcase"></i>Hình thức làm việc: <span>{{ $jop->form_work->form_work_name }}</span></li>
-                            <li><i class="fa fa-flask"></i>Số năm kinh nghiệm: <span>{{ $jop->experience->experience_name }}</span></li>
-                            <li><i class="fa fa-money"></i>Mức lương: <span>{{ $jop->salary_level->salary_level_name }}</span></li>
-                            <li><i class="fa fa-flask"></i>Trình độ: <span>{{ $jop->academic->academic_level_name }}</span></li>
-                            <li><i class="fa fa-flask"></i>Chức vụ: <span>{{ $jop->position->position_name }}</span></li>
+                            <li><i class="fa fa-briefcase"></i>Hình thức làm việc:
+                                <span>{{ $jop->form_work->form_work_name }}</span></li>
+                            <li><i class="fa fa-flask"></i>Số năm kinh nghiệm:
+                                <span>{{ $jop->experience->experience_name }}</span></li>
+                            <li><i class="fa fa-money"></i>Mức lương:
+                                <span>{{ $jop->salary_level->salary_level_name }}</span></li>
+                            <li><i class="fa fa-flask"></i>Trình độ:
+                                <span>{{ $jop->academic->academic_level_name }}</span></li>
+                            <li><i class="fa fa-flask"></i>Chức vụ: <span>{{ $jop->position->position_name }}</span>
+                            </li>
                             <li><i class="fa fa-flask"></i>Nơi làm việc: <span>{{ $jop->address->name }}</span></li>
+                            <li><i class="fa fa-flask"></i>Ngành nghề:
+                                <span>@foreach($jop->career as $career) {{ $career->career_name }}, @endforeach</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -38,7 +47,8 @@
                             <li><i class="fa fa-envelope"></i><span>{{ $jop->contact_email }}</span></li>
                             <li><i class="fa fa-globe"></i><span>{{ $jop->employer_info->website }}</span></li>
                             <li><i class="fa fa-phone"></i><span>{{ $jop->contact_phone }}</span></li>
-                            <li><i class="fa fa-money"></i><span>{{ date('d-m-Y',strtotime($jop->deadline)) }}</span></li>
+                            <li><i class="fa fa-money"></i><span>{{ date('d-m-Y',strtotime($jop->deadline)) }}</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +65,13 @@
                         </ul>
                     </div>
                     <div class="col-md-7 col-sm-7">
-                        <div class="detail-pannel-footer-btn pull-right"><a href="#" class="footer-btn grn-btn" title="">Ứng tuyển</a><a href="#" class="footer-btn blu-btn" title="">Lưu công việc</a></div>
+                        <div class="detail-pannel-footer-btn pull-right">
+                            @if(!Auth::guard('web')->check())
+                                <a class="footer-btn grn-btn" href="javascript:void(0)" data-toggle="modal" data-target="#signup" class="signin">ứng tuyển</a>
+                            @else
+                                <a href="#" class="footer-btn grn-btn" title="">Ứng tuyển</a>
+                                <a href="#" class="footer-btn blu-btn" title="">Lưu công việc</a></div>
+                            @endif
                     </div>
                 </div>
             </div>

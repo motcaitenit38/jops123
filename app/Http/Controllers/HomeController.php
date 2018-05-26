@@ -5,11 +5,11 @@
     use Illuminate\Http\Request;
     use App\Address;
     use App\Employer\Jop;
+    use Session;
+    use URL;
 
     class HomeController extends Controller
     {
-
-
         /**
          * Show the application dashboard.
          *
@@ -39,6 +39,7 @@
 
         public function detail($id)
         {
+            Session::put('pre_login_url', URL::current());
             $jop = Jop::find($id);
             return view('search.detail-jop',['jop'=>$jop]);
         }

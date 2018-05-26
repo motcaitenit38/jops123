@@ -2,7 +2,7 @@
 <footer class="footer">
     <div class="row lg-menu">
         <div class="container">
-            <div class="col-md-4 col-sm-4"><img src="img/footer-logo.png" class="img-responsive" alt=""/></div>
+            <div class="col-md-4 col-sm-4"><img src="{{ asset('search/img/footer-logo.png') }}" class="img-responsive" alt=""/></div>
             <div class="col-md-8 co-sm-8 pull-right">
                 <ul>
                     <li><a href="index.html" title="">Home</a></li>

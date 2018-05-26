@@ -6,8 +6,14 @@
 
     class Jop extends Model
     {
-        public function employer_info(){
-            return $this->belongsTo('App\Employer\Employer_info','employer_id','employer_id');
+//        quan hệ với bảng user tuyển dụng
+        public function employer_info()
+        {
+            return $this->belongsTo('App\Employer\Employer_info', 'employer_id', 'employer_id');
+        }
+        //quan hệ n-n khi nộp khi người ứng tuyển
+        public function jop_cv(){
+            return $this->belongsToMany('App\Seeker\Seeker_cv','jop_seeker_cv');
         }
         // quan hệ n-n với ngành nghề
         public function career()
@@ -18,7 +24,7 @@
 //        quan hệ n-n với CV
         public function seeker_cv()
         {
-            return $this->belongsToMany('App\Seeker\Seeker_cv','jop_seeker_cv');
+            return $this->belongsToMany('App\Seeker\Seeker_cv', 'jop_seeker_cv');
         }
 
         public function address()

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
+use Session;
+use URL;
 
 class LoginController extends Controller
 {
@@ -39,6 +41,21 @@ class LoginController extends Controller
 
         $this->middleware('guest')->except('logout');
     }
+    protected function authenticated(Request $request, $user)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            if ( Session::has('pre_login_url') )
+            {
+                $url = Session::get('pre_login_url');
+                Session::forget('pre_login_url');
+                return redirect($url);
+            }
+            else
+                return redirect('');
+        }
+    }
 
     public function logout(Request $request)
     {
@@ -51,5 +68,7 @@ class LoginController extends Controller
 
         return redirect('');
     }
+
+
 
 }
