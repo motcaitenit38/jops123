@@ -17,7 +17,7 @@ include('route_seekers.php');
 Route::group(['prefix' => '/'], function () {
     Route::get('/', 'HomeController@home');
     Route::get('kq', 'HomeController@search')->name('home.search');
-    Route::get('cong-viec/{id}', 'HomeController@chitiet')->name('home.chitiet');
+    Route::get('jop/{id}', 'HomeController@detail')->name('home.detail');
     Route::get('diachi/quanhuyen/{idthanhpho}', 'DiadiemController@getquanhuyen');
     Route::get('diachi/xaphuong/{idquanhuyen}', 'DiadiemController@getxaphuong');
 });

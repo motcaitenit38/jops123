@@ -125,7 +125,7 @@ input:hover {
 .btn.focus,
 .btn:focus,
 .btn:hover {
-    color: #fff
+    /*color: #fff*/
 }
 
 .form-control {
@@ -666,7 +666,7 @@ a.btn.btn-banner {
 
 .bottom-search-form {
     /*background: #35434e;*/
-    /*padding: 3em 0*/
+    padding: 3em 0
 }
 .container.bg-blue {
     background: #00b9f2!important;
@@ -1839,7 +1839,8 @@ button.btn.btn-default.btn-xs.dropdown-toggle i {
 }
 
 .brows-job-category {
-    position: relative
+    position: relative;
+    padding-top: 130px;
 }
 
 .brows-job-category .no-padding {
@@ -5133,7 +5134,3 @@ div.datedropper.my-style.picker-lkd .pick-submit {
     color: #3a465e;
 }
 
-li.left-br {
-    background: #07b107;
-    margin-left: 10px;
-}

@@ -1,61 +1,47 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Address;
+    use Illuminate\Http\Request;
+    use App\Address;
+    use App\Employer\Jop;
 
-class HomeController extends Controller
-{
-
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function home()
+    class HomeController extends Controller
     {
-        $adress = Address::all();
-        return view('home', ['adress' => $adress]);
-    }
 
-    public function search(Request $request)
-    {
-        $tinh = Tinhthanhpho::all();
-        $abc = $request->search;
-        $tp = $request->diachi;
-        if ($abc == '') {
 
-            $congviec = Tuyendung_post::where('noilamviec', $tp)->orderBy('id', 'desc')->paginate(10);
-            foreach ($congviec as $value) {
-                $abc = $value->tuyendung_user_id;
-            }
-
-            $tencongty = Tuyendung_info::where('tuyendung_id', $abc)->firstOrFail();
-            $tencongty = $tencongty->tencongty;
-            return view('timkiem.ketqua', ['congviecs' => $congviec, 'tencongty' => $tencongty, 'tinh' => $tinh]);
-        } else {
-            $congviec = Tuyendung_post::where('tencongviec', 'like', '%' . $abc . '%')
-                ->where('noilamviec', $tp)
-                ->orderBy('id', 'desc')->paginate(10);
-
-            foreach ($congviec as $value) {
-                $abc = $value->tuyendung_user_id;
-            }
-
-            $tencongty = Tuyendung_info::where('tuyendung_id', $abc)->first();
-            $tencongty = $tencongty->tencongty;
-            return view('timkiem.ketqua', ['congviecs' => $congviec, 'tencongty' => $tencongty, 'tinh' => $tinh]);
+        /**
+         * Show the application dashboard.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function home()
+        {
+            $address = Address::all();
+            return view('index', ['address' => $address]);
         }
+
+        public function search(Request $request)
+        {
+            $keywork = $request->kw;
+            $tp = $request->address;
+            $address = Address::all();
+            if ($keywork == '') {
+                $jop = Jop::where('address_id', $tp)->orderBy('id', 'desc')->paginate(10);
+                return view('search.kqtk', ['jops' => $jop, 'address' => $address]);
+            } else {
+                $jop = Jop::where('jop_name', 'like', '%' . $keywork . '%')
+                    ->where('address_id', $tp)
+                    ->orderBy('id', 'desc')->paginate(10);
+                return view('search.kqtk', ['jops' => $jop, 'address' => $address]);
+            }
+        }
+
+        public function detail($id)
+        {
+            $jop = Jop::find($id);
+            return view('search.detail-jop',['jop'=>$jop]);
+        }
+
+
     }
-
-    public function chitiet($id)
-    {
-        $chitiet = Tuyendung_post::where('id', $id)->firstOrFail();
-        $info = Tuyendung_info::where('tuyendung_id', $chitiet->tuyendung_user_id)->first();
-        return view('timkiem.chitiet-congviec', ['chitiet' => $chitiet, 'thongtincongty' => $info]);
-    }
-
-
-}

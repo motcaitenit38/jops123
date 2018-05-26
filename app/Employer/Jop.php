@@ -6,6 +6,9 @@
 
     class Jop extends Model
     {
+        public function employer_info(){
+            return $this->belongsTo('App\Employer\Employer_info','employer_id','employer_id');
+        }
         // quan hệ n-n với ngành nghề
         public function career()
         {
