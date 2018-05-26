@@ -23,6 +23,8 @@
         public function index()
         {
             //
+            $cv = Seeker_cv::where('user_id', Auth::user()->id)->paginate(10);
+            return view('seeker.cv.get-cv',['cvs'=>$cv]);
         }
 
         /**
@@ -110,6 +112,8 @@
         public function show($id)
         {
             //
+            $cv = Seeker_cv::find($id);
+            return view('seeker.cv.show-cv',['cvs'=>$cv]);
         }
 
         /**
