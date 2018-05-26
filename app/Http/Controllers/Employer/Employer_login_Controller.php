@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Employer;
+use Illuminate\Support\Facades\Session;
 
 class Employer_login_Controller extends Controller
 {
@@ -44,7 +45,6 @@ class Employer_login_Controller extends Controller
     public function logout(Request $request)
     {
         Auth::guard('employer')->logout();
-       
 
         return redirect(route('employer.login'));
     }

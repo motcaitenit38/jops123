@@ -38,7 +38,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-
         $this->middleware('guest')->except('logout');
     }
     protected function authenticated(Request $request, $user)
@@ -61,6 +60,10 @@ class LoginController extends Controller
     {
         $this->guard('web')->logout();
 
+        /*if (!Auth::guard('web')->check() && !Auth::guard('employer')->check()) {
+            $request->session()->flush();
+            $request->session()->regenerate();
+        }*/
 
         return redirect('');
     }
