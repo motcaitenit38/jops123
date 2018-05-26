@@ -41,10 +41,6 @@ class AdminLoginController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('admin')->logout();
-        if (!Auth::check() && !Auth::guard('employer')->check()) {
-            $request->session()->flush();
-            $request->session()->regenerate();
-        }
 
         return redirect(route('admin.login'));
     }

@@ -61,10 +61,6 @@ class LoginController extends Controller
     {
         $this->guard('web')->logout();
 
-        if (!Auth::guard('web')->check() && !Auth::guard('employer')->check()) {
-            $request->session()->flush();
-            $request->session()->regenerate();
-        }
 
         return redirect('');
     }

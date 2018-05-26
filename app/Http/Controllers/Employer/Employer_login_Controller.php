@@ -44,10 +44,7 @@ class Employer_login_Controller extends Controller
     public function logout(Request $request)
     {
         Auth::guard('employer')->logout();
-        if (!Auth::guard('web')->check() && !Auth::guard('employer')->check()) {
-            $request->session()->flush();
-            $request->session()->regenerate();
-        }
+       
 
         return redirect(route('employer.login'));
     }
