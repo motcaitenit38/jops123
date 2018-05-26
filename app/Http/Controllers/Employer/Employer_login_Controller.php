@@ -12,7 +12,7 @@ class Employer_login_Controller extends Controller
     //
     public function __contruct()
     {
-        $this->middleware('guest:employer');
+        $this->middleware('guest:employer')->except('logout');
     }
 
     public function showLoginForm()
