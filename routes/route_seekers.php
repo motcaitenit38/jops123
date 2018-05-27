@@ -10,4 +10,7 @@ Route::group(['prefix' => 'seeker', 'middleware' => 'auth'], function() {
     Route::get('ungtuyen/{id}', 'HomeController@ungtuyen')->name('ungtuyen');
     Route::post('guicv', 'HomeController@guicv');
 
+//    route quan ly cong viec
+    route::get('ung-tuyen','Seeker\Seeker_jop_Controller@ungtuyen');
+
 });

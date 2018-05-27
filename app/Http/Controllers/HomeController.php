@@ -51,7 +51,7 @@
             $user_id = $request['user_id'];
             $jop = Jop::find($jop_id);
             $save = array($user_id);
-            $abc = $jop->jop_save()->sync($save);
+            $jop->jop_save()->attach($save);
             return response()->json([
                 'error' => false,
                 'message' => 'success'
@@ -89,7 +89,6 @@
             $cv = Seeker_cv::find($cv_id);
             $save = array($jop_id);
             $abc = $cv->cv_jop()->attach($save);
-            dd($abc);
             return response()->json([
                 'error' => false,
                 'message' => 'success'

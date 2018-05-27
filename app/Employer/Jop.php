@@ -6,6 +6,11 @@
 
     class Jop extends Model
     {
+        //quan hệ n-n khi nộp khi người ứng tuyển
+        public function jop_cv(){
+            return $this->belongsToMany('App\Seeker\Seeker_cv','jop_seeker_cv');
+        }
+
         public function jop_save(){
             return $this->belongsToMany('App\User','jop_user');
         }
@@ -14,10 +19,7 @@
         {
             return $this->belongsTo('App\Employer\Employer_info', 'employer_id', 'employer_id');
         }
-        //quan hệ n-n khi nộp khi người ứng tuyển
-        public function jop_cv(){
-            return $this->belongsToMany('App\Seeker\Seeker_cv','jop_seeker_cv');
-        }
+
         // quan hệ n-n với ngành nghề
         public function career()
         {

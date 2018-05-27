@@ -35,6 +35,8 @@
             'remember_token',
         ];
 
-
+        public function seeker_cv(){
+            return $this->hasMany('App\Seeker\Seeker_cv','user_id','id');
+        }
 
     }

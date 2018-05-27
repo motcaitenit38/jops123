@@ -118,6 +118,7 @@
                 $.ajax({
                     'url': '{{ url('seeker/save') }}',
                     'data': {
+                        'jop_id': $('#jop_id').val(),
                         'user_id': $('#user_id').val()
                     },
                     'type': 'POST',
@@ -143,8 +144,7 @@
                 $.ajax({
                     'url': '{{ url('seeker/kiemtracv') }}',
                     'data': {
-                        'jop_id': $('#jop_id').val(),
-                        'user_id': $('#user_id').val()
+                       
                     },
                     'type': 'POST',
                     success: function (data) {

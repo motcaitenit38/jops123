@@ -26,7 +26,7 @@
         public function index()
         {
             //
-            $jop = Jop::where('employer_id', Auth::user()->id)->where('deadline', '>', date('Y-m-d'))->orderBy('id',
+            $jop = Jop::where('employer_id', Auth::user()->id)->where('deadline', '>=', date('Y-m-d'))->orderBy('id',
                 'DESC')->paginate(10);
             return view('employer.jop.get_jop', ['jops' => $jop]);
 

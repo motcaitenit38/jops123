@@ -9,7 +9,7 @@
         // quan hệ n-n khi nộp cv vào 1 công việc
         public function cv_jop()
         {
-            return $this->belongsToMany('App\Employer\Jop', 'jop_seeker_cv');
+            return $this->belongsToMany('App\Employer\Jop', 'jop_seeker_cv')->orderBy('id');
         }
 //        Quan hệ 1cv có 1 ngành nghề
         public function career(){

@@ -40,4 +40,6 @@
             return $this->hasOne('App\Employter\Employer_info', 'employer_id', 'id');
         }
 
+
+
     }
