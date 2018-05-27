@@ -6,7 +6,7 @@
     <div class="clearfix"></div>
     <section class="inner-header-title">
         <div class="container">
-            <h1>Chi tiết công việc</h1></div>
+            <h1>Nộp hồ sơ ứng tuyển</h1></div>
     </section>
     <div class="clearfix"></div>
     <section class="detail-desc">
@@ -37,6 +37,35 @@
                                 <span>@foreach($jop->career as $career) {{ $career->career_name }}, @endforeach</span>
                             </li>
                         </ul>
+                        <ul class="col-md-12" >
+                            <h4>Chọn CV gửi cho nhà tuyển dụng </h4>
+                        </ul>
+                        <ul class="col-md-12" style="padding-top: 20px">
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-2 col-form-label">Họ tên</label>
+                                <div class="col-sm-8">
+                                    <input name="name" type="text" class="form-control" id="name_user"
+                                           value="{{ $user_name->user_seeker->name }}" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="cv" class="col-sm-2 col-form-label">Chọn CV</label>
+                                <div class="col-sm-8">
+                                    <select name="cv" id="cv" class="form-control">
+                                        @foreach($cv as $cv)
+                                            <option value="{{ $cv->id }}"
+                                                    @if(old('cv') == $cv->id) selected @endif>{{ $cv->name_cv }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </ul>
+                        <input type="text" id="jop_id" style="display: none" value="{{ $jop->id }}">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="detail-pannel-footer-btn text-center">
+                                <a href="#" class="footer-btn grn-btn btn-block" id="ungtuyen" title="">Gửi CV ứng tuyển</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
@@ -64,51 +93,21 @@
                             <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
-                    <div class="col-md-7 col-sm-7">
-                        <div class="detail-pannel-footer-btn pull-right">
-                            @if(!Auth::guard('web')->check())
-                                <a class="footer-btn grn-btn" href="javascript:void(0)" data-toggle="modal"
-                                   data-target="#signup" class="signin">ứng tuyển</a>
-                                <a href="javascript:void(0)" data-toggle="modal"
-                                   data-target="#signup" class="footer-btn blu-btn" title="">Lưu công việc</a>
-                            @else
-                                {{--                                <a href="{{ url('/seeker/ungtuyen/'.$jop->id) }}" class="footer-btn grn-btn" title="">Ứng tuyển</a>--}}
-                                <a href="" id="kiemtracv" class="footer-btn grn-btn" title="">Ứng tuyển</a>
-                                <a href="" class="footer-btn blu-btn" id="save-jop" title="">Lưu công việc</a>
-                                <input type="text" value="{{ $jop->id }}" style="display: none;" id="jop_id">
-                                <input type="text" value="{{ Auth::user()->id }}" style="display: none;" id="user_id">
-                            @endif
-                        </div>
-
-
-                    </div>
+                    {{--<div class="col-md-7 col-sm-7">--}}
+                        {{--<div class="detail-pannel-footer-btn pull-right">--}}
+                                {{--<a href="#" class="footer-btn grn-btn" title="">Ứng tuyển</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
     </section>
-    <section class="full-detail-description full-detail">
-        <div class="container">
-            <div class="row row-bottom">
-                <h2 class="detail-title">Chi tiết công việc</h2>
-                <p>{{ $jop->jop_details }}</p>
-            </div>
-            <div class="row row-bottom">
-                <h2 class="detail-title">Yêu cầu công việc</h2>
-                <p>{{ $jop->jop_requirements }}</p>
-                </ul>
-            </div>
-            <div class="row row-bottom">
-                <h2 class="detail-title">Quyền lợi</h2>
-                <p>{{ $jop->benefits }}</p>
-                </ul>
-            </div>
-        </div>
-    </section>
+
 @endsection
 @section('script')
     <script>
         $(function () {
-            $('#save-jop').click(function (e) {
+            $('#ungtuyen').click(function (e) {
                 e.preventDefault();
                 $.ajaxSetup({
                     headers: {
@@ -116,48 +115,18 @@
                     }
                 });
                 $.ajax({
-                    'url': '{{ url('seeker/save') }}',
+                    'url': '{{ url('seeker/guicv') }}',
                     'data': {
-                        'user_id': $('#user_id').val()
+                        'cv': $('#cv').val(),
+                        'jop_id': $('#jop_id').val()
                     },
                     'type': 'POST',
                     success: function (data) {
-                        alert('Lưu công việc thành công');
-                    }
-
-                });
-            });
-        });
-    </script>
-    {{--kiểm tra tạo cv--}}
-
-    <script>
-        $(function () {
-            $('#kiemtracv').click(function (e) {
-                e.preventDefault();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        alert('Bạn đã gửi CV ứng tuyển thành công');
+                        window.location.href = "{{ route('seeker.index') }}"
                     }
                 });
-                $.ajax({
-                    'url': '{{ url('seeker/kiemtracv') }}',
-                    'data': {
-                        'jop_id': $('#jop_id').val(),
-                        'user_id': $('#user_id').val()
-                    },
-                    'type': 'POST',
-                    success: function (data) {
-                        console.log(data);
-                        if (data.error == true) {
-                            alert('Bạn chưa tạo CV, vui lòng tạo CV cá nhân trước');
-                            window.location.href = "{{ url('/seeker/cv/create') }}";
-                        } else {
-                            window.location.href = "{{ url('/seeker/ungtuyen/'.$jop->id) }}";
-                        }
-                    }
-                });
-            });
+            })
         });
     </script>
 

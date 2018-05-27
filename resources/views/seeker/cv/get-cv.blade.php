@@ -11,7 +11,7 @@
                             <li>
                                 <a href="{{ asset('seeker/cv/'.$cv->id) }}">
                                     <div class="message-avatar">
-                                        <img src="{{ $cv->user->avatar }}" alt="">
+                                        <img src="{{ $cv->user_seeker->avatar }}" alt="">
                                     </div>
                                     <div class="message-body">
                                         <div class="message-body-heading">

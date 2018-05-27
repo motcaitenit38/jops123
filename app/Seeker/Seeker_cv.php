@@ -16,7 +16,8 @@
             return $this->belongsTo('App\Career','career_id','id');
         }
 //        quan hệ 1 cv thuộc một user tìm việc
-        public function user(){
+        public function user_seeker(){
             return $this->belongsTo('App\User','user_id','id');
         }
+
     }

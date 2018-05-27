@@ -5,8 +5,8 @@
     use Illuminate\Http\Request;
     use App\Address;
     use App\Employer\Jop;
-    use Session;
-    use URL;
+    use App\Seeker\Seeker_cv;
+    use Auth;
 
     class HomeController extends Controller
     {
@@ -39,7 +39,7 @@
 
         public function detail($id)
         {
-            Session::put('pre_login_url', URL::current());
+
             $jop = Jop::find($id);
             return view('search.detail-jop', ['jop' => $jop]);
         }
@@ -52,7 +52,44 @@
             $jop = Jop::find($jop_id);
             $save = array($user_id);
             $abc = $jop->jop_save()->sync($save);
-             dd($abc);
+            return response()->json([
+                'error' => false,
+                'message' => 'success'
+            ], 200);
+        }
+
+        public function kiemtracv(Request $request)
+        {
+            $cv = Seeker_cv::where('user_id', Auth::user()->id)->get();
+            if ($cv->isEmpty() == true) {
+                return response()->json([
+                    'error' => true,
+                    'message' => 'chua co cv'
+                ], 200);
+            } else {
+                return response()->json([
+                    'error' => false,
+                    'message' => 'success'
+                ], 200);
+            }
+        }
+
+        public function ungtuyen($id)
+        {
+            $jop = Jop::find($id);
+            $cv = Seeker_cv::where('user_id', Auth::user()->id)->get();
+            $user_name = Seeker_cv::where('user_id', Auth::user()->id)->first();
+            return view('search.ung-tuyen', ['jop' => $jop, 'cv' => $cv, 'user_name' => $user_name]);
+        }
+
+        public function guicv(Request $request)
+        {
+            $jop_id = $request['jop_id'];
+            $cv_id = $request['cv'];
+            $cv = Seeker_cv::find($cv_id);
+            $save = array($jop_id);
+            $abc = $cv->cv_jop()->attach($save);
+            dd($abc);
             return response()->json([
                 'error' => false,
                 'message' => 'success'

@@ -24,7 +24,7 @@
                 </div>
             </div>
             @foreach($jops as $jop)
-                <a href="{{ asset('/jop/'.$jop->id) }}" class="item-click">
+                <a href="{{ url('/jop/'.$jop->id) }}" class="item-click">
                     <article>
                         <div class="brows-job-list">
                             <div class="col-md-1 col-sm-2 small-padding">
