@@ -5,6 +5,7 @@
     <meta name="description" content="Best Responsive job portal template build on Latest Bootstrap.">
     <meta name="keywords" content="job, nob board, job portal, job listing">
     <meta name="robots" content="index,follow">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('search/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('search/css/bootstrap-theme.min.css') }}">

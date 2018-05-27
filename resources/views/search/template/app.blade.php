@@ -9,7 +9,8 @@
     @include('search.template.footer')
     @include('search.template.modal-login')
     @include('search.template.script')
-
+    @yield('script-login')
+    @yield('script')
 </div>
 </body>
 

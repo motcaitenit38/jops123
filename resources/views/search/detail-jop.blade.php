@@ -67,11 +67,19 @@
                     <div class="col-md-7 col-sm-7">
                         <div class="detail-pannel-footer-btn pull-right">
                             @if(!Auth::guard('web')->check())
-                                <a class="footer-btn grn-btn" href="javascript:void(0)" data-toggle="modal" data-target="#signup" class="signin">ứng tuyển</a>
+                                <a class="footer-btn grn-btn" href="javascript:void(0)" data-toggle="modal"
+                                   data-target="#signup" class="signin">ứng tuyển</a>
+                                <a href="javascript:void(0)" data-toggle="modal"
+                                   data-target="#signup" class="footer-btn blu-btn" title="">Lưu công việc</a>
                             @else
                                 <a href="#" class="footer-btn grn-btn" title="">Ứng tuyển</a>
-                                <a href="#" class="footer-btn blu-btn" title="">Lưu công việc</a></div>
+                                <a href="" class="footer-btn blu-btn" id="save-jop" title="">Lưu công việc</a>
+                                <input type="text" value="{{ $jop->id }}" style="display: none;" id="jop_id">
+                                <input type="text" value="{{ Auth::user()->id }}"style="display: none;" id="user_id">
                             @endif
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -95,4 +103,31 @@
             </div>
         </div>
     </section>
+@endsection
+@section('script')
+    <script>
+        $(function () {
+            $('#save-jop').click(function (e) {
+                e.preventDefault();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    'url': '{{ asset('save') }}',
+                    'data': {
+                        'jop_id': $('#jop_id').val(),
+                        'user_id': $('#user_id').val()
+                    },
+                    'type': 'POST',
+                    success: function (data) {
+                            alert('Lưu công việc thành công');
+                        }
+
+                });
+            })
+        });
+    </script>
+
 @endsection

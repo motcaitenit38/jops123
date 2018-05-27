@@ -6,6 +6,9 @@
 
     class Jop extends Model
     {
+        public function jop_save(){
+            return $this->belongsToMany('App\User','jop_user');
+        }
 //        quan hệ với bảng user tuyển dụng
         public function employer_info()
         {

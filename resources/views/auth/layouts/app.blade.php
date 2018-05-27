@@ -71,5 +71,7 @@
         @yield('content')
     </main>
 </div>
+    <script src="{{ asset('asset-uea/js/jquery-3.3.1.min.js') }}"></script>
+@yield('script')
 </body>
 </html>

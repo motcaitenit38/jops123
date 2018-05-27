@@ -41,8 +41,22 @@
         {
             Session::put('pre_login_url', URL::current());
             $jop = Jop::find($id);
-            return view('search.detail-jop',['jop'=>$jop]);
+            return view('search.detail-jop', ['jop' => $jop]);
         }
 
+        public function save_jops(Request $request)
+        {
+
+            $jop_id = $request['jop_id'];
+            $user_id = $request['user_id'];
+            $jop = Jop::find($jop_id);
+            $save = array($user_id);
+            $abc = $jop->jop_save()->sync($save);
+             dd($abc);
+            return response()->json([
+                'error' => false,
+                'message' => 'success'
+            ], 200);
+        }
 
     }
