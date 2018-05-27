@@ -24,7 +24,7 @@
         {
             //
             $cv = Seeker_cv::where('user_id', Auth::user()->id)->paginate(10);
-            return view('seeker.cv.get-cv',['cvs'=>$cv]);
+            return view('seeker.cv.get-cv', ['cvs' => $cv]);
         }
 
         /**
@@ -64,7 +64,7 @@
                 'name_cv' => 'required|min:5|max:100',
                 'address' => 'required',
                 'academic_level' => 'required',
-                'experience'=>'required',
+                'experience' => 'required',
                 'form_work' => 'required',
                 'position' => 'required',
                 'career' => 'required',
@@ -101,6 +101,7 @@
             }
             $cv->attach_cv = $file_name;
             $cv->save();
+            return redirect()->route('cv.index');
         }
 
         /**
@@ -113,7 +114,7 @@
         {
             //
             $cv = Seeker_cv::find($id);
-            return view('seeker.cv.show-cv',['cvs'=>$cv]);
+            return view('seeker.cv.show-cv', ['cvs' => $cv]);
         }
 
         /**
@@ -125,6 +126,22 @@
         public function edit($id)
         {
             //
+            $cv = Seeker_cv::find($id);
+            $address = Address::all();
+            $form_works = Form_work::all();
+            $positions = Position::all();
+            $careers = Career::all();
+            $academics = Academic_level::all();
+            $experience = Experience::all();
+            return view('seeker.cv.edit-cv', [
+                'address' => $address,
+                'form_work' => $form_works,
+                'position' => $positions,
+                'careers' => $careers,
+                'academic' => $academics,
+                'experience' => $experience,
+                'cv' => $cv,
+            ]);
         }
 
         /**
@@ -137,6 +154,48 @@
         public function update(Request $request, $id)
         {
             //
+            $this->validate($request, [
+                'name_cv' => 'required|min:5|max:100',
+                'address' => 'required',
+                'academic_level' => 'required',
+                'experience' => 'required',
+                'form_work' => 'required',
+                'position' => 'required',
+                'career' => 'required',
+                'description' => 'required',
+                'attach_file' => 'required|mimes:doc,docx,pdf',
+            ], [
+                'name_cv.required' => 'Vui lòng nhập tên CV',
+                'name_cv.min' => 'tên CV quá ngắn',
+                'name_cv.max' => 'tên CV quá dài',
+                'address.required' => 'Vui lòng chọn nơi làm việc',
+                'academic_level.required' => 'Vui lòng chọn trình độ học vấn',
+                'experience.required' => 'Vui lòng chọn trình độ học vấn',
+                'form_work.required' => 'Vui lòng chọn hình thức làm việc',
+                'position.required' => 'Vui lòng chọn chức vụ',
+                'career.required' => 'Vui lòng chọn ngành nghề',
+                'description.required' => 'Vui lòng giới thiệu đôi chút về bản thân',
+                'attach_file.required' => 'Vui lòng file CV đính kèm',
+                'attach_file.mimes' => 'Bạn chỉ được phép upload file *doc, *docx, *pdf',
+            ]);
+            $cv = Seeker_cv::find($id);
+            $cv->name_cv = $request->name_cv;
+            $cv->user_id = Auth::user()->id;
+            $cv->address_id = $request->address;
+            $cv->academic_level_id = $request->academic_level;
+            $cv->experience_id = $request->experience;
+            $cv->form_work_id = $request->form_work;
+            $cv->position_id = $request->position;
+            $cv->career_id = $request->career;
+            $cv->description = $request->description;
+            if ($request->hasFile('attach_file')) {
+                $file = $request->attach_file;
+                $file_name = time() . '.' . $file->getClientOriginalExtension();
+                $file_name = $file->move('upload\cv', $file_name);
+            }
+            $cv->attach_cv = $file_name;
+            $cv->save();
+            return redirect()->route('cv.index');
         }
 
         /**
@@ -147,6 +206,8 @@
          */
         public function destroy($id)
         {
-            //
+            $cv = Seeker_cv::find($id);
+            $cv->delete();
+            return redirect()->route('cv.index');
         }
     }

@@ -144,7 +144,7 @@
                 $.ajax({
                     'url': '{{ url('seeker/kiemtracv') }}',
                     'data': {
-                       
+
                     },
                     'type': 'POST',
                     success: function (data) {

@@ -20,4 +20,27 @@
             return $this->belongsTo('App\User','user_id','id');
         }
 
+        public function address(){
+            return $this->belongsTo('App\Address','address_id','thanhpho_id');
+        }
+
+        public function form_work()
+        {
+            return $this->belongsTo('App\Form_work', 'form_work_id', 'form_work_id');
+        }
+
+        public function position()
+        {
+            return $this->belongsTo('App\Position', 'position_id', 'position_id');
+        }
+
+        public function academic()
+        {
+            return $this->belongsTo('App\Academic_level', 'academic_level_id', 'academic_level_id');
+        }
+        public function experience()
+        {
+            return $this->belongsTo('App\Experience', 'experience_id', 'experience_id');
+        }
+
     }

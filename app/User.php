@@ -38,5 +38,8 @@
         public function seeker_cv(){
             return $this->hasMany('App\Seeker\Seeker_cv','user_id','id');
         }
+        public function save_jop(){
+            return $this->belongsToMany('App\Employer\Jop','jop_user');
+        }
 
     }

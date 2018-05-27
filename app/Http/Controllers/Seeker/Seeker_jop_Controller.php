@@ -24,7 +24,13 @@
                     array_push($congviec, $value);
                 }
             }
-//            dd($congviec);
             return view('seeker.seeker-jop.da-ung-tuyen', ['congviec' => $congviec]);
+        }
+
+        public function daluu()
+        {
+            $user = User::find(Auth::user()->id);
+            $congviec = $user->save_jop;
+            return view('seeker.seeker-jop.da-luu', ['congviec' => $congviec]);
         }
     }

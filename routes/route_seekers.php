@@ -11,6 +11,8 @@ Route::group(['prefix' => 'seeker', 'middleware' => 'auth'], function() {
     Route::post('guicv', 'HomeController@guicv');
 
 //    route quan ly cong viec
-    route::get('ung-tuyen','Seeker\Seeker_jop_Controller@ungtuyen');
+    route::get('da-ung-tuyen','Seeker\Seeker_jop_Controller@ungtuyen')->name('seeker.daungtuyen');
+    route::get('da-luu','Seeker\Seeker_jop_Controller@daluu')->name('seeker.daluu');
+    route::get('lien-quan','Seeker\Seeker_jop_Controller@lienquan')->name('seeker.lienquan');
 
 });
