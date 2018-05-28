@@ -37,13 +37,13 @@
         <div class="form-group row">
             <label for="logo" class="col-sm-3 col-form-label">Logo công ty</label>
             <div class="col-sm-8">
-                <input name="logo" type="file" class="form-control" id="logo" placeholder="Logo công ty" value="{{ old('logo') }}" required/>
+                <input name="logo" type="file" class="form-control" id="logo" placeholder="Logo công ty" value="{{ old('logo') }}" />
             </div>
         </div>
         <div class="form-group row">
             <label for="cover" class="col-sm-3 col-form-label">Cover công ty</label>
             <div class="col-sm-8">
-                <input name="cover" type="file" class="form-control" id="cover" placeholder="cover công ty" value="{{ old('cover') }}" required/>
+                <input name="cover" type="file" class="form-control" id="cover" placeholder="cover công ty" value="{{ old('cover') }}" />
             </div>
         </div>
         <div class="form-group row">

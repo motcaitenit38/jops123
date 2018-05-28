@@ -9,6 +9,6 @@ class Career extends Model
     //
     protected $table = 'careers';
     public function jop(){
-        return $this->belongsToMany('App\Employer\Jop','career_jop');
+        return $this->belongsToMany('App\Employer\Jop','carrer_jop');
     }
 }

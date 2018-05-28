@@ -13,8 +13,8 @@ Route::group(['prefix' => 'seeker', 'middleware' => 'auth'], function() {
 //    route quan ly cong viec
     route::get('da-ung-tuyen','Seeker\Seeker_jop_Controller@ungtuyen')->name('seeker.daungtuyen');
     route::get('da-luu','Seeker\Seeker_jop_Controller@daluu')->name('seeker.daluu');
-    route::get('lien-quan','Seeker\Seeker_jop_Controller@lienquan')->name('seeker.lienquan');
-
+//        route quản lý công việc liên quan
+    Route::get('accordant', 'Seeker\Accordant_Jop_Controller@index')->name('seeker.lienquan');
     route::resource('info-seeker','Seeker\InfoController');
 
 });

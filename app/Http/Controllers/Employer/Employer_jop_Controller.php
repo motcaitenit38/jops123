@@ -18,6 +18,23 @@
 
     class Employer_jop_Controller extends Controller
     {
+        public function __construct()
+        {
+            $this->middleware(function ($request, $next) {
+                $info = Employer_info::where('employer_id', Auth::user()->id)->first();
+                if ($info == null) {
+                    return redirect()->route('info.create')->with([
+                        'alert' => 'danger',
+                        'thongbao' =>
+                            'Bạn chưa có thông tin cá nhân, vui lòng nhập thông tin cá nhân trước'
+                    ]);
+                } else {
+//                return view('employer.info.get-info', ['info' => $info]);
+                }
+                return $next($request);
+            });
+        }
+
         /**
          * Display a listing of the resource.
          *
@@ -29,9 +46,8 @@
             $jop = Jop::where('employer_id', Auth::user()->id)->where('deadline', '>=', date('Y-m-d'))->orderBy('id',
                 'DESC')->paginate(10);
             return view('employer.jop.get_jop', ['jops' => $jop]);
-
         }
-
+        
         /**
          * Show the form for creating a new resource.
          *
@@ -260,7 +276,8 @@
 
         public function expiration()
         {
-            $jop = Jop::where('employer_id', Auth::user()->id)->where('deadline', '<', date('Y-m-d'))->orderBy('id','DESC')->paginate(10);
+            $jop = Jop::where('employer_id', Auth::user()->id)->where('deadline', '<', date('Y-m-d'))->orderBy('id',
+                'DESC')->paginate(10);
             return view('employer.jop.get_jop', ['jops' => $jop]);
         }
     }

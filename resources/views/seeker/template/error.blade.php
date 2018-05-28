@@ -1,14 +1,18 @@
 {{-- thông báo thành công --}}
 <div class="container">
     <div class="row text-center">
-        @if(isset($alert))
-            @if(isset($thongbao))
-                <div class="alert alert-{{ $alert }} col-md-12 thongbao" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                    <strong>Thông báo!</strong> {{ $thongbao }}
+        @if(session('alert')== 'danger')
+            @if(session('thongbao'))
+                <div class="alert alert-{{ session('alert') }}">
+                    <strong>Thông báo!</strong> {{ session('thongbao') }}!
                 </div>
             @endif
+        @elseif(session('alert')== 'success')
+            <div class="alert alert-{{ session('alert') }}" id="thongbao">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                <strong>Thông báo!</strong> {{ session('thongbao') }}!
+            </div>
         @endif
     </div>
 </div>

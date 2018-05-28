@@ -27,6 +27,13 @@
 </div>
 <!-- /. WRAPPER  -->
 @include('employer.template.script')
+<script>
+    window.setTimeout(function() {
+        $("#thongbao").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 4000);
+</script>
 @yield('script')
 </body>
 </html>

@@ -8,6 +8,7 @@
         // route quản lý công việc
         Route::resource('jop', 'Employer\Employer_jop_Controller');
         Route::get('jop-deadline', 'Employer\Employer_jop_Controller@expiration')->name('jop.deadline');
+
 // route quản lý thông tin công ty
         Route::resource('info', 'Employer\Employer_info_Controller');
 
