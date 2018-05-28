@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"><img src="{{ asset('asset-uea/img/logo.png') }}" class="img-responsive" alt=""></a>
+            <a class="navbar-brand" href="{{ route('employer.index') }}"><img src="{{ asset('asset-uea/img/logo.png') }}" class="img-responsive" alt=""></a>
         </div>
         <div class="navbar-collapse">
             <ul class="nav navbar-top-links navbar-right">

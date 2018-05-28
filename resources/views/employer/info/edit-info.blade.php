@@ -16,7 +16,8 @@
                 <select name="address" id="address" class="form-control">
                     @foreach($address as $address)
                         <option value="{{ $address->thanhpho_id }}"
-                                @if($info->address == $address->thanhpho_id) selected @endif>{{ $address->name }}</option>
+                           @if($info->address == $address->thanhpho_id) selected @endif>{{ $address->name }}
+                        </option>
                     @endforeach
                 </select>
             </div>
