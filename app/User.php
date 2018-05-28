@@ -42,4 +42,5 @@
             return $this->belongsToMany('App\Employer\Jop','jop_user');
         }
 
+
     }

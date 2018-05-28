@@ -15,4 +15,6 @@ Route::group(['prefix' => 'seeker', 'middleware' => 'auth'], function() {
     route::get('da-luu','Seeker\Seeker_jop_Controller@daluu')->name('seeker.daluu');
     route::get('lien-quan','Seeker\Seeker_jop_Controller@lienquan')->name('seeker.lienquan');
 
+    route::resource('info-seeker','Seeker\InfoController');
+
 });
