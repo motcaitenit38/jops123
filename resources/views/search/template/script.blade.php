@@ -1,5 +1,4 @@
 <script src="{{ asset('search/js/jquery.min.js') }}"></script>
-<script src="{{ asset('asset-uea/js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('search/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('search/js/bootsnav.js') }}"></script>
 <script src="{{ asset('search/js/viewportchecker.js') }}"></script>

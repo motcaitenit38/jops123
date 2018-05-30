@@ -1,10 +1,10 @@
 <?php
 
 Auth::routes();
+    Route::post('seeker/register','Employer\Employer_register_Controller@posRegister')->name('seeker.register.submit');
 // regist
 Route::get('employer/register', 'Employer\Employer_register_Controller@showRegistForm')->name('employer.register');
-Route::post('employer/register',
-    'Employer\Employer_register_Controller@submitRegist')->name('employer.register.submit');
+Route::post('employer/register','Employer\Employer_register_Controller@submitRegist')->name('employer.register.submit');
 //login
 Route::get('employer/login', 'Employer\Employer_login_Controller@showLoginForm')->name('employer.login');
 Route::post('employer/login', 'Employer\Employer_login_Controller@submitLogin')->name('employer.login.submit');
