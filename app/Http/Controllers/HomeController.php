@@ -7,6 +7,8 @@
     use App\Employer\Jop;
     use App\Seeker\Seeker_cv;
     use Auth;
+    use App\jop_seeker_cv;
+    use App\jop_user;
 
     class HomeController extends Controller
     {
@@ -39,9 +41,20 @@
 
         public function detail($id)
         {
-
+//            lấy cv ra để kiểm tra đã ứng tuyển hay chưa
+            $cv = jop_seeker_cv::all()->toArray();
+            $jop_cv = array();
+            foreach ($cv as $a) {
+                array_push($jop_cv, $a['jop_id']);
+            }
+//            lấy jop ra để xem đã lưu công việc hay chưa
+            $jop_save = jop_user::all()->toArray();
+            $jop_user = array();
+            foreach ($jop_save as $a) {
+                array_push($jop_user, $a['jop_id']);
+            }
             $jop = Jop::find($id);
-            return view('search.detail-jop', ['jop' => $jop]);
+            return view('search.detail-jop', ['jop' => $jop, 'jop_cv' => $jop_cv, 'jop_user' => $jop_user]);
         }
 
         public function save_jops(Request $request)
