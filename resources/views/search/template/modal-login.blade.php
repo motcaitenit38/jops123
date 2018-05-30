@@ -117,8 +117,6 @@
                                 $('.errorLogin').show().text(data.message.errorlogin);
                             }
                         } else {
-                            // alert('dfdf');
-                            // window.location.href = "http://localhost/authentication/public/"
                             location.reload();
                         }
                     }
