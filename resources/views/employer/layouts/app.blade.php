@@ -32,7 +32,7 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
-                            @if (Auth::guest('tuyendung'))
+                            @if (Auth::guest('employer'))
                             <li><a class="nav-link" href="{{ route('employer.login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('employer.register') }}">{{ __('Register') }}</a></li>
                             
