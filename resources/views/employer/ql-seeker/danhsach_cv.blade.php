@@ -4,6 +4,8 @@
     <table id="table_id" class="display">
         <thead>
         <tr>
+            <th>Họ tên ứng viên</th>
+            <th>số đt ứng viên</th>
             <th>Tên CV</th>
             <th>Link cv</th>
         </tr>
@@ -11,6 +13,8 @@
         <tbody>
         @foreach($cv as $cv)
             <tr>
+                <td>{{ $cv->user_seeker->name }}</td>
+                <td>{{ $cv->user_seeker->phone_number }}</td>
                 <td>{{ $cv->name_cv }}</td>
                 <td><a href="{{ asset($cv->attach_cv) }}">Tải CV</a></td>
             </tr>
