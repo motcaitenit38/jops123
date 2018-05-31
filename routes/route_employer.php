@@ -12,7 +12,7 @@
 // route quản lý thông tin công ty
         Route::resource('info', 'Employer\Employer_info_Controller');
 //        route quản lý ứng viên
-        Route::get('qluv','Employer\Ql_ungvien_Controller@danhsachcongviec');
+        Route::get('qluv','Employer\Ql_ungvien_Controller@danhsachcongviec')->name('quanlyungvien');
         Route::get('danhsachungvien/{id}','Employer\Ql_ungvien_Controller@danhsachungvien');
 
     });
