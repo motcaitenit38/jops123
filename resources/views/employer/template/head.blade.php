@@ -17,6 +17,8 @@
     <!-- Bootstrap Editor-->
     <link href="{{ asset('asset-uea/css/bootstrap-wysihtml5.css') }}" rel="stylesheet"/>
     <link href="{{ asset('asset-uea/css/select2.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('datatable/datatables.min.css') }}" rel="stylesheet"/>
+    {{--luc chen them datatable--}}
     <!-- CUSTOM STYLES-->
     <link href="{{ asset('asset-uea/css/custom.css') }}" rel="stylesheet"/>
 </head>

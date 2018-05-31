@@ -41,20 +41,26 @@
 
         public function detail($id)
         {
-//            lấy cv ra để kiểm tra đã ứng tuyển hay chưa
-            $cv = jop_seeker_cv::all()->toArray();
-            $jop_cv = array();
-            foreach ($cv as $a) {
-                array_push($jop_cv, $a['jop_id']);
-            }
-//            lấy jop ra để xem đã lưu công việc hay chưa
-            $jop_save = jop_user::all()->toArray();
-            $jop_user = array();
-            foreach ($jop_save as $a) {
-                array_push($jop_user, $a['jop_id']);
-            }
             $jop = Jop::find($id);
-            return view('search.detail-jop', ['jop' => $jop, 'jop_cv' => $jop_cv, 'jop_user' => $jop_user]);
+            $all_cv = $jop->jop_cv->toArray();
+            $jop_cv = array();
+            foreach ($all_cv as $cv) {
+                array_push($jop_cv, $cv['id']);
+            }
+            if (Auth::guard('web')->check()) {
+                $all_jop = jop_user::where('user_id', Auth::user()->id)->get()->toArray();
+                $jop_save = array();
+                foreach ($all_jop as $jop_user) {
+                    array_push($jop_save, $jop_user['jop_id']);
+                }
+                $seeker_cv = Seeker_cv::where('user_id', Auth::user()->id)->get();
+                return view('search.detail-jop',
+                    ['jop' => $jop, 'jop_cv' => $jop_cv, 'jop_save' => $jop_save, 'seeker_cv' => $seeker_cv]);
+            } else {
+                return view('search.detail-jop',
+                    ['jop' => $jop]);
+            }
+
         }
 
         public function save_jops(Request $request)

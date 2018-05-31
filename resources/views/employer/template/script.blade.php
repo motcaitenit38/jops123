@@ -13,5 +13,6 @@
 <!-- Dropzone Js -->
 <script src="{{ asset('asset-uea/js/dropzone.js') }}"></script>
 <script src="{{ asset('asset-uea/js/select2.min.js') }}"></script>
+<script src="{{ asset('datatable/datatables.min.js') }}"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="{{ asset('asset-uea/js/custom.js') }}"></script>
