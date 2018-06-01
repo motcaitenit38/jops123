@@ -24,14 +24,14 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="phone" class="col-sm-3 col-form-label">Tên công ty</label>
+            <label for="phone" class="col-sm-3 col-form-label">Điện thoại</label>
             <div class="col-sm-8">
                 <input name="phone" type="text" class="form-control" id="phone" placeholder="số điện thoại"
                        value="{{ old('phone') }}" required/>
             </div>
         </div>
         <div class="form-group row">
-            <label for="website" class="col-sm-3 col-form-label">Tên công ty</label>
+            <label for="website" class="col-sm-3 col-form-label">Website</label>
             <div class="col-sm-8">
                 <input name="website" type="text" class="form-control" id="website"
                        placeholder="Địa chỉ website công ty" value="{{ old('website') }}" required/>

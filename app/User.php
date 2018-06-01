@@ -17,12 +17,7 @@
         protected $fillable = [
             'name',
             'email',
-            'password',
-            'active',
-            'phone_number',
-            'address',
-            'avatar',
-            'active'
+            'password'
         ];
 
         /**
