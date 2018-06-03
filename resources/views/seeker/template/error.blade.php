@@ -1,32 +1,28 @@
 {{-- thông báo thành công --}}
-<div class="container">
-    <div class="row text-center">
-        @if(session('alert')== 'danger')
-            @if(session('thongbao'))
-                <div class="alert alert-{{ session('alert') }}">
-                    <strong>Thông báo!</strong> {{ session('thongbao') }}!
-                </div>
-            @endif
-        @elseif(session('alert')== 'success')
-            <div class="alert alert-{{ session('alert') }}" id="thongbao">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                <strong>Thông báo!</strong> {{ session('thongbao') }}!
-            </div>
-        @endif
-    </div>
+<div class="row text-center">
+    @if (session('danger'))
+        <div class="alert alert-danger alert-dismissable fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Danger!</strong> {{ session('danger') }}
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissable fade in" id="thongbao">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> {{ session('danger') }}
+        </div>
+    @endif
 </div>
+
 {{-- thông báo tất cả các lỗi --}}
-<div class="container">
-    <div class="row">
-        @if(count($errors)>0)
-            <div class="alert alert-danger col-md-12" role="alert">
-                <ul>
-                    @foreach($errors->all() as $er)
-                        <li>{{$er}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-    </div>
+<div class="row">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </div>

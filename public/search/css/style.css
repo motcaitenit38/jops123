@@ -5134,3 +5134,7 @@ div.datedropper.my-style.picker-lkd .pick-submit {
     color: #3a465e;
 }
 
+.detail-desc-caption ul li{
+    width:100% !important;
+}
+

@@ -12,8 +12,9 @@
 */
 // include vao day tach rieng cho de nhin
 include('route_authenticate.php');
-include('route_employer.php');
+//include('route_employer.php');
 include('route_seekers.php');
+include('route_tuyendung.php');
 Route::group(['prefix' => '/'], function () {
     Route::get('/', 'HomeController@home');
     Route::get('kq', 'HomeController@search')->name('home.search');

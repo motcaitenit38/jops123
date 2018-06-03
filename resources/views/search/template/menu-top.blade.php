@@ -21,11 +21,11 @@
                         @csrf
                     </form>
                 </li>
-                    <li class="left-br"><a href="{{ route('employer.index') }}" target="_blank"
+                    <li class="left-br"><a href="{{ route('tuyendung.index') }}" target="_blank"
                                            class="signin">Nhà tuyển dụng</a></li>
                @else
                     <li class="left-br"><a href="javascript:void(0)" data-toggle="modal" data-target="#signup" class="signin">Đăng nhập</a></li>
-                    <li class="left-br"><a href="{{ route('employer.index') }}" target="_blank"
+                    <li class="left-br"><a href="{{ route('tuyendung.index') }}" target="_blank"
                                            class="signin">Nhà tuyển dụng</a></li>
                     @endif
             </ul>

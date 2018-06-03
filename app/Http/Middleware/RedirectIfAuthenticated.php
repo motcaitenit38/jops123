@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
         switch ($guard) {
             case 'employer':
                 if (Auth::guard($guard)->check()) {
-                    return redirect(route('employer.index'));
+                    return redirect(route('tuyendung.index'));
                 }
                 break;
             case 'admin':
