@@ -5,4 +5,5 @@
         Route::get('/', 'Timviec\TimviecHomeController@home')->name('timviec.index');
         Route::resource('thongtintimviec','Timviec\ThongtinTimviecController');
         Route::resource('hosotimviec','Timviec\HosoTimviecController');
+        Route::resource('cvtimviec','Timviec\TimviecCvController');
     });

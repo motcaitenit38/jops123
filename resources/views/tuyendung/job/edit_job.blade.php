@@ -164,17 +164,25 @@
                         <label for="date" class="col-md-8" style="padding-left: 0;">Số lượng</label>
                     </div>
                 </div>
+                @php
+                    $i=-1;
+                @endphp
                 @foreach($b as $value)
-                <div class="form-group col-md-12">
-                    <div class="col-md-7">
-                        <input name="thiet_bi[0][]" type="text" class="form-control col-md-6" id="ten_thiet_bi" value="{{ $value[0] }}">
-                    </div>
-                    <div class="col-md-4">
-                        <input name="thiet_bi[0][]" type="number" class="form-control col-md-6" id="so_luong" value="{{ $value[1] }}">
-                    </div>
+                    @php
+                        $i++;
+                    @endphp
+                    <div class="form-group col-md-12">
+                        <div class="col-md-7">
+                            <input name="thiet_bi[{{$i}}][]" type="text" class="form-control col-md-6" id="ten_thiet_bi"
+                                   value="{{ $value[0] }}">
+                        </div>
+                        <div class="col-md-4">
+                            <input name="thiet_bi[{{ $i }}][]" type="number" class="form-control col-md-6" id="so_luong"
+                                   value="{{ $value[1] }}">
+                        </div>
                         <a href="#" class="remove_field col-md-1">Xóa</a>
-                </div>
-                    @endforeach
+                    </div>
+                @endforeach
             </div>
             <div class="col-sm-8 col-sm-offset-3">
                 <div class="col-sm-12">

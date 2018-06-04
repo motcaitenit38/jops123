@@ -204,7 +204,7 @@
                 'attach_ban_ve_ket_cau' => 'required',
             ]);
             if ($validator->fails()) {
-                return redirect()->route('job.create')
+                return redirect()->route('job.edit',$id)
                     ->withErrors($validator)
                     ->withInput();
             }

@@ -16,11 +16,13 @@ class CreateTimviecCvsTable extends Migration
         Schema::create('timviec_cvs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->integer('diachi_id');
             $table->integer('nganh_id');
             $table->string('ten_cv');
             $table->integer('gia_tri_hop_dong_lon');
             $table->integer('so_nam_kinh_nghiem');
             $table->text('thiet_bi');
+            $table->text('goi_thieu');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

@@ -24,13 +24,16 @@
                             class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{ route('hosotimviec.index') }}"><i class="active-job fa fa-circle-o-notch" aria-hidden="true"></i>Danh sách CV</a>
+                        <a href="{{ route('cvtimviec.index') }}"><i class="active-job fa fa-circle-o-notch" aria-hidden="true"></i>Danh sách CV</a>
                     </li>
                     <li>
-                        <a href="{{ route('hosotimviec.create') }}"><i class="pending-job fa fa-circle-o-notch" aria-hidden="true"></i>Tạo mới CV</a>
+                        <a href="{{ route('cvtimviec.create') }}"><i class="pending-job fa fa-circle-o-notch" aria-hidden="true"></i>Tạo mới CV</a>
                     </li>
 
                 </ul>
+            </li>
+            <li class="active">
+                <a href="{{ route('thongtintimviec.index') }}"><i class="fa fa-cog" aria-hidden="true"></i>Thông tin công ty</a>
             </li>
             <li class="log-off">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off" aria-hidden="true"></i>Logout</a>

@@ -1,6 +1,7 @@
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
 <script src="{{ asset('asset-uea/js/jquery-1.10.2.js') }}"></script>
+<script src="{{ asset('asset-uea/js/ckeditor.js') }}"></script>
 <!-- BOOTSTRAP SCRIPTS -->
 <script src="{{ asset('asset-uea/js/bootstrap.min.js') }}"></script>
 <!-- METISMENU SCRIPTS -->
