@@ -3,12 +3,10 @@
     namespace App\Http\Controllers;
 
     use Illuminate\Http\Request;
-    use App\Address;
-    use App\Employer\Jop;
-    use App\Seeker\Seeker_cv;
+    use App\Model\Address;
     use Auth;
-    use App\jop_seeker_cv;
-    use App\jop_user;
+    use App\Model\Tuyendung\TuyendungJob;
+    use App\Model\Tuyendung\ThongtinTuyendung;
 
     class HomeController extends Controller
     {
@@ -29,11 +27,11 @@
             $tp = $request->address;
             $address = Address::all();
             if ($keywork == '') {
-                $jop = Jop::where('address_id', $tp)->orderBy('id', 'desc')->paginate(10);
+                $jop = TuyendungJob::where('dia_diem_uu_tien', $tp)->orderBy('id', 'desc')->paginate(10);
                 return view('search.kqtk', ['jops' => $jop, 'address' => $address]);
             } else {
-                $jop = Jop::where('jop_name', 'like', '%' . $keywork . '%')
-                    ->where('address_id', $tp)
+                $jop = TuyendungJob::where('ten_cong_viec', 'like', '%' . $keywork . '%')
+                    ->where('dia_diem_uu_tien', $tp)
                     ->orderBy('id', 'desc')->paginate(10);
                 return view('search.kqtk', ['jops' => $jop, 'address' => $address]);
             }
@@ -41,25 +39,31 @@
 
         public function detail($id)
         {
-            $jop = Jop::find($id);
-            $all_cv = $jop->jop_cv->toArray();
-            $jop_cv = array();
-            foreach ($all_cv as $cv) {
-                array_push($jop_cv, $cv['id']);
-            }
-            if (Auth::guard('web')->check()) {
-                $all_jop = jop_user::where('user_id', Auth::user()->id)->get()->toArray();
-                $jop_save = array();
-                foreach ($all_jop as $jop_user) {
-                    array_push($jop_save, $jop_user['jop_id']);
-                }
-                $seeker_cv = Seeker_cv::where('user_id', Auth::user()->id)->get();
-                return view('search.detail-jop',
-                    ['jop' => $jop, 'jop_cv' => $jop_cv, 'jop_save' => $jop_save, 'seeker_cv' => $seeker_cv]);
-            } else {
-                return view('search.detail-jop',
-                    ['jop' => $jop]);
-            }
+            $jop = TuyendungJob::findOrFail($id);
+            $a = $jop->thiet_bi;
+            $nhansu = json_decode($jop->nhan_su);
+            $thiethi = json_decode($a, true);
+            $thongtin = ThongtinTuyendung::where('employer_id', $jop->employer_id)->first();
+            return view('search.detail-jop', ['jop' => $jop, 'thongtin' => $thongtin, 'b' => $thiethi, 'nhansu' => $nhansu]);
+//            $jop = TuyendungJob::find($id);
+//            $all_cv = $jop->jop_cv->toArray();
+//            $jop_cv = array();
+//            foreach ($all_cv as $cv) {
+//                array_push($jop_cv, $cv['id']);
+//            }
+//            if (Auth::guard('web')->check()) {
+//                $all_jop = jop_user::where('user_id', Auth::user()->id)->get()->toArray();
+//                $jop_save = array();
+//                foreach ($all_jop as $jop_user) {
+//                    array_push($jop_save, $jop_user['jop_id']);
+//                }
+//                $seeker_cv = Seeker_cv::where('user_id', Auth::user()->id)->get();
+//                return view('search.detail-jop',
+//                    ['jop' => $jop, 'jop_cv' => $jop_cv, 'jop_save' => $jop_save, 'seeker_cv' => $seeker_cv]);
+//            } else {
+//                return view('search.detail-jop',
+//                    ['jop' => $jop]);
+//            }
 
         }
 

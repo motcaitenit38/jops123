@@ -272,7 +272,7 @@
                         console.log(data);
                         if (data.error == true) {
                             alert('Bạn chưa tạo CV, vui lòng tạo CV cá nhân trước');
-                            window.location.href = "{{ url('/seeker/cv/create') }}";
+                            window.location.href = "{{ url('timviec') }}";
                         } else {
                             window.location.href = "{{ url('/seeker/ungtuyen/'.$jop->id) }}";
                         }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-@include('seeker.template.head')
+@include('timviec.template.head')
 <body>
 <div id="wrapper">
-@include('seeker.template.nav-top')
+@include('timviec.template.nav-top')
 <!-- /. NAV TOP  -->
-    @include('seeker.template.nav-left')
+    @include('timviec.template.nav-left')
     <div id="page-wrapper">
 
         <div class="row bg-title">
@@ -17,16 +17,16 @@
         </div>
         <!-- /. ROW  -->
         <div id="page-inner">
-            @include('seeker.template.error')
+            @include('timviec.template.error')
             @yield('content')
 
         </div>
     </div>
     <!-- /. PAGE WRAPPER  -->
-    @include('seeker.template.footer')
+    @include('timviec.template.footer')
 </div>
 <!-- /. WRAPPER  -->
-@include('seeker.template.script')
+@include('timviec.template.script')
 <script>
     window.setTimeout(function() {
         $("#thongbao").fadeTo(500, 0).slideUp(500, function(){

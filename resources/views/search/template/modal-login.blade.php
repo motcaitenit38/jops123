@@ -131,7 +131,7 @@
                     }
                 });
                 $.ajax({
-                    'url': '{{ url('seeker/register') }}',
+                    'url': '{{ url('register') }}',
                     'data': {
                         'name': $('#name').val(),
                         'email': $('#email_rg').val(),

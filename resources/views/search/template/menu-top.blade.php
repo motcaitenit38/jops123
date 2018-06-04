@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                 @if(Auth::guard('web')->check())
-                <li><a href="{{ route('seeker.index') }}"><i class="fa fa-pencil" aria-hidden="true"></i>Tài khoản</a></li>
+                <li><a href="{{ url('timviec') }}"><i class="fa fa-pencil" aria-hidden="true"></i>Tài khoản</a></li>
                 <li><a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();"><i class="fa fa-sign-in" aria-hidden="true"></i>{{ __('Logout') }}

@@ -1,4 +1,4 @@
-@extends('seeker.template.app')
+@extends('timviec.template.app')
 @section('title','Tạo mới CV')
 @section('content')
     <form id="post-form" class="form-group col-md-12" method="post" action="{{ route('cv.store') }}" enctype="multipart/form-data" role="form">

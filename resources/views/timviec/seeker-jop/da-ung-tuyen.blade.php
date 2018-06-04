@@ -1,5 +1,5 @@
-@extends('seeker.template.app')
-@section('title','Danh sách công việc đã lưu')
+@extends('timviec.template.app')
+@section('title','Danh sách công việc đã ứng tuyển')
 @section('content')
     <div id="page-inner">
         <div class="row">

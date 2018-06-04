@@ -1,4 +1,4 @@
-@extends('seeker.template.app')
+@extends('timviec.template.app')
 @section('title','CV Của bạn')
 @section('content')
     <div class="row">
@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-md-2 col-sm-2">
                                 <div class="job-action">
-                                    <a class="edit" href="{{ url('seeker/cv/'.$cv->id.'/edit') }}" title="Edit"><i class="fa fa-pencil"
+                                    <a class="edit" href="{{ url('timviec'.$cv->id.'/edit') }}" title="Edit"><i class="fa fa-pencil"
                                                                              aria-hidden="true"></i></a>
                                     <a class="delete" href="{{ url('seeker/cv/'.$cv->id) }}" title="Delete" onclick="event.preventDefault();
                                 document.getElementById('delete-cv').submit();"><i class="fa fa-trash" aria-hidden="true"></i></a>

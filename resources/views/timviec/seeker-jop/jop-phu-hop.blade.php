@@ -1,4 +1,4 @@
-@extends('seeker.template.app')
+@extends('timviec.template.app')
 @section('title','Danh sách công việc phù hợp')
 @section('content')
     <div id="page-inner">
