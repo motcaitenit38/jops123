@@ -47,8 +47,8 @@
         {
             //
             $validator = Validator::make($request->all(), [
-                'nganh_id' => 'required|min:5',
-                'ten_cv' => 'required',
+                'nganh_id' => 'required',
+                'ten_cv' => 'required|min:5',
                 'diachi_id' => 'required',
                 'gia_tri_hop_dong_lon' => 'required',
                 'so_nam_kinh_nghiem' => 'required',

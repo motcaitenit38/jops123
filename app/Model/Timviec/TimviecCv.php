@@ -22,4 +22,7 @@
         public function address(){
             return $this->belongsTo('App\Model\Address','diachi_id','thanhpho_id');
         }
+        public function ungtuyen(){
+            return $this->belongsToMany('App\Model\Tuyendung\TuyendungJob','timviec_ungtuyens');
+        }
     }

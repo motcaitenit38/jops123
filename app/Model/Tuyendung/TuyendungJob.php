@@ -39,4 +39,8 @@
         public function diadiem(){
             return $this->belongsTo('App\Model\Address','dia_diem_uu_tien','thanhpho_id');
         }
+
+        public function cvungtuyen(){
+            return $this->belongsToMany('App\Model\Timviec\TimviecCv','timviec_ungtuyens');
+        }
     }

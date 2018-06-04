@@ -6,4 +6,7 @@
         Route::resource('thongtintimviec','Timviec\ThongtinTimviecController');
         Route::resource('hosotimviec','Timviec\HosoTimviecController');
         Route::resource('cvtimviec','Timviec\TimviecCvController');
+        Route::post('kiemtracv', 'Timviec\TimviecHomeController@kiemtracv');
+        Route::get('ungtuyen/{id}', 'Timviec\TimviecHomeController@ungtuyen')->name('timviec.ungtuyen');
+        Route::post('guicv', 'Timviec\TimviecHomeController@guicv')->name('truongdz');
     });

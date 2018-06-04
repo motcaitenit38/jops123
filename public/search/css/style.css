@@ -5137,4 +5137,5 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 .detail-desc-caption ul li{
     width:100% !important;
 }
+.ck-content { min-height:200px; max-height:400px; }
 
