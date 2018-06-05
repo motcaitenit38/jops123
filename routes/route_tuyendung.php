@@ -9,6 +9,9 @@
 //        quanr lys ung vien
         Route::get('dangsachungvien/{id}', 'Tuyendung\DanhsachUngtuyenController@danhsach')->name('tuyendung.danhsachungtuyen');
         Route::get('chitietungvien/{idcv}/{idjob}', 'Tuyendung\DanhsachUngtuyenController@chitiethoso')->name('tuyendung.chitiethoso');
+//        route chấp nhận ứng viên
+        Route::post('chapnhan','Tuyendung\DanhsachUngtuyenController@chapnhanungvien')->name('tuyendung.chapnhanungvien');
+        Route::post('tuchoi','Tuyendung\DanhsachUngtuyenController@tuchoi')->name('tuyendung.tuchoi');
 //        Route::get('getnganh/nganh/{idlinhvuc}', 'Tuyendung\TuyendungJobController@getNganh');
 
 // route quản lý thông tin công ty
