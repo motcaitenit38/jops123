@@ -32,6 +32,19 @@
 
                 </ul>
             </li>
+            <li>
+                <a href="javascript:void(0)"><i class="fa fa-clone" aria-hidden="true"></i>Quản lý công việc <span
+                            class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{ route('timviec.daungtuyen') }}"><i class="active-job fa fa-circle-o-notch" aria-hidden="true"></i>Đã ứng tuyển</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('timviec.trungtuyen') }}"><i class="pending-job fa fa-circle-o-notch" aria-hidden="true"></i>đã lưu</a>
+                    </li>
+
+                </ul>
+            </li>
             <li class="active">
                 <a href="{{ route('thongtintimviec.index') }}"><i class="fa fa-cog" aria-hidden="true"></i>Thông tin công ty</a>
             </li>

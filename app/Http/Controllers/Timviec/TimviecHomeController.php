@@ -58,19 +58,18 @@
 
         public function guicv(Request $request)
         {
-            dd($request->all());
+            $job_id = $request->job_id;
             $rules = [
                 'filedinhkem' => 'required',
             ];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
-                return response()->json([
-                    'error' => true,
-                    'message' => $validator->errors()
-                ], 200);
+                return redirect()->route('timviec.ungtuyen',$job_id)
+                    ->withErrors($validator)
+                    ->withInput();
             } else {
-                $cv_id = $request['cv_id'];
-                $job_id = $request['job_id'];
+                $job_id = $request->job_id;
+                $cv_id = $request->cv_id;
                 if ($request->hasFile('filedinhkem')) {
                     $attach = $request->file('filedinhkem');
                     $attach_name = time() . $attach->getClientOriginalName();
@@ -81,10 +80,7 @@
                 $model->tuyendung_job_id = $job_id;
                 $model->file_dinh_kem = $attach_name;
                 $model->save();
-                return response()->json([
-                    'error' => false,
-                    'message' => 'success'
-                ], 200);
+                return redirect(route('timviec.index'));
             }
         }
     }

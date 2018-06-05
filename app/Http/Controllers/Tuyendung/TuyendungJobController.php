@@ -279,15 +279,6 @@
         {
             //
         }
-
-        public function getNganh($idLinhvuc)
-        {
-            $nganh = Nganh::where('linh_vuc_id', $idLinhvuc)->get();
-            foreach ($nganh as $value) {
-                echo "<option value='" . $value->id . "'>" . $value->ten_nganh . "</option>";
-            }
-        }
-
         public function jobhethan()
         {
             //

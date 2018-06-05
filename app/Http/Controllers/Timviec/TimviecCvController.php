@@ -20,7 +20,7 @@
         public function index()
         {
             //
-            $cv = TimviecCv::all();
+            $cv = TimviecCv::where('user_id',Auth::user()->id)->get();
             return view('timviec.cv.get-cv', ['cvs' => $cv]);
         }
 

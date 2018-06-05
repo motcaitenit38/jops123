@@ -20,5 +20,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('/', 'HomeController@home')->name('trangchu.index');
     Route::get('kq', 'HomeController@search')->name('home.search');
     Route::get('jop/{id}', 'HomeController@detail')->name('home.detail');
+    Route::get('getnganh/nganh/{idlinhvuc}', 'HomeController@getNganh');
 });
+
+
 

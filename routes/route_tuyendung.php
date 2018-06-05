@@ -6,7 +6,7 @@
         Route::resource('job', 'Tuyendung\TuyendungJobController');
         Route::get('job-hethan', 'Tuyendung\TuyendungJobController@jobhethan')->name('job.hethan');
         Route::get('jop-deadline', 'Employer\Employer_jop_Controller@expiration')->name('job.deadline');
-        Route::get('getnganh/nganh/{idlinhvuc}', 'Tuyendung\TuyendungJobController@getNganh');
+//        Route::get('getnganh/nganh/{idlinhvuc}', 'Tuyendung\TuyendungJobController@getNganh');
 
 // route quản lý thông tin công ty
 //        Route::resource('info', 'Employer\Employer_info_Controller');

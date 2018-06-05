@@ -9,8 +9,9 @@
     use App\Model\Tuyendung\ThongtinTuyendung;
     use App\User;
     use App\Model\Timviec\TimviecLuuJob;
-    use App\Model\Timviec\Timviecungtuyen;
+    use App\Model\Timviec\TimviecUngtuyen;
     use App\Model\Timviec\TimviecCv;
+    use App\Model\Nganh;
 
     class HomeController extends Controller
     {
@@ -51,29 +52,48 @@
             if (Auth::guard('web')->check()) {
 //            kiem tra da lu hay chua
                 $user = User::findOrFail(Auth::user()->id);
-//            lấy tất cả cv của thằng này
-                $all_cv = $user->timviec_cv;
-//            dd($all_cv);
                 $all_job_save = $user->save_jop->toArray();
                 $job_save = array();
                 foreach ($all_job_save as $value) {
                     array_push($job_save, $value['id']);
                 }
-//            kiem tra da ung tuyen hay chua
-                $abc = $jop->cvungtuyen->toArray();
-                $job_ungtuyen = array();
-                foreach ($abc as $value) {
-                    array_push($job_ungtuyen, $value['id']);
-                }
+//                dd($job_save);
 
+//            kiem tra da ung tuyen hay chua
+//                Bước 1: Lấy tất cả cv của thằng tìm việc đang đăng nhập
+                $all_cv = $user->timviec_cv->toArray();
+//                Đưa toàn bộ cv vào 1 mảng, mảng đó chứa id thôi
+                $cv = array();
+                foreach ($all_cv as $value) {
+                    array_push($cv, $value['id']);
+                }
+//Kết thúc lấy cv
+
+//                lấy toàn bộ công việc đã ứng tuyển
+                $all_ungtuyen = TimviecUngtuyen::all()->toArray();
+                $job_ungtuyen_cv = array();
+                foreach ($all_ungtuyen as $value) {
+                    $job_ungtuyen_cv[$value['tuyendung_job_id']] =  $value['timviec_cv_id'];
+                }
+//                foreach cv ra để kiểm tra có trong mảng
+
+                foreach ($all_cv as $value){
+                    if(in_array($value['id'], $job_ungtuyen_cv) && array_key_exists($id,$job_ungtuyen_cv) ){
+                        $kq = '1';
+                    }
+                }
+                if(isset($kq)){
+                    $kq='1';
+                }else{
+                    $kq='0';
+                }
                 return view('search.detail-jop', [
                     'jop' => $jop,
                     'thongtin' => $thongtin,
                     'b' => $thiethi,
                     'nhansu' => $nhansu,
                     'jop_save' => $job_save,
-                    'job_ungtuyen' => $job_ungtuyen,
-                    'all_cv' => $all_cv
+                    'dmcheck' => $kq,
                 ]);
             }
             return view('search.detail-jop', [
@@ -82,5 +102,13 @@
                 'b' => $thiethi,
                 'nhansu' => $nhansu,
             ]);
+        }
+
+        public function getNganh($idLinhvuc)
+        {
+            $nganh = Nganh::where('linh_vuc_id', $idLinhvuc)->get();
+            foreach ($nganh as $value) {
+                echo "<option value='" . $value->id . "'>" . $value->ten_nganh . "</option>";
+            }
         }
     }
