@@ -19,6 +19,16 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
         Session::put('pre_login_url', URL::current());
+
+        \Illuminate\Support\Collection::macro('recursive', function () {
+            return $this->map(function ($value) {
+                if (is_array($value) || is_object($value)) {
+                    return collect($value)->recursive();
+                }
+
+                return $value;
+            });
+        });
     }
 
     /**

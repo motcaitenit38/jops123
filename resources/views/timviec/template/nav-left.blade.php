@@ -40,7 +40,10 @@
                         <a href="{{ route('timviec.daungtuyen') }}"><i class="active-job fa fa-circle-o-notch" aria-hidden="true"></i>Đã ứng tuyển</a>
                     </li>
                     <li>
-                        <a href="{{ route('timviec.trungtuyen') }}"><i class="pending-job fa fa-circle-o-notch" aria-hidden="true"></i>đã lưu</a>
+                        <a href="{{ route('timviec.daluu') }}"><i class="pending-job fa fa-circle-o-notch" aria-hidden="true"></i>đã lưu</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('timviec.trungtuyen') }}"><i class="pending-job fa fa-circle-o-notch" aria-hidden="true"></i>Trúng tuyển</a>
                     </li>
 
                 </ul>

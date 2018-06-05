@@ -21,7 +21,7 @@
             //
             $info = ThongtinTimviec::where('user_id', Auth::user()->id)->first();
             if ($info == null) {
-                return redirect()->route('info.create')->with([
+                return redirect()->route('thongtintimviec.create')->with([
                     'alert' => 'danger',
                     'thongbao' => 'Bạn chưa có thông tin cá nhân, vui lòng nhập thông tin cá nhân trước',
                 ]);
