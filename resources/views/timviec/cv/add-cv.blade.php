@@ -43,14 +43,14 @@
         <div class="form-group row">
             <label for="gia_tri_hop_dong_lon" class="col-sm-3 col-form-label">Giá trị hợp đồng lớn</label>
             <div class="col-sm-8">
-                <input name="gia_tri_hop_dong_lon" type="number" class="form-control" id="gia_tri_hop_dong_lon" placeholder="Tên công việc"
+                <input name="gia_tri_hop_dong_lon" type="number" class="form-control" id="gia_tri_hop_dong_lon" placeholder="Giá trị hợp đồng lớn"
                        value="{{ old('gia_tri_hop_dong_lon') }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="so_nam_kinh_nghiem" class="col-sm-3 col-form-label">Số năm kinh nghiệm</label>
             <div class="col-sm-8">
-                <input name="so_nam_kinh_nghiem" type="number" class="form-control" id="so_nam_kinh_nghiem" placeholder="Tên công việc"
+                <input name="so_nam_kinh_nghiem" type="number" class="form-control" id="so_nam_kinh_nghiem" placeholder="Số năm kinh nghiệm"
                        value="{{ old('so_nam_kinh_nghiem') }}" required/>
             </div>
         </div>

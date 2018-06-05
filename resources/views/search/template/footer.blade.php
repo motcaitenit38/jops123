@@ -5,11 +5,7 @@
             <div class="col-md-4 col-sm-4"><img src="{{ asset('search/img/footer-logo.png') }}" class="img-responsive" alt=""/></div>
             <div class="col-md-8 co-sm-8 pull-right">
                 <ul>
-                    <li><a href="index.html" title="">Home</a></li>
-                    <li><a href="blog.html" title="">Blog</a></li>
-                    <li><a href="404.html" title="">404</a></li>
-                    <li><a href="faq.html" title="">FAQ</a></li>
-                    <li><a href="contact.html" title="">Contact Us</a></li>
+                    {{--<li><a href="index.html" title="">Home</a></li>--}}
                 </ul>
             </div>
         </div>
@@ -18,13 +14,13 @@
         <div class="container">
             <div class="col-md-3 col-sm-12">
                 <div class="footer-widget">
-                    <h3 class="widgettitle widget-title">About Job Stock</h3>
+                    <h3 class="widgettitle widget-title">Giới thiệu</h3>
                     <div class="textwidget">
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem.</p>
-                        <p>7860 North Park Place
-                            <br>San Francisco, CA 94120</p>
-                        <p><strong>Email:</strong> Support@careerdesk</p>
-                        <p><strong>Call:</strong> <a href="tel:+15555555555">555-555-1234</a></p>
+                        <p>Công ty Thương mại cổ phần BKT.</p>
+                        <p>Số 100, đường Cầu vồng
+                            <br>Hà Nội</p>
+                        <p><strong>Email:</strong> Xuantruong.220494@gmail.com</p>
+                        <p><strong>Call:</strong> <a href="tel:+84966178085">0966178085</a></p>
                         <ul class="footer-social">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
