@@ -141,12 +141,12 @@
                 {!!  $cv->gioi_thieu !!}
             </div>
         </div>
-        <div class="form-group row">
-            <div class="col-sm-12">
-                <a href="{{ asset('tuyendung/info/'.$thongtin->id.'/edit') }}" >
-                    <span class="btn btn-default btn-file btn-block">	edit </span></a>
-            </div>
-        </div>
+        {{--<div class="form-group row">--}}
+            {{--<div class="col-sm-12">--}}
+                {{--<a href="{{ asset('tuyendung/info/'.$thongtin->id.'/edit') }}" >--}}
+                    {{--<span class="btn btn-default btn-file btn-block">	edit </span></a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </form>
 
 @endsection

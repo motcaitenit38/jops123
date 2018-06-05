@@ -15,14 +15,14 @@
                                 </div>
                                 <div class="col-md-6 col-sm-5">
                                     <div class="brows-job-position">
-                                        <h3><a href="#">{{ $jop->ten_cong_viec }}</a></h3>
+                                        <h3><a href="{{ route('home.detail',$jop->id) }}" target="_blank">{{ $jop->ten_cong_viec }}</a></h3>
                                         <p><span class="brows-job-status"><strong>Ngày đăng:</strong> {{ date('d-m-Y', strtotime($jop->created_at)) }}</span></p>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-3">
                                     <div class="brows-job-location">
                                         <p><i class="fa fa-map-marker">Hạn nộp hồ sơ:</i>{{ date('d-m-Y', strtotime($jop->thoi_gian_bao_gia)) }}</p>
-                                        <p><a href="{{ Route('tuyendung.danhsachungtuyen',$jop->id) }}" type="button" class="btn btn-warning">Danh sách ứng viên</a></p>
+                                        <p><a href="{{ Route('tuyendung.danhsachungtuyen',$jop->id) }}" type="button" class="btn btn-warning" target="_blank">Danh sách ứng viên</a></p>
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-sm-2">
