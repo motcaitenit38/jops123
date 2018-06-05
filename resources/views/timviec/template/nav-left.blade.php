@@ -37,13 +37,16 @@
                             class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="{{ route('timviec.daungtuyen') }}"><i class="active-job fa fa-circle-o-notch" aria-hidden="true"></i>Đã ứng tuyển</a>
+                        <a href="{{ route('timviec.dangungtuyen') }}"><i class="active-job fa fa-circle-o-notch" aria-hidden="true"></i>Đang ứng tuyển</a>
                     </li>
                     <li>
                         <a href="{{ route('timviec.daluu') }}"><i class="pending-job fa fa-circle-o-notch" aria-hidden="true"></i>đã lưu</a>
                     </li>
                     <li>
                         <a href="{{ route('timviec.trungtuyen') }}"><i class="pending-job fa fa-circle-o-notch" aria-hidden="true"></i>Trúng tuyển</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('timviec.khongtrungtuyen') }}"><i class="pending-job fa fa-circle-o-notch" aria-hidden="true"></i>Không Trúng tuyển</a>
                     </li>
 
                 </ul>

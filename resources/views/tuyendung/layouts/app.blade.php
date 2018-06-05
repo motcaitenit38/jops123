@@ -20,7 +20,7 @@
             <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('tuyendung/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Nhà tuyển dung đăng nhập') }}
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,11 +32,14 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
+
                             @if (Auth::guest('employer'))
                             <li><a class="nav-link" href="{{ route('tuyendung.login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('tuyendung.register') }}">{{ __('Register') }}</a></li>
-                            
-                            @endif
+                                @else
+                                <li><a class="nav-link" href="{{ route('tuyendung.login') }}">{{ __('Login') }}</a></li>
+                                <li><a class="nav-link" href="{{ route('tuyendung.register') }}">{{ __('Register') }}</a></li>
+                               @endif
                         </ul>
                     </div>
                 </div>

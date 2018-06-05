@@ -36,9 +36,7 @@
                                                 hồ sơ</a>
                                         </p>
                                     </div>
-
                                 </div>
-
                                 <div class="col-md-2 col-sm-2">
                                     <div class="job-action">
                                         <p>
@@ -66,7 +64,6 @@
         </div>
         <!-- /. ROW  -->
     </div>
-
 @endsection
 
 @section('script')

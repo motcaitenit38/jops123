@@ -14,10 +14,10 @@
 // logout
     Route::post('tuyendung/logout', 'Tuyendung\TuyendungLoginController@logout')->name('tuyendung.logout');
 
-    //// login admin
-    //Route::get('admin/login', 'Admin\AdminLoginController@showLoginForm')->name('admin.login');
-    //Route::post('admin/login', 'Admin\AdminLoginController@submitLogin')->name('admin.login.submit');
-    //// regist
-    //Route::get('admin/register', 'Admin\AdminRegistController@showRegistForm')->name('admin.register');
-    //Route::post('admin/register', 'Admin\AdminRegistController@submitRegist')->name('admin.register.submit');
-    //Route::post('admin/logout', 'Admin\AdminLoginController@logout')->name('admin.logout');
+    // login admin
+    Route::get('admin/login', 'Admin\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('admin/login', 'Admin\AdminLoginController@submitLogin')->name('admin.login.submit');
+    // regist
+    Route::get('admin/register', 'Admin\AdminRegistController@showRegistForm')->name('admin.register');
+    Route::post('admin/register', 'Admin\AdminRegistController@submitRegist')->name('admin.register.submit');
+    Route::post('admin/logout', 'Admin\AdminLoginController@logout')->name('admin.logout');

@@ -1,6 +1,6 @@
 <?php
     Route::group(['prefix' => 'tuyendung', 'middleware' => 'auth:employer'], function () {
-        Route::get('/', 'Tuyendung\TuyendungHomeController@index')->name('tuyendung.index');
+        Route::get('/', 'Tuyendung\TuyendungJobController@index')->name('tuyendung.index');
         Route::resource('info', 'Tuyendung\TuyendungThongtinController');
         // route quản lý công việc
         Route::resource('job', 'Tuyendung\TuyendungJobController');

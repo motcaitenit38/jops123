@@ -1,5 +1,5 @@
 @extends('timviec.template.app')
-@section('title','Danh sách công việc đã ứng tuyển')
+@section('title','Danh sách công việc đã trúng tuyển')
 @section('content')
     <div id="page-inner">
         <div class="row">
@@ -26,8 +26,8 @@
                                 </div>
                                 <div class="col-md-2 col-sm-2">
                                     <div class="job-action">
-                                        <a class="edit" href="{{ asset('tuyendung/job/'.$jop->id.'/edit') }}" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                        <a class="delete" href="{{ asset('tuyendung/job/'.$jop->id.'/edit') }}" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <a href="{{route('job.show',$jop->id)}}"
+                                           target="_blank" id="modelchitiet" type="button" class="btn btn-warning">Chi tiết công việc</a>
                                     </div>
                                 </div>
                             </div>
