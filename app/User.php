@@ -30,11 +30,11 @@
             'remember_token',
         ];
 
-        public function seeker_cv(){
-            return $this->hasMany('App\Seeker\Seeker_cv','user_id','id');
+        public function timviec_cv(){
+            return $this->hasMany('App\Model\Timviec\TimviecCv','user_id','id');
         }
         public function save_jop(){
-            return $this->belongsToMany('App\Employer\Jop','jop_user');
+            return $this->belongsToMany('App\Model\Tuyendung\TuyendungJob','timviec_luu_jobs');
         }
 
 

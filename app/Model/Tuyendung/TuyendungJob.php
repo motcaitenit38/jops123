@@ -43,4 +43,8 @@
         public function cvungtuyen(){
             return $this->belongsToMany('App\Model\Timviec\TimviecCv','timviec_ungtuyens');
         }
+
+        public function jop_save(){
+            return $this->belongsToMany('App\User','timviec_luu_jobs');
+        }
     }

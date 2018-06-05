@@ -17,7 +17,7 @@ include('route_authenticate.php');
 include ('route_timviec.php');
 include('route_tuyendung.php');
 Route::group(['prefix' => '/'], function () {
-    Route::get('/', 'HomeController@home');
+    Route::get('/', 'HomeController@home')->name('trangchu.index');
     Route::get('kq', 'HomeController@search')->name('home.search');
     Route::get('jop/{id}', 'HomeController@detail')->name('home.detail');
 });

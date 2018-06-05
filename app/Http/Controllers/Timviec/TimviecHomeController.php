@@ -35,6 +35,19 @@
             }
         }
 
+        public function save_jops(Request $request)
+        {
+            $jop_id = $request['jop_id'];
+            $user_id = $request['user_id'];
+            $jop = TuyendungJob::find($jop_id);
+            $save = array($user_id);
+            $jop->jop_save()->attach($save);
+            return response()->json([
+                'error' => false,
+                'message' => 'success'
+            ], 200);
+        }
+
         public function ungtuyen($id)
         {
             $jop = TuyendungJob::find($id);
@@ -45,31 +58,33 @@
 
         public function guicv(Request $request)
         {
-            $validator = Validator::make($request->all(), [
+            dd($request->all());
+            $rules = [
                 'filedinhkem' => 'required',
-            ]);
+            ];
+            $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return response()->json([
                     'error' => true,
                     'message' => $validator->errors()
                 ], 200);
+            } else {
+                $cv_id = $request['cv_id'];
+                $job_id = $request['job_id'];
+                if ($request->hasFile('filedinhkem')) {
+                    $attach = $request->file('filedinhkem');
+                    $attach_name = time() . $attach->getClientOriginalName();
+                    $attach_name = $attach->move('upload\attach\ungtuyen', $attach_name);
+                }
+                $model = new Ungtuyen();
+                $model->timviec_cv_id = $cv_id;
+                $model->tuyendung_job_id = $job_id;
+                $model->file_dinh_kem = $attach_name;
+                $model->save();
+                return response()->json([
+                    'error' => false,
+                    'message' => 'success'
+                ], 200);
             }
-
-            $cv_id = $request['cv_id'];
-            $job_id = $request['job_id'];
-            if ($request->hasFile('filedinhkem')) {
-                $attach = $request->file('filedinhkem');
-                $attach_name = time() . $attach->getClientOriginalName();
-                $attach_name = $attach->move('upload\attach\ungtuyen', $attach_name);
-            }
-            $model = new Ungtuyen();
-            $model->timviec_cv_id = $cv_id;
-            $model->tuyendung_job_id = $job_id;
-            $model->file_dinh_kem = $attach_name;
-            $model->save();
-            return response()->json([
-                'error' => false,
-                'message' => 'success'
-            ], 200);
         }
     }

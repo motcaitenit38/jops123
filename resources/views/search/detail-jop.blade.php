@@ -91,20 +91,20 @@
                                    data-target="#signup" class="signin">ứng tuyển</a>
                                 <a href="javascript:void(0)" data-toggle="modal"
                                    data-target="#signup" class="footer-btn blu-btn" title="">Lưu công việc</a>
-                            {{--@else--}}
-                                {{--@foreach($seeker_cv as $seeker_cv)--}}
-                                    {{--@if(in_array($seeker_cv->id,$jop_cv) && !in_array($jop->id, $jop_save))--}}
-                                        {{--<a href="#" class="footer-btn grn-btn" title="">Đã ứng tuyển</a>--}}
-                                        {{--<a href="" class="footer-btn blu-btn" id="save-jop" title="">Lưu công việc</a>--}}
-                                        {{--<input type="text" value="{{ $jop->id }}" style="display: none;" id="jop_id">--}}
-                                        {{--<input type="text" value="{{ Auth::user()->id }}" style="display: none;"--}}
-                                               {{--id="user_id">--}}
-                                    {{--@elseif(in_array($seeker_cv->id,$jop_cv) && in_array($jop->id,$jop_save))--}}
-                                        {{--<a href="#" class="footer-btn grn-btn" title="">Đã ứng tuyển</a>--}}
-                                        {{--<a href="#" class="footer-btn blu-btn" title="">Đã lưu công việc</a>--}}
-                                    {{--@elseif(!in_array($seeker_cv->id,$jop_cv) && in_array($jop->id, $jop_save))--}}
-                                        {{--<a href="" id="kiemtracv" class="footer-btn grn-btn" title="">Ứng tuyển</a>--}}
-                                        {{--<a href="#" class="footer-btn blu-btn" title="">Đã lưu công việc</a>--}}
+                            @else
+                                @foreach($all_cv as $all_cv)
+                                    @if(in_array($all_cv->id,$job_ungtuyen) && !in_array($jop->id, $jop_save))
+                                        <a href="#" class="footer-btn grn-btn" title="">Đã ứng tuyển</a>
+                                        <a href="" class="footer-btn blu-btn" id="save-jop" title="">Lưu công việc</a>
+                                        <input type="text" value="{{ $jop->id }}" style="display: none;" id="jop_id">
+                                        <input type="text" value="{{ Auth::user()->id }}" style="display: none;"
+                                               id="user_id">
+                                    @elseif(in_array($all_cv->id,$job_ungtuyen) && in_array($jop->id,$jop_save))
+                                        <a href="#" class="footer-btn grn-btn" title="">Đã ứng tuyển</a>
+                                        <a href="#" class="footer-btn blu-btn" title="">Đã lưu công việc</a>
+                                    @elseif(!in_array($all_cv->id,$job_ungtuyen) && in_array($jop->id, $jop_save))
+                                        <a href="" id="kiemtracv" class="footer-btn grn-btn" title="">Ứng tuyển</a>
+                                        <a href="#" class="footer-btn blu-btn" title="">Đã lưu công việc</a>
 
                                     @else
                                         <a href="" id="kiemtracv" class="footer-btn grn-btn" title="">Ứng tuyển</a>
@@ -113,8 +113,8 @@
                                         <input type="text" value="{{ Auth::user()->id }}" style="display: none;"
                                                id="user_id">
 
-                                    {{--@endif--}}
-                                {{--@endforeach--}}
+                                    @endif
+                                @endforeach
                             @endif
                         </div>
                     </div>
@@ -238,7 +238,7 @@
                     }
                 });
                 $.ajax({
-                    'url': '{{ url('seeker/save') }}',
+                    'url': '{{ url('timviec/save') }}',
                     'data': {
                         'jop_id': $('#jop_id').val(),
                         'user_id': $('#user_id').val()
@@ -246,6 +246,7 @@
                     'type': 'POST',
                     success: function (data) {
                         alert('Lưu công việc thành công');
+                        location.reload();
                     }
 
                 });

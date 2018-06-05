@@ -7,6 +7,10 @@
     use Auth;
     use App\Model\Tuyendung\TuyendungJob;
     use App\Model\Tuyendung\ThongtinTuyendung;
+    use App\User;
+    use App\Model\Timviec\TimviecLuuJob;
+    use App\Model\Timviec\Timviecungtuyen;
+    use App\Model\Timviec\TimviecCv;
 
     class HomeController extends Controller
     {
@@ -40,82 +44,43 @@
         public function detail($id)
         {
             $jop = TuyendungJob::findOrFail($id);
-            $a = $jop->thiet_bi;
             $nhansu = json_decode($jop->nhan_su);
-            $thiethi = json_decode($a, true);
+            $thiethi = json_decode($jop->thiet_bi, true);
             $thongtin = ThongtinTuyendung::where('employer_id', $jop->employer_id)->first();
-            return view('search.detail-jop', ['jop' => $jop, 'thongtin' => $thongtin, 'b' => $thiethi, 'nhansu' => $nhansu]);
-//            $jop = TuyendungJob::find($id);
-//            $all_cv = $jop->jop_cv->toArray();
-//            $jop_cv = array();
-//            foreach ($all_cv as $cv) {
-//                array_push($jop_cv, $cv['id']);
-//            }
-//            if (Auth::guard('web')->check()) {
-//                $all_jop = jop_user::where('user_id', Auth::user()->id)->get()->toArray();
-//                $jop_save = array();
-//                foreach ($all_jop as $jop_user) {
-//                    array_push($jop_save, $jop_user['jop_id']);
-//                }
-//                $seeker_cv = Seeker_cv::where('user_id', Auth::user()->id)->get();
-//                return view('search.detail-jop',
-//                    ['jop' => $jop, 'jop_cv' => $jop_cv, 'jop_save' => $jop_save, 'seeker_cv' => $seeker_cv]);
-//            } else {
-//                return view('search.detail-jop',
-//                    ['jop' => $jop]);
-//            }
 
-        }
+            if (Auth::guard('web')->check()) {
+//            kiem tra da lu hay chua
+                $user = User::findOrFail(Auth::user()->id);
+//            lấy tất cả cv của thằng này
+                $all_cv = $user->timviec_cv;
+//            dd($all_cv);
+                $all_job_save = $user->save_jop->toArray();
+                $job_save = array();
+                foreach ($all_job_save as $value) {
+                    array_push($job_save, $value['id']);
+                }
+//            kiem tra da ung tuyen hay chua
+                $abc = $jop->cvungtuyen->toArray();
+                $job_ungtuyen = array();
+                foreach ($abc as $value) {
+                    array_push($job_ungtuyen, $value['id']);
+                }
 
-        public function save_jops(Request $request)
-        {
-
-            $jop_id = $request['jop_id'];
-            $user_id = $request['user_id'];
-            $jop = Jop::find($jop_id);
-            $save = array($user_id);
-            $jop->jop_save()->attach($save);
-            return response()->json([
-                'error' => false,
-                'message' => 'success'
-            ], 200);
-        }
-
-        public function kiemtracv(Request $request)
-        {
-            $cv = Seeker_cv::where('user_id', Auth::user()->id)->get();
-            if ($cv->isEmpty() == true) {
-                return response()->json([
-                    'error' => true,
-                    'message' => 'chua co cv'
-                ], 200);
-            } else {
-                return response()->json([
-                    'error' => false,
-                    'message' => 'success'
-                ], 200);
+                return view('search.detail-jop', [
+                    'jop' => $jop,
+                    'thongtin' => $thongtin,
+                    'b' => $thiethi,
+                    'nhansu' => $nhansu,
+                    'jop_save' => $job_save,
+                    'job_ungtuyen' => $job_ungtuyen,
+                    'all_cv' => $all_cv
+                ]);
             }
+            return view('search.detail-jop', [
+                'jop' => $jop,
+                'thongtin' => $thongtin,
+                'b' => $thiethi,
+                'nhansu' => $nhansu,
+            ]);
         }
-
-        public function ungtuyen($id)
-        {
-            $jop = Jop::find($id);
-            $cv = Seeker_cv::where('user_id', Auth::user()->id)->get();
-            $user_name = Seeker_cv::where('user_id', Auth::user()->id)->first();
-            return view('search.ung-tuyen', ['jop' => $jop, 'cv' => $cv, 'user_name' => $user_name]);
-        }
-
-        public function guicv(Request $request)
-        {
-            $jop_id = $request['jop_id'];
-            $cv_id = $request['cv'];
-            $cv = Seeker_cv::find($cv_id);
-            $save = array($jop_id);
-            $abc = $cv->cv_jop()->attach($save);
-            return response()->json([
-                'error' => false,
-                'message' => 'success'
-            ], 200);
-        }
-
     }

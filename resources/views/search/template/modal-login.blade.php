@@ -19,6 +19,7 @@
                                     <p style="color:red; display:none;" class="error errorLogin"></p>
                                 </div>
                                 <form class="form-inline" method="post">
+                                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <input id="email" type="email" name="email"
