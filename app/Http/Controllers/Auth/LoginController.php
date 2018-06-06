@@ -29,7 +29,7 @@
          *
          * @var string
          */
-        protected $redirectTo = 'seeker';
+        protected $redirectTo = 'timviec';
 
         /**
          * Create a new controller instance.
@@ -55,12 +55,12 @@
             $validator = Validator::make($request->all(), $rules, $messages);
 
             if ($validator->fails()) {
-                return response()->json([
-                    'error' => true,
-                    'message' => $validator->errors()
-                ], 200);
-                // return redirect()->back()->withErrors($validator)->withInput();
-            } else {
+            return response()->json([
+                'error' => true,
+                'message' => $validator->errors()
+            ], 200);
+            // return redirect()->back()->withErrors($validator)->withInput();
+        } else {
                 $email = $request['email'];
                 $password = $request['password'];
                 if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password], $request->remember)) {

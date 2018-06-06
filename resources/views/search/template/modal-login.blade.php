@@ -101,6 +101,7 @@
                     success: function (data) {
                         console.log(data);
                         if (data.error == true) {
+
                             $('.error').hide();
                             if (data.message.email != undefined) {
                                 $('.errorEmail').show().text(data.message.email[0]);
@@ -162,6 +163,18 @@
                             alert('Đăng ký tài khoản thành công');
                             location.reload();
                         }
+                    },
+                    error: function (data) {
+                        var errObj=jQuery.parseJSON(data.responseText);
+                        if (errObj.errors.name)
+                            $('.errorname').show().text(errObj.errors.name[0]);
+
+                        if (errObj.errors.email)
+                            $('.erroremail_rg').show().text(errObj.errors.email[0]);
+
+
+                        if (errObj.errors.password)
+                            $('.errorpassword_rg').show().text(errObj.errors.password[0]);
                     }
                 });
             })
