@@ -5,7 +5,7 @@
         <div class="container">
             <div class="banner-caption">
                 <div class="col-md-12 col-sm-12 banner-text">
-                    <h1>7,000+ Browse Jobs</h1>
+                    <h1>Tìm kiếm công việc phù hợp</h1>
                     <form class="form-horizontal" method="get" action="{{ route('home.search') }}">
                         <div class="col-md-7 no-padd">
                             <div class="input-group">

@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="col-md-2 col-sm-2">
                                     <div class="job-action">
-                                        <a href="{{route('job.show',$jop->id)}}"
+                                        <a href="{{route('home.detail',$jop->id)}}"
                                            target="_blank" id="modelchitiet" type="button" class="btn btn-warning">Chi tiết công việc</a>
                                     </div>
                                 </div>

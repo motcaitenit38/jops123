@@ -259,7 +259,7 @@
         $(document).ready(function () {
             $("#Linh_vuc_hoat_dong").change(function () {
                 var idLinhvuc = $(this).val();
-                $.get("{{ asset('tuyendung/getnganh/nganh') }}/" + idLinhvuc, function (data) {
+                $.get("{{ asset('getnganh/nganh') }}/" + idLinhvuc, function (data) {
                     $("#career").html(data);
                 });
             });

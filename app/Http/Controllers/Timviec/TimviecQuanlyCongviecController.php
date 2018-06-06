@@ -26,7 +26,7 @@
                 foreach ($all_job as $value) {
                     foreach ($value as $a) {
                         $jobchuan = TuyendungJob::findOrFail($a->tuyendung_job_id);
-                        if($jobchuan->thoi_gian_bao_gia <= date('Y-m-d')){
+                        if($jobchuan->thoi_gian_bao_gia >= date('Y-m-d')){
                             array_push($toanbojobungtuyen, $jobchuan);
                         }
                         else{

@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="col-md-6 col-sm-5">
                                     <div class="brows-job-position">
-                                        <h3><a href="{{route('job.show',$jop->id)}}">{{ $jop->ten_cong_viec }}</a></h3>
+                                        <h3><a href="{{route('home.detail',$jop->id)}}">{{ $jop->ten_cong_viec }}</a></h3>
                                         <p><span class="brows-job-status"><strong>Ngày đăng:</strong> {{ date('d-m-Y', strtotime($jop->created_at)) }}</span></p>
                                     </div>
                                 </div>
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="col-md-2 col-sm-2">
                                     <div class="job-action">
-                                        <a href="{{route('job.show',$jop->id)}}"
+                                        <a href="{{route('home.detail',$jop->id)}}"
                                            target="_blank" id="modelchitiet" type="button" class="btn btn-warning">Chi tiết công việc</a>
                                     </div>
                                 </div>
