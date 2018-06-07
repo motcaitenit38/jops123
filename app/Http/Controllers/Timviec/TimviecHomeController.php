@@ -10,9 +10,13 @@
     use App\Model\Timviec\Ungtuyen;
     use App\Model\Tuyendung\TuyendungJob;
     use App\Model\Tuyendung\ThongtinTuyendung;
+    use App\Model\Timviec\ThongtinTimviec;
+    use App\Employer;
+    use Mail;
 
     class TimviecHomeController extends Controller
     {
+
         //
         public function home()
         {
@@ -42,10 +46,31 @@
             $jop = TuyendungJob::find($jop_id);
             $save = array($user_id);
             $jop->jop_save()->attach($save);
+
+//            xử lý gửi mail thông báo tới nhà tuyển dụng
+//bước 1 lấy công việc được lưu
+            $tuyendung_id = $jop->employer_id;
+            $thongtincongtyquantam = ThongtinTimviec::findOrFail($user_id);
+            $tencongtyquantam = $thongtincongtyquantam->ten_doanh_nghiep;
+            $thongtin_id_timviec = $thongtincongtyquantam->id;
+            $mangdulieu = array(
+                'job_name' => $jop->ten_cong_viec,
+                'ten_cong_ty' => $tencongtyquantam,
+                'thongtin_id_timviec' => $thongtin_id_timviec, //id thông tin user
+                'id_tuyendung'=>$tuyendung_id
+            );
+            $tuyendung = Employer::findOrFail($tuyendung_id);
+            $mail_td = $tuyendung->email;
+            Mail::send('mail.savejob', $mangdulieu, function ($message) use ($mail_td) {
+                $message
+                    ->to($mail_td, 'Visitor')
+                    ->subject('Job Stock: Ứng viên quan tâm công việc của bạn');
+            });
             return response()->json([
                 'error' => false,
                 'message' => 'success'
             ], 200);
+
         }
 
         public function ungtuyen($id)
@@ -64,7 +89,7 @@
             ];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
-                return redirect()->route('timviec.ungtuyen',$job_id)
+                return redirect()->route('timviec.ungtuyen', $job_id)
                     ->withErrors($validator)
                     ->withInput();
             } else {

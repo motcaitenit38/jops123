@@ -12,6 +12,7 @@
 //        route chấp nhận ứng viên
         Route::post('chapnhan','Tuyendung\DanhsachUngtuyenController@chapnhanungvien')->name('tuyendung.chapnhanungvien');
         Route::post('tuchoi','Tuyendung\DanhsachUngtuyenController@tuchoi')->name('tuyendung.tuchoi');
+        Route::post('luu-congty','Tuyendung\TuyendungLuuCongtyController@luucongty')->name('tuyendung.luucongty');
 //        Route::get('getnganh/nganh/{idlinhvuc}', 'Tuyendung\TuyendungJobController@getNganh');
 
 // route quản lý thông tin công ty

@@ -37,12 +37,12 @@
                     <div class="textwidget">
                         <div class="textwidget">
                             <ul class="footer-navigation">
-                                <li><a href="manage-company.html" title="">Front-end Design</a></li>
-                                <li><a href="manage-company.html" title="">Android Developer</a></li>
-                                <li><a href="manage-company.html" title="">CMS Development</a></li>
-                                <li><a href="manage-company.html" title="">PHP Development</a></li>
-                                <li><a href="manage-company.html" title="">IOS Developer</a></li>
-                                <li><a href="manage-company.html" title="">Iphone Developer</a></li>
+                                {{--<li><a href="manage-company.html" title="">Front-end Design</a></li>--}}
+                                {{--<li><a href="manage-company.html" title="">Android Developer</a></li>--}}
+                                {{--<li><a href="manage-company.html" title="">CMS Development</a></li>--}}
+                                {{--<li><a href="manage-company.html" title="">PHP Development</a></li>--}}
+                                {{--<li><a href="manage-company.html" title="">IOS Developer</a></li>--}}
+                                {{--<li><a href="manage-company.html" title="">Iphone Developer</a></li>--}}
                             </ul>
                         </div>
                     </div>
@@ -53,12 +53,12 @@
                     <h3 class="widgettitle widget-title">All Categories</h3>
                     <div class="textwidget">
                         <ul class="footer-navigation">
-                            <li><a href="manage-company.html" title="">Front-end Design</a></li>
-                            <li><a href="manage-company.html" title="">Android Developer</a></li>
-                            <li><a href="manage-company.html" title="">CMS Development</a></li>
-                            <li><a href="manage-company.html" title="">PHP Development</a></li>
-                            <li><a href="manage-company.html" title="">IOS Developer</a></li>
-                            <li><a href="manage-company.html" title="">Iphone Developer</a></li>
+                            {{--<li><a href="manage-company.html" title="">Front-end Design</a></li>--}}
+                            {{--<li><a href="manage-company.html" title="">Android Developer</a></li>--}}
+                            {{--<li><a href="manage-company.html" title="">CMS Development</a></li>--}}
+                            {{--<li><a href="manage-company.html" title="">PHP Development</a></li>--}}
+                            {{--<li><a href="manage-company.html" title="">IOS Developer</a></li>--}}
+                            {{--<li><a href="manage-company.html" title="">Iphone Developer</a></li>--}}
                         </ul>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
     </div>
     <div class="row copyright">
         <div class="container">
-            <p>Copyright Job Stock © 2017. All Rights Reserved </p>
+            <p>Copyright Job Stock © 2018. All Rights Reserved </p>
         </div>
     </div>
 </footer>

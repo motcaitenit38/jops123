@@ -39,6 +39,9 @@
         {
             return $this->hasOne('App\Employter\Employer_info', 'employer_id', 'id');
         }
+        public function luucongty(){
+            return $this->belongsToMany('App\Model\Timviec\ThongtinTimviec','tuyendung_quantam_timviecs');
+        }
 
 
 

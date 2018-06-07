@@ -10,7 +10,8 @@
                         <li role="presentation"><a href="#register" role="tab" data-toggle="tab">Đăng ký</a></li>
                     </ul>
                     <div class="tab-content" id="myModalLabel2">
-                        <div role="tabpanel" class="tab-pane fade in active" id="login"><img src="{{ asset('search/img/logo.png') }}" class="img-responsive" alt=""/>
+                        <div role="tabpanel" class="tab-pane fade in active" id="login"><img
+                                    src="{{ asset('search/img/logo.png') }}" class="img-responsive" alt=""/>
                             <div class="subscribe wow fadeInUp">
                                 <div class="alert alert-danger error errorLogin" style="display: none;">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
@@ -79,7 +80,6 @@
         </div>
     </div>
 </div>
-
 
 @section('script-login')
     <script>
@@ -165,7 +165,7 @@
                         }
                     },
                     error: function (data) {
-                        var errObj=jQuery.parseJSON(data.responseText);
+                        var errObj = jQuery.parseJSON(data.responseText);
                         if (errObj.errors.name)
                             $('.errorname').show().text(errObj.errors.name[0]);
 
@@ -180,5 +180,6 @@
             })
         });
     </script>
+
 @endsection
 

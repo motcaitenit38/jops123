@@ -11,7 +11,9 @@
     use App\Model\Timviec\TimviecLuuJob;
     use App\Model\Timviec\TimviecUngtuyen;
     use App\Model\Timviec\TimviecCv;
+    use App\Model\Timviec\ThongtinTimviec;
     use App\Model\Nganh;
+    use App\Model\Tuyendung\TuyendungQuantamTimviec;
 
     class HomeController extends Controller
     {
@@ -73,19 +75,19 @@
                 $all_ungtuyen = TimviecUngtuyen::all()->toArray();
                 $job_ungtuyen_cv = array();
                 foreach ($all_ungtuyen as $value) {
-                    $job_ungtuyen_cv[$value['tuyendung_job_id']] =  $value['timviec_cv_id'];
+                    $job_ungtuyen_cv[$value['tuyendung_job_id']] = $value['timviec_cv_id'];
                 }
 //                foreach cv ra để kiểm tra có trong mảng
 
-                foreach ($all_cv as $value){
-                    if(in_array($value['id'], $job_ungtuyen_cv) && array_key_exists($id,$job_ungtuyen_cv) ){
+                foreach ($all_cv as $value) {
+                    if (in_array($value['id'], $job_ungtuyen_cv) && array_key_exists($id, $job_ungtuyen_cv)) {
                         $kq = '1';
                     }
                 }
-                if(isset($kq)){
-                    $kq='1';
-                }else{
-                    $kq='0';
+                if (isset($kq)) {
+                    $kq = '1';
+                } else {
+                    $kq = '0';
                 }
                 return view('search.detail-jop', [
                     'jop' => $jop,
@@ -110,5 +112,24 @@
             foreach ($nganh as $value) {
                 echo "<option value='" . $value->id . "'>" . $value->ten_nganh . "</option>";
             }
+        }
+
+        public function thongtintimviec($thongtin_id_user, $id_tuyendung)
+        {
+
+            $all_quantam = TuyendungQuantamTimviec::where('employer_id', $id_tuyendung)->get();
+            $mangquantam = array();
+            foreach ($all_quantam as $quantam) {
+                array_push($mangquantam, $quantam->thongtin_timviec_id);
+            }
+//            ok ddoanj dwowis
+            $thongtin = ThongtinTimviec::findOrFail($thongtin_id_user);
+            return view('search.thongtincongty.timviec', ['thongtin' => $thongtin, 'allquantam' => $mangquantam]);
+        }
+
+        public function thongtintuyendung($idtuyendung)
+        {
+            $thongtin = ThongtinTuyendung::findOrfail($idtuyendung);
+            return view('search.thongtincongty.tuyendung', ['thongtin' => $thongtin]);
         }
     }

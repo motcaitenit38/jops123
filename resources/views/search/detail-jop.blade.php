@@ -249,7 +249,11 @@
                     'type': 'POST',
                     success: function (data) {
                         alert('Lưu công việc thành công');
+                        // alert(data.message);
                         location.reload();
+                    },
+                    error: function (data) {
+                        alert('loi');
                     }
 
                 });
