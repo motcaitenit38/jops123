@@ -8,5 +8,4 @@
 <script src="{{ asset('search/js/bootstrap-wysihtml5.js') }}"></script>
 <script src="{{ asset('search/js/jQuery.style.switcher.js') }}"></script>
 <script src="{{ asset('search/js/owl.carousel.min.js') }}"></script>
-
 <script src="{{ asset('search/js/custom.js') }}"></script>

@@ -78,14 +78,12 @@
                                     <div class="col-sm-9">
                                         <input id="filedinhkem" type="file" name="filedinhkem">
                                         <label for="cv" class="col-sm-12 col-form-label">Nén tất cả file yêu cầu thành
-                                            file
-                                            Zip hoặc Rar, trừ file thông tin công ty đã có trên hệ thống khi giới thiệu
-                                            công
-                                            ty</label>
+                                            file Zip hoặc Rar, trừ file thông tin công ty đã có trên hệ thống khi giới thiệu
+                                            công ty</label>
                                         @if ($errors->any())
-                                                    @foreach ($errors->all() as $error)
+                                            @foreach ($errors->all() as $error)
                                                 <p style="color:red;" class="error errorname">{{ $error }}</p>
-                                                    @endforeach
+                                            @endforeach
 
                                         @endif
 
@@ -96,7 +94,8 @@
                             <input type="hidden" id="job_id" name="job_id" value="{{ $jop->id }}">
                             <div class="col-md-12 col-sm-12">
                                 <div class="detail-pannel-footer-btn text-center">
-                                    <input type="submit" href="#" class="footer-btn grn-btn btn-block" title="">Gửi CV ứng tuyển</input>
+                                    <input type="submit" href="#" class="footer-btn grn-btn btn-block"
+                                           title="">Gửi CV ứng tuyển</input>
                                 </div>
                             </div>
                         </div>
@@ -132,58 +131,14 @@
             </div>
         </section>
     </form>
+
 @endsection
 @section('script')
-    {{--<script>--}}
-        {{--$(function () {--}}
-            {{--$('#ungtuyen').click(function (e) {--}}
-                {{--e.preventDefault();--}}
-                {{--alert($('#filedinhkem').get(0).files[0]);--}}
-                {{--// var cv_id = $('#cv_id').val();--}}
-                {{--// var job_id = $('#job_id').val();--}}
-                {{--// var file_data = $('#filedinhkem').prop('files')[0];--}}
-                {{--// var form_data = new FormData();--}}
-                {{--// form_data.append('filedinhkem', file_data);--}}
-                {{--// form_data.append('cv_id', cv_id);--}}
-                {{--// form_data.append('job_id', job_id);--}}
-                {{--$.ajaxSetup({--}}
-                    {{--headers: {--}}
-                        {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-                    {{--}--}}
-                {{--});--}}
-                {{--$.ajax({--}}
-                    {{--'url': '{{ route('truongdz') }}',--}}
-                    {{--data: {--}}
-                        {{--'cv_id' : $('#cv_id').val(),--}}
-                        {{--'job_id' : $('#job_id').val(),--}}
-                        {{--'filedinhkem' : $('#filedinhkem').get(0).files[0]--}}
-                    {{--},--}}
-                    {{--processData: false,--}}
-                    {{--contentType: false,--}}
-                    {{--cache: false,--}}
-                    {{--'type': 'POST',--}}
-                    {{--success: function (data) {--}}
-                        {{--console.log(data);--}}
-                        {{--if (data.error == true) {--}}
-                            {{--$('.error').hide();--}}
-                            {{--if (data.message.filedinhkem != undefined) {--}}
-                                {{--$('.errorname').show().text(data.message.filedinhkem[0]);--}}
-                            {{--}--}}
-                        {{--}--}}
-                        {{--else {--}}
-                            {{--alert('Bạn đã gửi CV ứng tuyển thành công');--}}
-                            {{--window.location.href = "{{ route('timviec.index') }}"--}}
-                        {{--}--}}
-                    {{--}--}}
-
-                {{--});--}}
-            {{--})--}}
-        {{--});--}}
-    {{--</script>--}}
     <script type="text/javascript">
         var allEditors = document.querySelectorAll('#editor');
         for (var i = 0; i < allEditors.length; ++i) {
             ClassicEditor.create(allEditors[i]);
         }
     </script>
+
 @endsection

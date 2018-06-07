@@ -105,6 +105,22 @@
                 $model->tuyendung_job_id = $job_id;
                 $model->file_dinh_kem = $attach_name;
                 $model->save();
+
+//                bắt đầu gửi mail
+                $congviecduocungtuyen = TuyendungJob::findOrFail($job_id);
+                $tuyendung_id = $congviecduocungtuyen->employer_id;
+                $user_tuyendung = Employer::findOrFail($tuyendung_id);
+                $mail_td = $user_tuyendung->email;
+                $tencongviec = $congviecduocungtuyen->ten_cong_viec;
+                $mangdulieu = array(
+                    'tencongviec' => $tencongviec,
+                    'id_congviec' =>$job_id
+                );
+                Mail::send('mail.mail_ung_tuyen', $mangdulieu, function ($message) use ($mail_td) {
+                    $message
+                        ->to($mail_td, 'Visitor')
+                        ->subject('Job Stock: Bạn có ứng viên ứng tuyển vào công việc');
+                });
                 return redirect(route('timviec.index'));
             }
         }
