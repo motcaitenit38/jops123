@@ -22,8 +22,12 @@ Route::group(['prefix' => '/'], function () {
     Route::get('kq', 'HomeController@search')->name('home.search');
     Route::get('jop/{id}', 'HomeController@detail')->name('home.detail');
     Route::get('getnganh/nganh/{idlinhvuc}', 'HomeController@getNganh');
+//    hiển thị thông tin công ty ứng viên quan tâm hồ sơ ứng tuyển
     Route::get('thong-tin-cong-ty/{iduser}/{idtuyendung}', 'HomeController@thongtintimviec')->name('index.thongtincongty');
+//      hiển thị thông tin công ty nhà tuyển dụng quan tâm hồ sơ tìm việc
     Route::get('thong-tin-tuyen-dung/{idtuyendung}', 'HomeController@thongtintuyendung')->name('index.congtytuyendung');
+//    tìm việc quan tâm công ty tuyển dụng
+
 });
 
 

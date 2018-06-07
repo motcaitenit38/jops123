@@ -113,20 +113,18 @@
                 echo "<option value='" . $value->id . "'>" . $value->ten_nganh . "</option>";
             }
         }
-
+// hiển thị thông tin công ty tìm việc, sau khi truy cập từ email. kiểm tra xem quan tâm hay chưa. email được gửi sau khi thằng tìm việc quan tâm công việc bạn đã đăng
         public function thongtintimviec($thongtin_id_user, $id_tuyendung)
         {
-
             $all_quantam = TuyendungQuantamTimviec::where('employer_id', $id_tuyendung)->get();
             $mangquantam = array();
             foreach ($all_quantam as $quantam) {
                 array_push($mangquantam, $quantam->thongtin_timviec_id);
             }
-//            ok ddoanj dwowis
             $thongtin = ThongtinTimviec::findOrFail($thongtin_id_user);
             return view('search.thongtincongty.timviec', ['thongtin' => $thongtin, 'allquantam' => $mangquantam]);
         }
-
+// Hiển thị dữ liệu  từ mail sau khi có công ty quan tâm hồ sơ của thằng tìm việc
         public function thongtintuyendung($idtuyendung)
         {
             $thongtin = ThongtinTuyendung::findOrfail($idtuyendung);

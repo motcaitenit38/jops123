@@ -14,11 +14,4 @@
         Route::post('chapnhan','Tuyendung\DanhsachUngtuyenController@chapnhanungvien')->name('tuyendung.chapnhanungvien');
         Route::post('tuchoi','Tuyendung\DanhsachUngtuyenController@tuchoi')->name('tuyendung.tuchoi');
         Route::post('luu-congty','Tuyendung\TuyendungLuuCongtyController@luucongty')->name('tuyendung.luucongty');
-//        Route::get('getnganh/nganh/{idlinhvuc}', 'Tuyendung\TuyendungJobController@getNganh');
-
-// route quản lý thông tin công ty
-//        Route::resource('info', 'Employer\Employer_info_Controller');
-//        route quản lý ứng viên
-//        Route::get('qluv', 'Employer\Ql_ungvien_Controller@danhsachcongviec')->name('quanlyungvien');
-//        Route::get('danhsachungvien/{id}', 'Employer\Ql_ungvien_Controller@danhsachungvien');
     });

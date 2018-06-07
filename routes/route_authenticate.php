@@ -1,8 +1,6 @@
 <?php
 
     Auth::routes();
-//route register ajax thằng tìm việc
-    Route::post('seeker/register', 'Employer\Employer_register_Controller@posRegister')->name('seeker.register.submit');
 // regist
     Route::get('tuyendung/register',
         'Tuyendung\TuyendungRegisterController@showRegistForm')->name('tuyendung.register');
