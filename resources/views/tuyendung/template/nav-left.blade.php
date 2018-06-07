@@ -17,6 +17,9 @@
                     <li>
                         <a href="{{ route('job.hethan') }}"><i class="expire-job fa fa-circle-o-notch" aria-hidden="true"></i>Việc làm đã hết hạn</a>
                     </li>
+                    <li>
+                        <a href="{{ route('job.daxoa') }}"><i class="expire-job fa fa-circle-o-notch" aria-hidden="true"></i>Việc làm hủy</a>
+                    </li>
                 </ul>
             </li>
             <li class="active">

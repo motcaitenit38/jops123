@@ -44,14 +44,14 @@
                 <div class="form-group col-md-6">
                     <label for="date" class="col-md-2" style="padding-left: 0;">Từ</label>
                     <div class="col-md-10">
-                        <input name="thoi_gian_thuc_hien.0" type="date" class="form-control col-md-6" id="min">
+                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="min">
                     </div>
 
                 </div>
                 <div class="form-group col-md-6">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Đến:</label>
                     <div class="col-md-10">
-                        <input name="thoi_gian_thuc_hien.1" type="date" class="form-control col-md-6" id="max">
+                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="max">
                     </div>
                 </div>
             </div>

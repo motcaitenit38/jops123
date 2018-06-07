@@ -37,10 +37,9 @@
         {
             //
             $job = TuyendungJob::where('employer_id', Auth::user()->id)->where('thoi_gian_bao_gia', '>=',
-                date('Y-m-d'))->orderBy('id',
+                date('Y-m-d'))->where('trangthai',0)->orderBy('id',
                 'DESC')->paginate(10);
             return view('tuyendung.job.get_job', ['jobs' => $job]);
-
         }
 
         /**
@@ -94,31 +93,24 @@
             $model = new TuyendungJob();
             $model->fill($request->all());
             if ($request->hasFile('attach_spec')) {
-
                 $attach_spec = $request->file('attach_spec');
-                $attach_spec_name = time() . $attach_spec->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_spec->storeAs('upload/' . $model->getTable() . '/attach-spec', $attach_spec_name);
-                //Lưu DB
-                $model->attach_spec = 'upload/' . $model->getTable() . '/attach-spec/' . $attach_spec_name;
-            }
-            if ($request->hasFile('attach_spec')) {
+                $attach_spec_name = time() .$attach_spec->getClientOriginalName();
+                $attach_spec_name = $attach_spec->move('upload\tuyendung_jobs\spec', $attach_spec_name);
+                $model->attach_spec = $attach_spec_name;
 
-                $attach_boq = $request->file('attach_spec');
-                $attach_boq_name = time() . $attach_boq->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_boq->storeAs('upload/' . $model->getTable() . '/attach-boq', $attach_boq_name);
-                //Lưu DB
-                $model->attach_boq = 'upload/' . $model->getTable() . '/attach-boq/' . $attach_spec_name;
+            }
+            if ($request->hasFile('attach_boq')) {
+                $attach_boq = $request->file('attach_boq');
+                $attach_boq_name = time() .$attach_boq->getClientOriginalName();
+                $attach_boq_name = $attach_boq->move('upload\tuyendung_jobs\boq', $attach_boq_name);
+                $model->attach_boq = $attach_boq_name;
+
             }
             if ($request->hasFile('attach_ban_ve_ket_cau')) {
                 $attach_ban_ve_ket_cau = $request->file('attach_ban_ve_ket_cau');
-                $attach_ban_ve_ket_cau_name = time() . $attach_ban_ve_ket_cau->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_ban_ve_ket_cau->storeAs('upload/' . $model->getTable() . '/attach',
-                    $attach_ban_ve_ket_cau_name);
-                //Lưu DB
-                $model->attach_ban_ve_ket_cau = 'upload/' . $model->getTable() . '/attach/' . $attach_spec_name;
+                $attach_ban_ve_ket_cau_name = time() .$attach_ban_ve_ket_cau->getClientOriginalName();
+                $attach_ban_ve_ket_cau_name = $attach_ban_ve_ket_cau->move('upload\tuyendung_jobs\banve', $attach_ban_ve_ket_cau_name);
+                $model->attach_ban_ve_ket_cau = $attach_ban_ve_ket_cau_name;
             }
             $model->thoi_gian_thuc_hien = json_encode($request->thoi_gian_thuc_hien);
             $model->gia_tri_cong_viec = json_encode($request->gia_tri_cong_viec);
@@ -208,50 +200,25 @@
                     ->withErrors($validator)
                     ->withInput();
             }
-            if ($request->hasFile('attach_spec')) {
-                if (file_exists($model->attach_spec)) {
-                    unlink(public_path($model->attach_spec));
-                }
-            }
 
-            if ($request->hasFile('attach_boq')) {
-                if (file_exists($model->attach_boq)) {
-                    unlink(public_path($model->attach_boq));
-                }
-            }
-
-            if ($request->hasFile('attach_ban_ve_ket_cau')) {
-                if (file_exists($model->attach_ban_ve_ket_cau)) {
-                    unlink(public_path($model->attach_ban_ve_ket_cau));
-                }
-            }
             $model->fill($request->all());
             if ($request->hasFile('attach_spec')) {
-
                 $attach_spec = $request->file('attach_spec');
-                $attach_spec_name = time() . $attach_spec->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_spec->storeAs('upload/' . $model->getTable() . '/attach-spec', $attach_spec_name);
-                //Lưu DB
-                $model->attach_spec = 'upload/' . $model->getTable() . '/attach-spec/' . $attach_spec_name;
+                $attach_spec_name = time() .$attach_spec->getClientOriginalName();
+                $attach_spec_name = $attach_spec->move('upload\tuyendung_jobs\spec', $attach_spec_name);
+                $model->attach_spec = $attach_spec_name;
             }
-            if ($request->hasFile('attach_spec')) {
-
-                $attach_boq = $request->file('attach_spec');
-                $attach_boq_name = time() . $attach_boq->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_boq->storeAs('upload/' . $model->getTable() . '/attach-boq', $attach_boq_name);
-                //Lưu DB
-                $model->attach_boq = 'upload/' . $model->getTable() . '/attach-boq/' . $attach_spec_name;
+            if ($request->hasFile('attach_boq')) {
+                $attach_boq = $request->file('attach_boq');
+                $attach_boq_name = time() .$attach_boq->getClientOriginalName();
+                $attach_boq_name = $attach_boq->move('upload\tuyendung_jobs\boq', $attach_boq_name);
+                $model->attach_boq = $attach_boq_name;
             }
             if ($request->hasFile('attach_ban_ve_ket_cau')) {
                 $attach_ban_ve_ket_cau = $request->file('attach_ban_ve_ket_cau');
-                $attach_ban_ve_ket_cau_name = time() . $attach_ban_ve_ket_cau->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_ban_ve_ket_cau->storeAs('upload/' . $model->getTable() . '/attach',
-                    $attach_ban_ve_ket_cau_name);
-                //Lưu DB
-                $model->attach_ban_ve_ket_cau = 'upload/' . $model->getTable() . '/attach/' . $attach_spec_name;
+                $attach_ban_ve_ket_cau_name = time() .$attach_ban_ve_ket_cau->getClientOriginalName();
+                $attach_ban_ve_ket_cau_name = $attach_ban_ve_ket_cau->move('upload\tuyendung_jobs\banve', $attach_ban_ve_ket_cau_name);
+                $model->attach_ban_ve_ket_cau = $attach_ban_ve_ket_cau_name;
             }
             $model->thoi_gian_thuc_hien = json_encode($request->thoi_gian_thuc_hien);
             $model->gia_tri_cong_viec = json_encode($request->gia_tri_cong_viec);
@@ -287,5 +254,23 @@
                 'DESC')->paginate(10);
             return view('tuyendung.job.get_job', ['jobs' => $job]);
 
+        }
+
+        public function xoajob($id){
+            $model = TuyendungJob::findOrFail($id);
+            $model->trangthai = 1;
+            $flag = $model->save();
+            if ($flag) {
+                session()->flash('success', "Thành công!!!");
+            } else {
+                session()->flash('danger', "Không thành công!!!");
+            }
+            return redirect(route('job.index'));
+        }
+
+        public function daxoa(){
+            $job = TuyendungJob::where('employer_id', Auth::user()->id)->where('trangthai',1)->orderBy('id',
+                'DESC')->paginate(10);
+            return view('tuyendung.job.get_job', ['jobs' => $job]);
         }
     }

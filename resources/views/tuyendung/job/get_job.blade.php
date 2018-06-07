@@ -28,7 +28,7 @@
                                 <div class="col-md-2 col-sm-2">
                                     <div class="job-action">
                                         <a class="edit" href="{{ asset('tuyendung/job/'.$jop->id.'/edit') }}" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                        <a class="delete" href="{{ asset('tuyendung/job/'.$jop->id.'/edit') }}" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <a class="delete" href="{{ asset('tuyendung/xoajob/'.$jop->id) }}" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>

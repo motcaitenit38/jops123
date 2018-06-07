@@ -5,7 +5,8 @@
         // route quản lý công việc
         Route::resource('job', 'Tuyendung\TuyendungJobController');
         Route::get('job-hethan', 'Tuyendung\TuyendungJobController@jobhethan')->name('job.hethan');
-        Route::get('jop-deadline', 'Employer\Employer_jop_Controller@expiration')->name('job.deadline');
+        Route::get('daxoa', 'Tuyendung\TuyendungJobController@daxoa')->name('job.daxoa');
+        Route::get('xoajob/{id}','Tuyendung\TuyendungJobController@xoajob')->name('tuyendung.xoajob');
 //        quanr lys ung vien
         Route::get('dangsachungvien/{id}', 'Tuyendung\DanhsachUngtuyenController@danhsach')->name('tuyendung.danhsachungtuyen');
         Route::get('chitietungvien/{idcv}/{idjob}', 'Tuyendung\DanhsachUngtuyenController@chitiethoso')->name('tuyendung.chitiethoso');

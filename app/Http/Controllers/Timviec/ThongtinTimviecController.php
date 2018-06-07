@@ -51,7 +51,7 @@
         public function store(Request $request)
         {
             //
-            $validator = Validator::make($request->all(),[
+            $validator = Validator::make($request->all(), [
                 'ten_doanh_nghiep' => 'required',
                 'dien_thoai' => 'required',
                 'website' => 'required',
@@ -77,22 +77,16 @@
             $model = new ThongtinTimviec();
             $model->fill($request->all());
             if ($request->hasFile('file_dinh_kem_kinh_doanh')) {
-
                 $attach_kinhdoanh = $request->file('file_dinh_kem_kinh_doanh');
                 $attach_kinhdoanh_name = time() . $attach_kinhdoanh->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_kinhdoanh->storeAs('upload/' . $model->getTable() . '/kinhdoanh', $attach_kinhdoanh_name);
-                //Lưu DB
-                $model->file_dinh_kem_kinh_doanh = 'upload/' . $model->getTable() . '/kinhdoanh/' . $attach_kinhdoanh_name;
+                $attach_kinhdoanh_name = $attach_kinhdoanh->move('upload\thongtin_timviec', $attach_kinhdoanh_name);
+                $model->file_dinh_kem_kinh_doanh = $attach_kinhdoanh_name;
             }
             if ($request->hasFile('file_dinh_kem_thong_tin_cong_ty')) {
-
                 $attach_gioithieu = $request->file('file_dinh_kem_thong_tin_cong_ty');
                 $attach_gioithieu_name = time() . $attach_gioithieu->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_gioithieu->storeAs('upload/' . $model->getTable() . '/gioithieu', $attach_gioithieu_name);
-                //Lưu DB
-                $model->file_dinh_kem_thong_tin_cong_ty = 'upload/' . $model->getTable() . '/gioithieu/' . $attach_gioithieu_name;
+                $attach_gioithieu_name = $attach_gioithieu->move('upload\thongtin_timviec', $attach_gioithieu_name);
+                $model->file_dinh_kem_thong_tin_cong_ty = $attach_gioithieu_name;
             }
             $model->user_id = Auth::user()->id;
             $flag = $model->save();
@@ -140,7 +134,7 @@
         {
             //
             $model = ThongtinTimviec::findOrFail($id);
-            $validator = Validator::make($request->all(),[
+            $validator = Validator::make($request->all(), [
                 'ten_doanh_nghiep' => 'required',
                 'dien_thoai' => 'required',
                 'website' => 'required',
@@ -163,35 +157,18 @@
                     ->withErrors($validator)
                     ->withInput();
             }
-            if ($request->hasFile('file_dinh_kem_kinh_doanh')) {
-                if (file_exists($model->file_dinh_kem_kinh_doanh)) {
-                    unlink(public_path($model->file_dinh_kem_kinh_doanh));
-                }
-            }
-
-            if ($request->hasFile('file_dinh_kem_thong_tin_cong_ty')) {
-                if (file_exists($model->file_dinh_kem_thong_tin_cong_ty)) {
-                    unlink(public_path($model->file_dinh_kem_thong_tin_cong_ty));
-                }
-            }
             $model->fill($request->all());
             if ($request->hasFile('file_dinh_kem_kinh_doanh')) {
-
                 $attach_kinhdoanh = $request->file('file_dinh_kem_kinh_doanh');
                 $attach_kinhdoanh_name = time() . $attach_kinhdoanh->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_kinhdoanh->storeAs('upload/' . $model->getTable() . '/kinhdoanh', $attach_kinhdoanh_name);
-                //Lưu DB
-                $model->file_dinh_kem_kinh_doanh = 'upload/' . $model->getTable() . '/kinhdoanh/' . $attach_kinhdoanh_name;
+                $attach_kinhdoanh_name = $attach_kinhdoanh->move('upload\thongtin_timviec', $attach_kinhdoanh_name);
+                $model->file_dinh_kem_kinh_doanh = $attach_kinhdoanh_name;
             }
             if ($request->hasFile('file_dinh_kem_thong_tin_cong_ty')) {
-
                 $attach_gioithieu = $request->file('file_dinh_kem_thong_tin_cong_ty');
                 $attach_gioithieu_name = time() . $attach_gioithieu->getClientOriginalName();
-                // Lưu thư mục nào
-                $attach_gioithieu->storeAs('upload/' . $model->getTable() . '/gioithieu', $attach_gioithieu_name);
-                //Lưu DB
-                $model->file_dinh_kem_thong_tin_cong_ty = 'upload/' . $model->getTable() . '/gioithieu/' . $attach_gioithieu_name;
+                $attach_gioithieu_name = $attach_gioithieu->move('upload\thongtin_timviec', $attach_gioithieu_name);
+                $model->file_dinh_kem_thong_tin_cong_ty = $attach_gioithieu_name;
             }
             $model->user_id = Auth::user()->id;
             $flag = $model->save();
