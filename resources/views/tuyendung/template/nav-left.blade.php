@@ -21,9 +21,10 @@
                         <a href="{{ route('job.daxoa') }}"><i class="expire-job fa fa-circle-o-notch" aria-hidden="true"></i>Việc làm hủy</a>
                     </li>
                 </ul>
+
             </li>
-            <li class="active">
-                {{--<a href="{{ route('quanlyungvien') }}"><i class="fa fa-cog" aria-hidden="true"></i>Quản lý CV</a>--}}
+            <li>
+                <a href="{{ route('tuyendung.danhsachquantam') }}"><i class="expire-job fa fa-circle-o-notch" aria-hidden="true"></i>Công ty đã quan tâm</a>
             </li>
             <li class="log-off">
                 <a href="{{ route('tuyendung.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off" aria-hidden="true"></i>Logout</a>

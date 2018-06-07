@@ -43,6 +43,7 @@
             return $this->belongsToMany('App\Model\Timviec\ThongtinTimviec','tuyendung_quantam_timviecs');
         }
 
-
-
+        public function danhsachquantam(){
+            return $this->belongsToMany('App\Model\Timviec\ThongtinTimviec','tuyendung_quantam_timviecs');
+        }
     }
