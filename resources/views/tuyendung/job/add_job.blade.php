@@ -16,16 +16,20 @@
             <label for="gia_tri_cong_viec" class="col-sm-3 col-form-label">Giá trị công việc</label>
             <div class="col-sm-8">
                 <div class="form-group col-md-6">
-                    <label for="email" class="col-md-2" style="padding-left: 0;">Từ</label>
+                    <label for="min" class="col-md-2" style="padding-left: 0;">Từ</label>
                     <div class="col-md-10">
-                        <input name="gia_tri_cong_viec[]" type="number" class=" form-control col-md-6" id="min" value="{{ old('gia_tri_cong_viec.0') }}">
+                        <input name="gia_tri_cong_viec[]" type="text" class=" form-control col-md-6" id="min"
+                               value="{{ old('gia_tri_cong_viec.0') }}" >
+                        <span id="truongaa"></span><span> Triệu đồng</span>
                     </div>
 
                 </div>
                 <div class="form-group col-md-6">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Đến:</label>
                     <div class="col-md-10">
-                        <input name="gia_tri_cong_viec[]" type="number" class=" form-control col-md-6" id="max" value="{{ old('gia_tri_cong_viec.1') }}">
+                        <input name="gia_tri_cong_viec[]" type="text" class=" form-control col-md-6" id="max"
+                               value="{{ old('gia_tri_cong_viec.1') }}" >
+                        <span id="truongbb"></span><span> Triệu đồng</span>
                     </div>
                 </div>
             </div>
@@ -73,6 +77,7 @@
                 <input name="von_dieu_le" type="text" class="form-control" id="von_dieu_le"
                        placeholder="Vốn điều lệ"
                        value="{{ old('von_dieu_le') }}" required/>
+                <span id="truongcc"></span><span> Triệu đồng</span>
             </div>
         </div>
         <div class="form-group row">
@@ -300,5 +305,43 @@
                 x--;
             })
         });
+    </script>
+    <script>
+        var input1 = document.getElementById('min');
+        input1.addEventListener('keyup', function(e)
+        {
+            input1.value = format_number(this.value);
+            $('#truongaa').html(format_number(this.value));
+        });
+
+        var input2 = document.getElementById('max');
+        input2.addEventListener('keyup', function(e)
+        {
+            input2.value = format_number(this.value);
+            $('#truongbb').html(format_number(this.value));
+        });
+        var input3 = document.getElementById('von_dieu_le');
+        input3.addEventListener('keyup', function(e)
+        {
+            input3.value = format_number(this.value);
+            $('#truongcc').html(format_number(this.value));
+        });
+        function format_number(number, prefix, thousand_separator, decimal_separator) {
+            var thousand_separator = thousand_separator || ',',
+                decimal_separator = decimal_separator || '.',
+                regex = new RegExp('[^' + decimal_separator + '\\d]', 'g'),
+                number_string = number.replace(regex, '').toString(),
+                split = number_string.split(decimal_separator),
+                rest = split[0].length % 3,
+                result = split[0].substr(0, rest),
+                thousands = split[0].substr(rest).match(/\d{3}/g);
+
+            if (thousands) {
+                separator = rest ? thousand_separator : '';
+                result += separator + thousands.join(thousand_separator);
+            }
+            result = split[1] != undefined ? result + decimal_separator + split[1] : result;
+            return prefix == undefined ? result : (result ? prefix + result : '');
+        };
     </script>
 @endsection

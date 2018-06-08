@@ -18,14 +18,16 @@
                 <div class="form-group col-md-6">
                     <label for="email" class="col-md-2" style="padding-left: 0;">Từ</label>
                     <div class="col-md-10">
-                        <input name="gia_tri_cong_viec[]" type="number" class=" form-control col-md-6" id="min" value="@php $a = json_decode($jop->gia_tri_cong_viec); echo $a[0]; @endphp">
+                        <input name="gia_tri_cong_viec[]" type="text" class=" form-control col-md-6" id="min" value="@php $a = json_decode($jop->gia_tri_cong_viec); echo $a[0]; @endphp">
+                        <span id="truongaa"></span><span> Triệu đồng</span>
                     </div>
 
                 </div>
                 <div class="form-group col-md-6">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Đến:</label>
                     <div class="col-md-10">
-                        <input name="gia_tri_cong_viec[]" type="number" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->gia_tri_cong_viec); echo $a[1]; @endphp">
+                        <input name="gia_tri_cong_viec[]" type="text" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->gia_tri_cong_viec); echo $a[1]; @endphp">
+                        <span id="truongaa"></span><span> Triệu đồng</span>
                     </div>
                 </div>
             </div>
@@ -73,6 +75,7 @@
                 <input name="von_dieu_le" type="text" class="form-control" id="von_dieu_le"
                        placeholder="Vốn điều lệ"
                        value="{{ $jop->von_dieu_le }}" required/>
+                <span id="truongcc"></span><span> Triệu đồng</span>
             </div>
         </div>
         <div class="form-group row">
@@ -222,15 +225,15 @@
             <label for="attach_spec" class="col-sm-3 col-form-label">Attach SPec</label>
             <div class="col-sm-8">
                 <input name="attach_spec" type="file" class="form-control" id="attach_spec"
-                       value="{{ old('attach_spec') }}" rows="6" required>
-                </input>
+                       value="{{ old('attach_spec') }}" >
+
             </div>
         </div>
         <div class="form-group row">
             <label for="attach_boq" class="col-sm-3 col-form-label">Attach Boq</label>
             <div class="col-sm-8">
                 <input name="attach_boq" type="file" class="form-control" id="attach_boq"
-                       value="{{ old('attach_boq') }}" rows="6" required>
+                       value="{{ old('attach_boq') }}" >
                 </input>
             </div>
         </div>
@@ -238,7 +241,7 @@
             <label for="attach_ban_ve_ket_cau" class="col-sm-3 col-form-label">Attach bản vẽ kết cấu</label>
             <div class="col-sm-8">
                 <input name="attach_ban_ve_ket_cau" type="file" class="form-control" id="attach_ban_ve_ket_cau"
-                       value="{{ old('attach_ban_ve_ket_cau') }}" rows="6" required>
+                       value="{{ old('attach_ban_ve_ket_cau') }}">
                 </input>
             </div>
         </div>
@@ -307,5 +310,43 @@
                 x--;
             })
         });
+    </script>
+    <script>
+        var input1 = document.getElementById('min');
+        input1.addEventListener('keyup', function(e)
+        {
+            input1.value = format_number(this.value);
+            $('#truongaa').html(format_number(this.value));
+        });
+
+        var input2 = document.getElementById('max');
+        input2.addEventListener('keyup', function(e)
+        {
+            input2.value = format_number(this.value);
+            $('#truongbb').html(format_number(this.value));
+        });
+        var input3 = document.getElementById('von_dieu_le');
+        input3.addEventListener('keyup', function(e)
+        {
+            input3.value = format_number(this.value);
+            $('#truongcc').html(format_number(this.value));
+        });
+        function format_number(number, prefix, thousand_separator, decimal_separator) {
+            var thousand_separator = thousand_separator || ',',
+                decimal_separator = decimal_separator || '.',
+                regex = new RegExp('[^' + decimal_separator + '\\d]', 'g'),
+                number_string = number.replace(regex, '').toString(),
+                split = number_string.split(decimal_separator),
+                rest = split[0].length % 3,
+                result = split[0].substr(0, rest),
+                thousands = split[0].substr(rest).match(/\d{3}/g);
+
+            if (thousands) {
+                separator = rest ? thousand_separator : '';
+                result += separator + thousands.join(thousand_separator);
+            }
+            result = split[1] != undefined ? result + decimal_separator + split[1] : result;
+            return prefix == undefined ? result : (result ? prefix + result : '');
+        };
     </script>
 @endsection

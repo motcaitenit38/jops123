@@ -64,7 +64,7 @@
          */
         public function store(Request $request)
         {
-//            dd($request->thoi_gian_thuc_hien);
+
             //
             $validator = Validator::make($request->all(), [
                 'ten_cong_viec' => 'required|min:10',
@@ -77,13 +77,13 @@
                 'loai_hinh_doanh_nghiep' => 'required',
                 'nhan_su' => 'required',
                 'thiet_bi' => 'required',
-                'chi_tiet_cong_viec' => 'required',
-                'yeu_cau_cong_viec' => 'required',
-                'phuc_loi_cong_viec' => 'required',
-                'yeu_cau_ho_so_dinh_kem' => 'required',
-                'attach_spec' => 'required',
-                'attach_boq' => 'required',
-                'attach_ban_ve_ket_cau' => 'required',
+                'chi_tiet_cong_viec' => 'required|min:20',
+                'yeu_cau_cong_viec' => 'required|min:20',
+                'phuc_loi_cong_viec' => 'required|min:20',
+                'yeu_cau_ho_so_dinh_kem' => 'required|min:10',
+                'attach_spec' => 'required|mimes:pdf,doc,docx',
+                'attach_boq' => 'required|mimes:pdf,doc,docx',
+                'attach_ban_ve_ket_cau' => 'required|mimes:pdf,jpg,jpeg,png',
             ]);
             if ($validator->fails()) {
                 return redirect()->route('job.create')
@@ -187,13 +187,13 @@
                 'loai_hinh_doanh_nghiep' => 'required',
                 'nhan_su' => 'required',
                 'thiet_bi' => 'required',
-                'chi_tiet_cong_viec' => 'required',
-                'yeu_cau_cong_viec' => 'required',
-                'phuc_loi_cong_viec' => 'required',
-                'yeu_cau_ho_so_dinh_kem' => 'required',
-                'attach_spec' => 'required',
-                'attach_boq' => 'required',
-                'attach_ban_ve_ket_cau' => 'required',
+                'chi_tiet_cong_viec' => 'required|min:20',
+                'yeu_cau_cong_viec' => 'required|min:20',
+                'phuc_loi_cong_viec' => 'required|min:20',
+                'yeu_cau_ho_so_dinh_kem' => 'required|min:10',
+                'attach_spec' => 'mimes:pdf,doc,docx',
+                'attach_boq' => 'mimes:pdf,doc,docx',
+                'attach_ban_ve_ket_cau' => 'mimes:pdf,jpg,jpeg,png',
             ]);
             if ($validator->fails()) {
                 return redirect()->route('job.edit',$id)

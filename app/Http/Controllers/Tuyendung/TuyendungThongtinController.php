@@ -61,7 +61,7 @@
                 'von_dieu_le' => 'required',
                 'nam_thanh_lap' => 'required',
                 'loai_hinh_doanh_nghiep' => 'required',
-                'gioi_thieu_cong_ty' => 'required',
+                'gioi_thieu_cong_ty' => 'required|min:20',
             ]);
             if ($validator->fails()) {
                 return redirect()->route('info.create')->withErrors($validator)->withInput();
@@ -125,7 +125,7 @@
                 'von_dieu_le' => 'required',
                 'nam_thanh_lap' => 'required',
                 'loai_hinh_doanh_nghiep' => 'required',
-                'gioi_thieu_cong_ty' => 'required',
+                'gioi_thieu_cong_ty' => 'required|min:20',
             ]);
             if ($validator->fails()) {
                 return redirect()->route('info.edit', $id)->withErrors($validator)->withInput();

@@ -20,7 +20,7 @@
                 <div class="col-md-8 col-sm-8">
                     <div class="detail-desc-caption">
                         <h3>{{ $jop->ten_cong_viec }}</h3>
-                        <p>{{ $thongtin->ten_doanh_nghiep }}</p>
+                        <p><a href="{{ route('index.congtytuyendung',$thongtin->id) }}" target="_blank"><strong>{{ $thongtin->ten_doanh_nghiep }}</strong></a></p>
                         <ul>
                             <li><i class="fa fa-briefcase"></i>Giá trị công việc từ:
                                 <span>

@@ -52,8 +52,8 @@
         {
             //
             $validator = Validator::make($request->all(), [
-                'ten_doanh_nghiep' => 'required',
-                'dien_thoai' => 'required',
+                'ten_doanh_nghiep' => 'required|min:10',
+                'dien_thoai' => 'required|min:9|max:12',
                 'website' => 'required',
                 'dia_diem_id' => 'required',
                 'dia_diem_cuthe' => 'required',
@@ -64,9 +64,9 @@
                 'dien_tich_quy_mo' => 'required',
                 'so_luong_day_chuyen' => 'required',
                 'tong_cong_suat' => 'required',
-                'file_dinh_kem_kinh_doanh' => 'required',
-                'file_dinh_kem_thong_tin_cong_ty' => 'required',
-                'gioi_thieu_cong_ty' => 'required',
+                'file_dinh_kem_kinh_doanh' => 'required|mimes:pdf,png,jpg,jpeg',
+                'file_dinh_kem_thong_tin_cong_ty' => 'required|mimes:pdf',
+                'gioi_thieu_cong_ty' => 'required|min:20',
             ]);
 
             if ($validator->fails()) {
@@ -135,8 +135,8 @@
             //
             $model = ThongtinTimviec::findOrFail($id);
             $validator = Validator::make($request->all(), [
-                'ten_doanh_nghiep' => 'required',
-                'dien_thoai' => 'required',
+                'ten_doanh_nghiep' => 'required|min:10',
+                'dien_thoai' => 'required|min:9|max:12',
                 'website' => 'required',
                 'dia_diem_id' => 'required',
                 'dia_diem_cuthe' => 'required',
@@ -147,9 +147,9 @@
                 'dien_tich_quy_mo' => 'required',
                 'so_luong_day_chuyen' => 'required',
                 'tong_cong_suat' => 'required',
-                'file_dinh_kem_kinh_doanh' => 'required',
-                'file_dinh_kem_thong_tin_cong_ty' => 'required',
-                'gioi_thieu_cong_ty' => 'required',
+                'file_dinh_kem_kinh_doanh' => 'mimes:pdf,png,jpg,jpeg',
+                'file_dinh_kem_thong_tin_cong_ty' => 'mimes:pdf',
+                'gioi_thieu_cong_ty' => 'required|min:20',
             ]);
 
             if ($validator->fails()) {
