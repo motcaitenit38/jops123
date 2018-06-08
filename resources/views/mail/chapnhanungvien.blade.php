@@ -25,14 +25,14 @@
 <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0">
     <tr>
         <td align="center" valign="top" bgcolor="#F0F0F0" style="background-color: #F0F0F0;">
-            Bạn có ứng viên vừa ứng tuyển vào công việc
+                Hồ sơ của bạn đã được chấp nhận
             <br>
 
             <!-- 600px container (white background) -->
             <table border="0" width="600" cellpadding="0" cellspacing="0" class="container">
                 <tr>
                     <td class="container-padding header" align="left">
-                        Bạn có ứng viên vừa ứng tuyển vào công việc
+                        Chúc mừng bạn!
                     </td>
                 </tr>
                 <tr>
@@ -43,11 +43,9 @@
                         <br>
 
                         <div class="body-text">
-                            Công việc <strong>{{ $tencongviec }} </strong> đã được công ty  quan tâm.
-                            Bạn vui lòng truy cập website để xem thông tin công ty
-                            <br>
-                            Truy cập tại đây: <a href="{{ route('tuyendung.danhsachungtuyen', $id_congviec) }}">Xem danh sách ứng viên</a>
+                            Công ty <strong>{{ $tuyendung_name }} </strong> đã chọn hồ sơ <strong>{{ $cv_name }}</strong> của bạn để làm đối tác cho dự án <strong>{{ $job_name }}</strong>
                             <br><br>
+
 
                         </div>
 

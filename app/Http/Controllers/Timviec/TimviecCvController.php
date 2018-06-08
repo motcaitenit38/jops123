@@ -9,9 +9,22 @@
     use Illuminate\Support\Facades\Validator;
     use Auth;
     use App\Model\Timviec\TimviecCv;
+    use App\Model\Timviec\ThongtinTimviec;
 
     class TimviecCvController extends Controller
     {
+        public function __construct()
+        {
+            $this->middleware(function ($request, $next) {
+                $thongtin = ThongtinTimviec::where('user_id',Auth::user()->id)->first();
+                if (!isset($thongtin)) {
+                    session()->flash('danger',"Bạn chưa cập nhật thông tin công ty, vui lòng nhập thông tin công ty!!!");
+                    return redirect()->route('thongtintimviec.create');
+                } else {
+                }
+                return $next($request);
+            });
+        }
         /**
          * Display a listing of the resource.
          *

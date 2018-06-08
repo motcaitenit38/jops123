@@ -9,6 +9,9 @@
     use Auth;
     use App\Model\Timviec\ThongtinTimviec;
     use App\Model\Tuyendung\TuyendungJob;
+    use App\User;
+    use App\Model\Tuyendung\ThongtinTuyendung;
+    use Mail;
 
     class DanhsachUngtuyenController extends Controller
     {
@@ -52,13 +55,15 @@
 
         public function chitiethoso($idcv, $idjob)
         {
+
             $cv = TimviecCv::findOrFail($idcv);
             $nhansu = json_decode($cv->nhan_su);
-            $thiethi = json_decode($cv->thiet_bi, true);
+            $thietbi = json_decode($cv->thiet_bi, true);
             $file = TimviecUngtuyen::where('timviec_cv_id', $idcv)->where('tuyendung_job_id', $idjob)->first();
-            $thongtin = ThongtinTimviec::findOrFail($cv->user_id);
+
+            $thongtin = ThongtinTimviec::where('user_id',$cv->user_id)->first();
             return view('tuyendung.ungvien.chitiet',
-                ['cv' => $cv, 'thongtin' => $thongtin, 'file' => $file, 'b' => $thiethi, 'nhansu' => $nhansu]);
+                ['cv' => $cv, 'thongtin' => $thongtin, 'file' => $file, 'b' => $thietbi, 'nhansu' => $nhansu]);
         }
 
         public function chapnhanungvien(Request $request)
@@ -73,6 +78,21 @@
             $model = TimviecUngtuyen::where('timviec_cv_id', $cv_id)->where('tuyendung_job_id', $job_id)->first();
             $model->status = 1;
             $model->save();
+//            xử lý gửi mail sau khi chấp nhận ứng viên
+            $user_cv = TimviecCv::findOrFail($cv_id);
+            $user_email = User::findOrFail($user_cv->user_id);
+            $job = TuyendungJob::findOrFail($job_id);
+            $thongtin_tuyendung = ThongtinTuyendung::where('employer_id',$job->employer_id)->first();
+            $mangdulieu = array(
+                'job_name' => $job->ten_cong_viec,
+                'job_id' => $job->id,
+                'cv_name' => $user_cv->ten_cv,
+                'tuyendung_name' => $thongtin_tuyendung->ten_doanh_nghiep,
+            );
+            $mail_nhan = $user_email->email;
+            Mail::send('mail.chapnhanungvien', $mangdulieu, function ($message) use ($mail_nhan) {
+                $message->to($mail_nhan, 'Visitor')->subject('Job Stock: Hồ sơ của bạn đã được chấp nhận!');
+            });
         }
 
     }
