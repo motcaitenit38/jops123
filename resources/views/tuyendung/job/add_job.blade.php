@@ -48,14 +48,14 @@
                 <div class="form-group col-md-6">
                     <label for="date" class="col-md-2" style="padding-left: 0;">Từ</label>
                     <div class="col-md-10">
-                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="min">
+                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="min" required />
                     </div>
 
                 </div>
                 <div class="form-group col-md-6">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Đến:</label>
                     <div class="col-md-10">
-                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="max">
+                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="max" required />
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                 <div class="form-group col-md-12">
                     <label for="date" class="col-md-2" style="padding-left: 0;">Tiến sỹ</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="min" value="{{ old('nhan_su.0') }}" min="0" placeholder="Số lượng">
+                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="min" value="{{ old('nhan_su.0') }}" min="0" placeholder="Số lượng" />
                     </div>
                 </div>
                 <div class="form-group col-md-12">
