@@ -20,7 +20,8 @@
                 <div class="col-md-8 col-sm-8">
                     <div class="detail-desc-caption">
                         <h3>{{ $jop->ten_cong_viec }}</h3>
-                        <p><a href="{{ route('index.congtytuyendung',$thongtin->id) }}" target="_blank"><strong>{{ $thongtin->ten_doanh_nghiep }}</strong></a></p>
+                        <p><a href="{{ route('index.congtytuyendung',$thongtin->id) }}"
+                              target="_blank"><strong>{{ $thongtin->ten_doanh_nghiep }}</strong></a></p>
                         <ul>
                             <li><i class="fa fa-briefcase"></i>Giá trị công việc từ:
                                 <span>
@@ -92,32 +93,27 @@
                                 <a href="javascript:void(0)" data-toggle="modal"
                                    data-target="#signup" class="footer-btn blu-btn" title="">Lưu công việc</a>
                             @else
-{{--                                @foreach($all_cv as $all_cv)--}}
+                                @if( ($dmcheck==1) && !in_array($jop->id, $jop_save))
 
-                                    @if( ($dmcheck==1) && !in_array($jop->id, $jop_save))
+                                    <a href="#" class="footer-btn grn-btn" title="">Đã ứng tuyển</a>
+                                    <a href="" class="footer-btn blu-btn" id="save-jop" title="">Lưu công việc</a>
+                                    <input type="text" value="{{ $jop->id }}" style="display: none;" id="jop_id">
+                                    <input type="text" value="{{ Auth::user()->id }}" style="display: none;"
+                                           id="user_id">
+                                @elseif( ($dmcheck==1) && in_array($jop->id,$jop_save))
+                                    <a href="#" class="footer-btn grn-btn" title="">Đã ứng tuyển</a>
+                                    <a href="#" class="footer-btn blu-btn" title="">Đã lưu công việc</a>
+                                @elseif(($dmcheck==0) && in_array($jop->id, $jop_save))
+                                    <a href="" id="kiemtracv" class="footer-btn grn-btn" title="">Ứng tuyển</a>
+                                    <a href="#" class="footer-btn blu-btn" title="">Đã lưu công việc</a>
+                                @else
+                                    <a href="" id="kiemtracv" class="footer-btn grn-btn" title="">Ứng tuyển</a>
+                                    <a href="" class="footer-btn blu-btn" id="save-jop" title="">Lưu công việc</a>
+                                    <input type="text" value="{{ $jop->id }}" style="display: none;" id="jop_id">
+                                    <input type="text" value="{{ Auth::user()->id }}" style="display: none;"
+                                           id="user_id">
 
-                                        <a href="#" class="footer-btn grn-btn" title="">Đã ứng tuyển</a>
-                                        <a href="" class="footer-btn blu-btn" id="save-jop" title="">Lưu công việc</a>
-                                        <input type="text" value="{{ $jop->id }}" style="display: none;" id="jop_id">
-                                        <input type="text" value="{{ Auth::user()->id }}" style="display: none;"
-                                               id="user_id">
-                                    @elseif( ($dmcheck==1) && in_array($jop->id,$jop_save))
-                                        <a href="#" class="footer-btn grn-btn" title="">Đã ứng tuyển</a>
-                                        <a href="#" class="footer-btn blu-btn" title="">Đã lưu công việc</a>
-
-                                    @elseif(($dmcheck==0) && in_array($jop->id, $jop_save))
-                                        <a href="" id="kiemtracv" class="footer-btn grn-btn" title="">Ứng tuyển</a>
-                                        <a href="#" class="footer-btn blu-btn" title="">Đã lưu công việc</a>
-
-                                    @else
-                                        <a href="" id="kiemtracv" class="footer-btn grn-btn" title="">Ứng tuyển</a>
-                                        <a href="" class="footer-btn blu-btn" id="save-jop" title="">Lưu công việc</a>
-                                        <input type="text" value="{{ $jop->id }}" style="display: none;" id="jop_id">
-                                        <input type="text" value="{{ Auth::user()->id }}" style="display: none;"
-                                               id="user_id">
-
-                                    @endif
-                                {{--@endforeach--}}
+                                @endif
                             @endif
                         </div>
                     </div>
@@ -222,9 +218,12 @@
             <div class="row row-bottom">
                 <h2 class="detail-title">Tài liệu công việc</h2>
                 <ul>
-                    <li><i class="fa fa-globe"></i> File Spec:   <span><a href="{{ asset('/'.$jop->attach_spec) }}"> Download</a></span></li>
-                    <li><i class="fa fa-globe"></i> File Boq:   <span><a href="{{ asset('/').$jop->attach_boq }}"> Download</a></span></li>
-                    <li><i class="fa fa-globe"></i> File bản vẽ kết cấu:   <span><a href="{{ asset('/').$jop->attach_ban_ve_ket_cau }}"> Download</a></span></li>
+                    <li><i class="fa fa-globe"></i> File Spec: <span><a href="{{ asset('/'.$jop->attach_spec) }}"> Download</a></span>
+                    </li>
+                    <li><i class="fa fa-globe"></i> File Boq: <span><a href="{{ asset('/').$jop->attach_boq }}"> Download</a></span>
+                    </li>
+                    <li><i class="fa fa-globe"></i> File bản vẽ kết cấu: <span><a
+                                    href="{{ asset('/').$jop->attach_ban_ve_ket_cau }}"> Download</a></span></li>
                 </ul>
             </div>
         </div>
@@ -241,21 +240,22 @@
                     }
                 });
                 $.ajax({
-                    'url': '{{ url('timviec/save') }}',
+                    'url': '{{ route('timviec.luucongviec') }}',
                     'data': {
                         'jop_id': $('#jop_id').val(),
                         'user_id': $('#user_id').val()
                     },
                     'type': 'POST',
                     success: function (data) {
-                        alert('Lưu công việc thành công');
-                        // alert(data.message);
-                        location.reload();
-                    },
-                    error: function (data) {
-                        alert('loi');
-                    }
 
+                        if (data.error == true) {
+                            alert('Bạn chưa tạo thông tin hồ sơ vui lòng tạo thông tin hồ sơ trước');
+                            window.location.href = "{{ url('timviec/thongtintimviec/create') }}";
+                        } else {
+                            alert('Lưu công việc thành công');
+                            location.reload();
+                        }
+                    }
                 });
             });
         });

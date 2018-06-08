@@ -8,7 +8,7 @@
         Route::post('kiemtracv', 'Timviec\TimviecHomeController@kiemtracv');
         Route::get('ungtuyen/{id}', 'Timviec\TimviecHomeController@ungtuyen')->name('timviec.ungtuyen');
         Route::post('guicv', 'Timviec\TimviecHomeController@guicv')->name('truongdz');
-        Route::post('save', 'Timviec\TimviecHomeController@save_jops');
+        Route::post('save', 'Timviec\TimviecHomeController@save_jops')->name('timviec.luucongviec');
 //        route quản lý cong viec da ung tuyen
         Route::get('dangungtuyen','Timviec\TimviecQuanlyCongviecController@dangungtuyen')->name('timviec.dangungtuyen');
         Route::get('daluu','Timviec\TimviecQuanlyCongviecController@daluu')->name('timviec.daluu');
