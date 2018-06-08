@@ -128,6 +128,13 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="logo" class="col-sm-3 col-form-label">Logo công ty</label>
+            <div class="col-sm-8">
+                <input name="logo" type="file" class="form-control" id="logo"
+                       value="{{ old('logo') }}"/>
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="dangtin" class="col-sm-3 col-form-label"></label>
             <div class="col-sm-8">
                 <button type="submit" class="form-control btn btn-success" id="company_name">Tạo thông tin hồ sơ</button>

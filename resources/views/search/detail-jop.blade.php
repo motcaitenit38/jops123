@@ -12,7 +12,7 @@
     <section class="detail-desc">
         <div class="container white-shadow">
             <div class="row">
-                <div class="detail-pic"><img src="" class="img" alt=""/><a
+                <div class="detail-pic"><img src="{{ asset('/'.$thongtin->logo) }}" class="img img-circle" alt=""/><a
                             href="#" class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a></div>
                 <div class="detail-status"><span>2 Days Ago</span></div>
             </div>

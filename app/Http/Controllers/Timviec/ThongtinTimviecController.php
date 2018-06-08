@@ -67,6 +67,7 @@
                 'file_dinh_kem_kinh_doanh' => 'required|mimes:pdf,png,jpg,jpeg',
                 'file_dinh_kem_thong_tin_cong_ty' => 'required|mimes:pdf',
                 'gioi_thieu_cong_ty' => 'required|min:20',
+                'logo' => 'mimes:jpg,jpeg,png',
             ]);
 
             if ($validator->fails()) {
@@ -76,6 +77,12 @@
             }
             $model = new ThongtinTimviec();
             $model->fill($request->all());
+            if ($request->hasFile('logo')) {
+                $logo = $request->file('logo');
+                $logo_name = time() .$logo->getClientOriginalName();
+                $logo_name = $logo->move('upload\timviec_info', $logo_name);
+                $model->logo = $logo_name;
+            }
             if ($request->hasFile('file_dinh_kem_kinh_doanh')) {
                 $attach_kinhdoanh = $request->file('file_dinh_kem_kinh_doanh');
                 $attach_kinhdoanh_name = time() . $attach_kinhdoanh->getClientOriginalName();
@@ -150,6 +157,7 @@
                 'file_dinh_kem_kinh_doanh' => 'mimes:pdf,png,jpg,jpeg',
                 'file_dinh_kem_thong_tin_cong_ty' => 'mimes:pdf',
                 'gioi_thieu_cong_ty' => 'required|min:20',
+                'logo' => 'mimes:jpg,jpeg,png',
             ]);
 
             if ($validator->fails()) {
@@ -158,6 +166,12 @@
                     ->withInput();
             }
             $model->fill($request->all());
+            if ($request->hasFile('logo')) {
+                $logo = $request->file('logo');
+                $logo_name = time() .$logo->getClientOriginalName();
+                $logo_name = $logo->move('upload\timviec_info', $logo_name);
+                $model->logo = $logo_name;
+            }
             if ($request->hasFile('file_dinh_kem_kinh_doanh')) {
                 $attach_kinhdoanh = $request->file('file_dinh_kem_kinh_doanh');
                 $attach_kinhdoanh_name = time() . $attach_kinhdoanh->getClientOriginalName();

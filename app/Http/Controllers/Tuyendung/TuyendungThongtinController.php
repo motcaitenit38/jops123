@@ -62,12 +62,20 @@
                 'nam_thanh_lap' => 'required',
                 'loai_hinh_doanh_nghiep' => 'required',
                 'gioi_thieu_cong_ty' => 'required|min:20',
+                'logo' => 'min:png,jpeg,jpg',
             ]);
             if ($validator->fails()) {
                 return redirect()->route('info.create')->withErrors($validator)->withInput();
             }
             $model = new ThongtinTuyendung();
             $model->fill($request->all());
+            $model->fill($request->all());
+            if ($request->hasFile('logo')) {
+                $logo = $request->file('logo');
+                $logo_name = time() .$logo->getClientOriginalName();
+                $logo_name = $logo->move('upload\tuyendung_info', $logo_name);
+                $model->logo = $logo_name;
+            }
             $model->employer_id = Auth::user()->id;
             $flag = $model->save();
             if ($flag) {
@@ -126,11 +134,18 @@
                 'nam_thanh_lap' => 'required',
                 'loai_hinh_doanh_nghiep' => 'required',
                 'gioi_thieu_cong_ty' => 'required|min:20',
+                'logo' => 'min:png,jpeg,jpg',
             ]);
             if ($validator->fails()) {
                 return redirect()->route('info.edit', $id)->withErrors($validator)->withInput();
             }
             $model->fill($request->all());
+            if ($request->hasFile('logo')) {
+                $logo = $request->file('logo');
+                $logo_name = time() .$logo->getClientOriginalName();
+                $logo_name = $logo->move('upload\tuyendung_info', $logo_name);
+                $model->logo = $logo_name;
+            }
             $model->employer_id = Auth::user()->id;
             $flag = $model->save();
             if ($flag) {

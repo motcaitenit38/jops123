@@ -17,7 +17,7 @@
                     <div class="manage-cndt">
                         {{--<div class="cndt-status pending">Pending</div>--}}
                         <div class="cndt-caption">
-                            <div class="cndt-pic"><img src="img/can-1.png" class="img-responsive" alt=""/></div>
+                            <div class="cndt-pic"><img src="{{ asset('/'.$danhsach->logo) }}" class="img-responsive img-circle" alt=""/></div>
                             <h4>{{ $danhsach->ten_doanh_nghiep }}</h4><span>{{$danhsach->Address->name}}</span>
                             <p>Năm thành lập: <strong>{{ $danhsach->nam_thanh_lap }}</strong></p>
                         </div>

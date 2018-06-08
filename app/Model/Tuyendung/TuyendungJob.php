@@ -47,4 +47,9 @@
         public function jop_save(){
             return $this->belongsToMany('App\User','timviec_luu_jobs');
         }
+
+//        lấy thông tin nhà tuyển dụng
+    public function getlogo(){
+            return $this->belongsTo('App\Model\Tuyendung\ThongtinTuyendung','employer_id','id');
+    }
     }

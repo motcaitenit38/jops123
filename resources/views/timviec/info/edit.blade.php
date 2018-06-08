@@ -115,15 +115,22 @@
         <div class="form-group row">
             <label for="attach_ban_ve_ket_cau" class="col-sm-3 col-form-label">Attach đăng ký kinh doanh</label>
             <div class="col-sm-8">
-                <input name="file_dinh_kem_kinh_doanh" type="file" class="form-control" id="file_dinh_kem_kinh_doanh" required>
+                <input name="file_dinh_kem_kinh_doanh" type="file" class="form-control" id="file_dinh_kem_kinh_doanh">
                 </input>
             </div>
         </div>
         <div class="form-group row">
             <label for="file_dinh_kem_thong_tin_cong_ty" class="col-sm-3 col-form-label">Attach giới thiệu công ty</label>
             <div class="col-sm-8">
-                <input name="file_dinh_kem_thong_tin_cong_ty" type="file" class="form-control" id="file_dinh_kem_thong_tin_cong_ty" required>
+                <input name="file_dinh_kem_thong_tin_cong_ty" type="file" class="form-control" id="file_dinh_kem_thong_tin_cong_ty">
                 </input>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="logo" class="col-sm-3 col-form-label">logo công ty</label>
+            <div class="col-sm-8">
+                <input name="logo" type="file" class="form-control" id="logo"
+                       value="{{ $info->logo }}"/>
             </div>
         </div>
         <div class="form-group row">

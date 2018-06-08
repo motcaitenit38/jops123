@@ -24,12 +24,11 @@
                 </div>
             </div>
             @foreach($jops as $jop)
-{{--                <a href="{{ url('/job/'.$jop->id) }}" class="item-click">--}}
                 <a href="{{ route('home.detail', $jop->id) }}" class="item-click">
                     <article>
                         <div class="brows-job-list">
                             <div class="col-md-1 col-sm-2 small-padding">
-                                <div class="brows-job-company-img"><img src="" class="img-responsive" alt=""/>
+                                <div class="brows-job-company-img"><img src="{{ asset('/'.$jop->getlogo->logo) }}" class="img-responsive img-circle" alt=""/>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-5">
