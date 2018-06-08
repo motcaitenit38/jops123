@@ -12,7 +12,7 @@
     </div>
     <div class="row no-padding">
         <div class="container">
-            <div class="col-md-3 col-sm-12">
+            <div class="col-md-6 col-sm-12">
                 <div class="footer-widget">
                     <h3 class="widgettitle widget-title">Giới thiệu</h3>
                     <div class="textwidget">
@@ -33,32 +33,11 @@
             </div>
             <div class="col-md-3 col-sm-4">
                 <div class="footer-widget">
-                    <h3 class="widgettitle widget-title">All Navigation</h3>
-                    <div class="textwidget">
-                        <div class="textwidget">
-                            <ul class="footer-navigation">
-                                {{--<li><a href="manage-company.html" title="">Front-end Design</a></li>--}}
-                                {{--<li><a href="manage-company.html" title="">Android Developer</a></li>--}}
-                                {{--<li><a href="manage-company.html" title="">CMS Development</a></li>--}}
-                                {{--<li><a href="manage-company.html" title="">PHP Development</a></li>--}}
-                                {{--<li><a href="manage-company.html" title="">IOS Developer</a></li>--}}
-                                {{--<li><a href="manage-company.html" title="">Iphone Developer</a></li>--}}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-4">
-                <div class="footer-widget">
-                    <h3 class="widgettitle widget-title">All Categories</h3>
+                    <h3 class="widgettitle widget-title">menu</h3>
                     <div class="textwidget">
                         <ul class="footer-navigation">
-                            {{--<li><a href="manage-company.html" title="">Front-end Design</a></li>--}}
-                            {{--<li><a href="manage-company.html" title="">Android Developer</a></li>--}}
-                            {{--<li><a href="manage-company.html" title="">CMS Development</a></li>--}}
-                            {{--<li><a href="manage-company.html" title="">PHP Development</a></li>--}}
-                            {{--<li><a href="manage-company.html" title="">IOS Developer</a></li>--}}
-                            {{--<li><a href="manage-company.html" title="">Iphone Developer</a></li>--}}
+                            <li><a href="{{ route('tuyendung.danhsachtuyendung') }}" title="">Danh sách nhà tuyển dụng</a></li>
+
                         </ul>
                     </div>
                 </div>
