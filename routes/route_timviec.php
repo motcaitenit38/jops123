@@ -14,4 +14,7 @@
         Route::get('daluu','Timviec\TimviecQuanlyCongviecController@daluu')->name('timviec.daluu');
         Route::get('trungtuyen','Timviec\TimviecQuanlyCongviecController@trungtuyen')->name('timviec.trungtuyen');
         Route::get('khongtrungtuyen','Timviec\TimviecQuanlyCongviecController@khongtrungtuyen')->name('timviec.khongtrungtuyen');
+//        tìm kiếm nhà tuyển dụng
+        Route::get('tim-kiem-nha-tuyen-dung','Timviec\TimKiemNhaTuyenDungController@formtimkiem')->name('form.timiem.nhatuyendung');
+        Route::get('kqtk','Timviec\TimKiemNhaTuyenDungController@timkiem')->name('timiem.nhatuyendung');
     });

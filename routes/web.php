@@ -26,7 +26,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('thong-tin-cong-ty/{iduser}/{idtuyendung}', 'HomeController@thongtintimviec')->name('index.thongtincongty');
 //      hiển thị thông tin công ty nhà tuyển dụng quan tâm hồ sơ tìm việc
     Route::get('thong-tin-tuyen-dung/{idtuyendung}', 'HomeController@thongtintuyendung')->name('index.congtytuyendung');
-//    tìm việc quan tâm công ty tuyển dụng
+//    Lấy tất cả danh sách nhà tuyển dung
+    Route::get('danh-sach-nha-tuyen-dung','Tuyendung\DanhsachTuyendungController@danhsach')->name('tuyendung.danhsachtuyendung');
 
 });
 

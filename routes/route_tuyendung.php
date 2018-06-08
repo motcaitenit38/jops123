@@ -16,6 +16,6 @@
         Route::post('luu-congty','Tuyendung\TuyendungLuuCongtyController@luucongty')->name('tuyendung.luucongty');
 //        route quản lý ứng viên quan tâm công việc
         Route::get('danh-sach-quan-tam','Tuyendung\QuantamUngvienController@danhsach')->name('tuyendung.danhsachquantam');
-//        route xemchi tiết ứng viên đã quan tâm
+//        route xem chi tiết ứng viên (tim việc) đã quan tâm
         Route::get('chi-tiet-cong-ty/{id}','Tuyendung\QuantamUngvienController@chitiet')->name('tuyendung.chitietquantam');
     });
