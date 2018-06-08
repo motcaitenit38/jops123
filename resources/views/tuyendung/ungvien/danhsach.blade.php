@@ -68,7 +68,7 @@
 
 @section('script')
     <script>
-        $(function () {
+        $(document).ready(function () {
             $("body").on("click",".chapnhan",function(e) {
                 e.preventDefault();
                 $.ajaxSetup({

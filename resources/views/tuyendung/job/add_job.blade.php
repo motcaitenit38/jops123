@@ -102,20 +102,20 @@
         <div class="form-group row">
             <label for="so_nam_kinh_nghiem" class="col-sm-3 col-form-label">Số năm kinh nghiệm</label>
             <div class="col-sm-8">
-                <input name="so_nam_kinh_nghiem" type="text" class="form-control" id="so_nam_kinh_nghiem"
+                <input name="so_nam_kinh_nghiem" type="number" class="form-control" id="so_nam_kinh_nghiem"
                        placeholder="Số năm kinh nghiêmj"
-                       value="{{ old('so_nam_kinh_nghiem') }}" required/>
+                       value="{{ old('so_nam_kinh_nghiem') }}" min="0" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="loai_hinh_doanh_nghiep" class="col-sm-3 col-form-label">Loại hình doanh nghiệp</label>
             <div class="col-sm-8">
                 <select name="loai_hinh_doanh_nghiep" id="loai_hinh_doanh_nghiep" class="form-control">
-                    <option value="Công ty TNHH">Công ty TNHH</option>
-                    <option value="Công ty Cổ Phần">Công ty Cổ Phần</option>
-                    <option value="Doanh nghiệp tư nhân">Doanh nghiệp tư nhân</option>
-                    <option value="Công ty Hợp Danh">Công ty Hợp Danh</option>
-                    <option value="Công ty liên doanh">Công ty liên doanh</option>
+                    <option value="Công ty TNHH" @if( old('loai_hinh_doanh_nghiep') === 'Công ty TNHH')  ? selected : '' @endif>Công ty TNHH</option>
+                    <option value="Công ty Cổ Phần" @if( old('loai_hinh_doanh_nghiep') === 'Công ty Cổ Phần')  ? selected : '' @endif>Công ty Cổ Phần</option>
+                    <option value="Doanh nghiệp tư nhân" @if( old('loai_hinh_doanh_nghiep') === 'Doanh nghiệp tư nhân')  ? selected : '' @endif>Doanh nghiệp tư nhân</option>
+                    <option value="Công ty Hợp Danh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty Hợp Danh')  ? selected : '' @endif>Công ty Hợp Danh</option>
+                    <option value="Công ty liên doanh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty liên doanh')  ? selected : '' @endif>Công ty liên doanh</option>
                 </select>
             </div>
         </div>
@@ -131,31 +131,31 @@
                 <div class="form-group col-md-12">
                     <label for="date" class="col-md-2" style="padding-left: 0;">Tiến sỹ</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="min">
+                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="min" value="{{ old('nhan_su.0') }}" min="0" placeholder="Số lượng">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Thạc sỹ:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max">
+                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max" value="{{ old('nhan_su.1') }}" min="0" placeholder="Số lượng">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Đại học:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max">
+                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max" value="{{ old('nhan_su.2') }}" min="0" placeholder="Số lượng">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Cao Đẳng:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max">
+                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max" value="{{ old('nhan_su.3') }}"  min="0" placeholder="Số lượng">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Công nhân:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max">
+                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max" value="{{ old('nhan_su.4') }}"  min="0" placeholder="Số lượng">
                     </div>
                 </div>
             </div>
@@ -171,10 +171,10 @@
                 </div>
                 <div class="form-group col-md-12">
                     <div class="col-md-7">
-                        <input name="thiet_bi[0][]" type="text" class="form-control col-md-6" id="ten_thiet_bi">
+                        <input name="thiet_bi[0][]" type="text" class="form-control col-md-6" id="ten_thiet_bi" placeholder="tên thiết bị">
                     </div>
                     <div class="col-md-4">
-                        <input name="thiet_bi[0][]" type="number" class="form-control col-md-6" id="so_luong">
+                        <input name="thiet_bi[0][]" type="number" class="form-control col-md-6" id="so_luong" placeholder="số lượng">
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
             <label for="chi_tiet_cong_viec" class="col-sm-3 col-form-label">Chi tiết công việc</label>
             <div class="col-sm-8">
                 <textarea name="chi_tiet_cong_viec" type="text" class="form-control" id="editor"
-                          placeholder="Yêu cầu chi tiết" value="{{ old('chi_tiet_cong_viec') }}" required>
+                          placeholder="Yêu cầu chi tiết"  required>{{ old('chi_tiet_cong_viec') }}
                  </textarea>
             </div>
         </div>
@@ -196,7 +196,7 @@
             <label for="yeu_cau_cong_viec" class="col-sm-3 col-form-label">Yêu cầu công việc</label>
             <div class="col-sm-8">
                 <textarea name="yeu_cau_cong_viec" type="text" class="form-control" id="editor"
-                          placeholder="Yêu cầu chi tiết" value="{{ old('yeu_cau_cong_viec') }}" required>
+                          placeholder="Yêu cầu chi tiết" required>{{ old('yeu_cau_cong_viec') }}
                  </textarea>
             </div>
         </div>
@@ -204,7 +204,7 @@
             <label for="phuc_loi_cong_viec" class="col-sm-3 col-form-label">Phúc lợi</label>
             <div class="col-sm-8">
                 <textarea name="phuc_loi_cong_viec" type="text" class="form-control" id="editor"
-                          placeholder="Phúc lợi" value="{{ old('phuc_loi_cong_viec') }}" required>
+                          placeholder="Phúc lợi" required>{{ old('phuc_loi_cong_viec') }}
                  </textarea>
             </div>
         </div>
@@ -212,7 +212,7 @@
             <label for="yeu_cau_ho_so_dinh_kem" class="col-sm-3 col-form-label">yêu cầu hồ sơ ứng tuyển</label>
             <div class="col-sm-8">
                 <textarea name="yeu_cau_ho_so_dinh_kem" type="text" class="form-control" id="editor"
-                          placeholder="yêu cầu hồ sơ ứng tuyển" value="{{ old('yeu_cau_ho_so_dinh_kem') }}" required>
+                          placeholder="yêu cầu hồ sơ ứng tuyển" required>{{ old('yeu_cau_ho_so_dinh_kem') }}
                  </textarea>
             </div>
         </div>
@@ -221,7 +221,7 @@
             <div class="col-sm-8">
                 <input name="attach_spec" type="file" class="form-control" id="attach_spec"
                        value="{{ old('attach_spec') }}" rows="6" required>
-                </input>
+                <span>Định dạng file: pdf, doc, docx</span>
             </div>
         </div>
         <div class="form-group row">
@@ -229,7 +229,7 @@
             <div class="col-sm-8">
                 <input name="attach_boq" type="file" class="form-control" id="attach_boq"
                        value="{{ old('attach_boq') }}" rows="6" required>
-                </input>
+                <span>Định dạng file: pdf, doc, docx</span>
             </div>
         </div>
         <div class="form-group row">
@@ -237,7 +237,7 @@
             <div class="col-sm-8">
                 <input name="attach_ban_ve_ket_cau" type="file" class="form-control" id="attach_ban_ve_ket_cau"
                        value="{{ old('attach_ban_ve_ket_cau') }}" rows="6" required>
-                </input>
+                <span>Định dạng file: pdf, jpg, jpeg, png</span>
             </div>
         </div>
 

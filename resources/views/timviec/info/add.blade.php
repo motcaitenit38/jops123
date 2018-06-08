@@ -72,11 +72,11 @@
             <label for="loai_hinh_doanh_nghiep" class="col-sm-3 col-form-label">Loại hình doanh nghiệp</label>
             <div class="col-sm-8">
                 <select name="loai_hinh_doanh_nghiep" id="loai_hinh_doanh_nghiep" class="form-control">
-                    <option value="Công ty TNHH">Công ty TNHH</option>
-                    <option value="Công ty Cổ Phần">Công ty Cổ Phần</option>
-                    <option value="Doanh nghiệp tư nhân">Doanh nghiệp tư nhân</option>
-                    <option value="Công ty Hợp Danh">Công ty Hợp Danh</option>
-                    <option value="Công ty liên doanh">Công ty liên doanh</option>
+                    <option value="Công ty TNHH" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Công ty TNHH')  ? selected : '' @endif>Công ty TNHH</option>
+                    <option value="Công ty Cổ Phần" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Công ty Cổ Phần')  ? selected : '' @endif>Công ty Cổ Phần</option>
+                    <option value="Doanh nghiệp tư nhân" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Doanh nghiệp tư nhân')  ? selected : '' @endif>Doanh nghiệp tư nhân</option>
+                    <option value="Công ty Hợp Danh" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Công ty Hợp Danh')  ? selected : '' @endif>Công ty Hợp Danh</option>
+                    <option value="Công ty liên doanh" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Công ty liên doanh')  ? selected : '' @endif>Công ty liên doanh</option>
                 </select>
             </div>
         </div>
@@ -84,7 +84,7 @@
             <label for="dien_tich_quy_mo" class="col-sm-3 col-form-label">Diện tích quy mô</label>
             <div class="col-sm-8">
                 <input name="dien_tich_quy_mo" type="number" class="form-control" id="dien_tich_quy_mo"
-                       placeholder="năm thành lập"
+                       placeholder="Diện tích quy mô nhà máy"
                        value="{{ old('dien_tich_quy_mo') }}" required/>
             </div>
         </div>
@@ -107,31 +107,28 @@
         <div class="form-group row">
             <label for="gioi_thieu_cong_ty" class="col-sm-3 col-form-label">Giới thiệu về công ty</label>
             <div class="col-sm-8">
-                 <textarea name="gioi_thieu_cong_ty" type="text" class="form-control" id="gioi_thieu_cong_ty" placeholder="Giới thiệu về công ty" rows="6" required>
-                </textarea>
+                 <textarea name="gioi_thieu_cong_ty" type="text" class="form-control" id="gioi_thieu_cong_ty" placeholder="Giới thiệu về công ty" rows="6" required >{{ old('gioi_thieu_cong_ty') }}</textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="file_dinh_kem_kinh_doanh" class="col-sm-3 col-form-label">File đính kèm đăng ký kinh doanh</label>
             <div class="col-sm-8">
-                <input name="file_dinh_kem_kinh_doanh" type="file" class="form-control" id="tong_cong_suat"
-                       placeholder="file đính kèm đăng ký kinh doanh"
-                       value="{{ old('file_dinh_kem_kinh_doanh') }}" required/>
+                <input name="file_dinh_kem_kinh_doanh" type="file" class="form-control" id="tong_cong_suat" required/>
+                <lable>Định dạng file là: pdf, png, jpg, jpeg</lable>
             </div>
         </div>
         <div class="form-group row">
             <label for="file_dinh_kem_thong_tin_cong_ty" class="col-sm-3 col-form-label">File đính kèm giới thiệu công ty</label>
             <div class="col-sm-8">
-                <input name="file_dinh_kem_thong_tin_cong_ty" type="file" class="form-control" id="tong_cong_suat"
-                       placeholder="File đính kèm thông tin công ty"
-                       value="{{ old('file_dinh_kem_thong_tin_cong_ty') }}" required/>
+                <input name="file_dinh_kem_thong_tin_cong_ty" type="file" class="form-control" id="tong_cong_suat" required/>
+                <lable>Định dạng file là: pdf</lable>
             </div>
         </div>
         <div class="form-group row">
             <label for="logo" class="col-sm-3 col-form-label">Logo công ty</label>
             <div class="col-sm-8">
-                <input name="logo" type="file" class="form-control" id="logo"
-                       value="{{ old('logo') }}"/>
+                <input name="logo" type="file" class="form-control" id="logo"/>
+                <lable>Định dạng file là: pdf, png, jpg, jpeg</lable>
             </div>
         </div>
         <div class="form-group row">

@@ -5,6 +5,7 @@
         Route::get('/', 'Timviec\TimviecQuanlyCongviecController@dangungtuyen')->name('timviec.index');
         Route::resource('thongtintimviec','Timviec\ThongtinTimviecController');
         Route::resource('cvtimviec','Timviec\TimviecCvController');
+        Route::post('xoacv','Timviec\TimviecCvController@xoacv')->name('timviec.xoacv');
         Route::post('kiemtracv', 'Timviec\TimviecHomeController@kiemtracv');
         Route::get('ungtuyen/{id}', 'Timviec\TimviecHomeController@ungtuyen')->name('timviec.ungtuyen');
         Route::post('guicv', 'Timviec\TimviecHomeController@guicv')->name('truongdz');

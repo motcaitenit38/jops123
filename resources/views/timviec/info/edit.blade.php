@@ -7,24 +7,19 @@
         <div class="form-group row">
             <label for="ten_doanh_nghiep" class="col-sm-3 col-form-label">Tên công ty</label>
             <div class="col-sm-8">
-                <input name="ten_doanh_nghiep" type="text" class="form-control" id="ten_doanh_nghiep"
-                       placeholder="Tên công ty"
-                       value=" {{ $info->ten_doanh_nghiep }}" required/>
+                <input name="ten_doanh_nghiep" type="text" class="form-control" id="ten_doanh_nghiep" placeholder="Tên công ty" value=" {{ $info->ten_doanh_nghiep }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="dien_thoai" class="col-sm-3 col-form-label">Điện thoại</label>
             <div class="col-sm-8">
-                <input name="dien_thoai" type="text" class="form-control" id="dien_thoai"
-                       placeholder="Điện thoại công ty"
-                       value="{{ $info->dien_thoai }}" required/>
+                <input name="dien_thoai" type="text" class="form-control" id="dien_thoai" placeholder="Điện thoại công ty" value="{{ $info->dien_thoai }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="website" class="col-sm-3 col-form-label">Địa chỉ website công ty</label>
             <div class="col-sm-8">
-                <input name="website" type="text" class="form-control" id="website" placeholder="website công ty"
-                       value="{{ $info->website }}" required/>
+                <input name="website" type="text" class="form-control" id="website" placeholder="website công ty" value="{{ $info->website }}" required/>
             </div>
         </div>
         <div class="form-group row">
@@ -42,31 +37,26 @@
         <div class="form-group row">
             <label for="dia_diem_cuthe" class="col-sm-3 col-form-label">Địa chỉ cụ thể</label>
             <div class="col-sm-8">
-                <input name="dia_diem_cuthe" type="text" class="form-control" id="dia_diem_cuthe"
-                       placeholder="Địa chỉ cụ thể"
-                       value="{{ $info->dia_diem_cuthe }}" required/>
+                <input name="dia_diem_cuthe" type="text" class="form-control" id="dia_diem_cuthe" placeholder="Địa chỉ cụ thể"
+                value="{{ $info->dia_diem_cuthe }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="ma_so_thue" class="col-sm-3 col-form-label">Mã số thuế</label>
             <div class="col-sm-8">
-                <input name="ma_so_thue" type="text" class="form-control" id="ma_so_thue"
-                       placeholder="mã số thuế công ty" value=" {{ $info->ma_so_thue }}" required/>
+                <input name="ma_so_thue" type="text" class="form-control" id="ma_so_thue" placeholder="mã số thuế công ty" value=" {{ $info->ma_so_thue }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="von_dieu_le" class="col-sm-3 col-form-label">Vốn điều lệ</label>
             <div class="col-sm-8">
-                <input name="von_dieu_le" type="number" class="form-control" id="von_dieu_le" placeholder="Vốn điều lệ"
-                       value="{{ $info->von_dieu_le }}" required/>
+                <input name="von_dieu_le" type="number" class="form-control" id="von_dieu_le" placeholder="Vốn điều lệ" value="{{ $info->von_dieu_le }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="nam_thanh_lap" class="col-sm-3 col-form-label">năm thành lập</label>
             <div class="col-sm-8">
-                <input name="nam_thanh_lap" type="date" class="form-control" id="nam_thanh_lap"
-                       placeholder="năm thành lập"
-                       value="{{ $info->nam_thanh_lap }}" required/>
+                <input name="nam_thanh_lap" type="date" class="form-control" id="nam_thanh_lap" placeholder="năm thành lập" value="{{ $info->nam_thanh_lap }}" required/>
             </div>
         </div>
         <div class="form-group row">
@@ -84,32 +74,25 @@
         <div class="form-group row">
             <label for="dien_tich_quy_mo" class="col-sm-3 col-form-label">Quy mô công ty</label>
             <div class="col-sm-8">
-                <input name="dien_tich_quy_mo" type="number" class="form-control" id="dien_tich_quy_mo"
-                       placeholder="năm thành lập"
-                       value="{{ $info->dien_tich_quy_mo }}" required/>
+                <input name="dien_tich_quy_mo" type="number" class="form-control" id="dien_tich_quy_mo" placeholder="Diện tích quy mô nhà máy" value="{{ $info->dien_tich_quy_mo }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="so_luong_day_chuyen" class="col-sm-3 col-form-label">Số lượng dây chuyền</label>
             <div class="col-sm-8">
-                <input name="so_luong_day_chuyen" type="number" class="form-control" id="so_luong_day_chuyen"
-                       placeholder="năm thành lập"
-                       value="{{ $info->so_luong_day_chuyen }}" required/>
+                <input name="so_luong_day_chuyen" type="number" class="form-control" id="so_luong_day_chuyen" placeholder="Số lượng dây chuyển sản xuất" value="{{ $info->so_luong_day_chuyen }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="tong_cong_suat" class="col-sm-3 col-form-label">Tổng công suất</label>
             <div class="col-sm-8">
-                <input name="tong_cong_suat" type="number" class="form-control" id="tong_cong_suat"
-                       placeholder="năm thành lập"
-                       value="{{ $info->tong_cong_suat }}" required/>
+                <input name="tong_cong_suat" type="number" class="form-control" id="tong_cong_suat" placeholder="Tổng công suất nhà máy" value="{{ $info->tong_cong_suat }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="gioi_thieu_cong_ty" class="col-sm-3 col-form-label">Giới thiệu về công ty</label>
             <div class="col-sm-8">
-                 <textarea name="gioi_thieu_cong_ty" type="text" class="form-control" id="gioi_thieu_cong_ty" placeholder="Giới thiệu về công ty" rows="6" required>{{ $info->gioi_thieu_cong_ty }}
-                </textarea>
+                 <textarea name="gioi_thieu_cong_ty" type="text" class="form-control" id="gioi_thieu_cong_ty" placeholder="Giới thiệu về công ty" rows="6" required>{{ $info->gioi_thieu_cong_ty }}</textarea>
             </div>
         </div>
         <div class="form-group row">
@@ -117,20 +100,22 @@
             <div class="col-sm-8">
                 <input name="file_dinh_kem_kinh_doanh" type="file" class="form-control" id="file_dinh_kem_kinh_doanh">
                 </input>
+                <lable>Định dạng file là: pdf, png, jpg, jpeg</lable>
             </div>
         </div>
         <div class="form-group row">
             <label for="file_dinh_kem_thong_tin_cong_ty" class="col-sm-3 col-form-label">Attach giới thiệu công ty</label>
             <div class="col-sm-8">
                 <input name="file_dinh_kem_thong_tin_cong_ty" type="file" class="form-control" id="file_dinh_kem_thong_tin_cong_ty">
+                <lable>Định dạng file là: pdf</lable>
                 </input>
             </div>
         </div>
         <div class="form-group row">
             <label for="logo" class="col-sm-3 col-form-label">logo công ty</label>
             <div class="col-sm-8">
-                <input name="logo" type="file" class="form-control" id="logo"
-                       value="{{ $info->logo }}"/>
+                <input name="logo" type="file" class="form-control" id="logo" value="{{ $info->logo }}"/>
+                <lable>Định dạng file là: pdf, png, jpg, jpeg</lable>
             </div>
         </div>
         <div class="form-group row">

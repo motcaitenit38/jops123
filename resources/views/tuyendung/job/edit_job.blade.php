@@ -129,31 +129,31 @@
                 <div class="form-group col-md-12">
                     <label for="date" class="col-md-2" style="padding-left: 0;">Tiến sỹ</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="min" value="@php $a = json_decode($jop->nhan_su); echo $a[0]; @endphp">
+                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="min" value="@php $a = json_decode($jop->nhan_su); echo $a[0]; @endphp">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Thạc sỹ:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[1]; @endphp">
+                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[1]; @endphp">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Đại học:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[2]; @endphp">
+                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[2]; @endphp">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Cao Đẳng:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[3]; @endphp">
+                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[3]; @endphp">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Công nhân:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[4]; @endphp">
+                        <input name="nhan_su[]" type="number"  min="0" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[4]; @endphp">
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
                         </div>
                         <div class="col-md-4">
                             <input name="thiet_bi[{{ $i }}][]" type="number" class="form-control col-md-6" id="so_luong"
-                                   value="{{ $value[1] }}">
+                                   value="{{ $value[1] }}" min="0">
                         </div>
                         <a href="#" class="remove_field col-md-1">Xóa</a>
                     </div>
@@ -196,28 +196,28 @@
         <div class="form-group row">
             <label for="chi_tiet_cong_viec" class="col-sm-3 col-form-label">Chi tiết công việc</label>
             <div class="col-sm-8">
-                <textarea name="chi_tiet_cong_viec" type="text" class="form-control" id="editor"  placeholder="Yêu cầu chi tiết" value="{{ old('chi_tiet_cong_viec') }}" required> {{ $jop->chi_tiet_cong_viec }}
+                <textarea name="chi_tiet_cong_viec" type="text" class="form-control" id="editor"  required> {{ $jop->chi_tiet_cong_viec }}
                  </textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="yeu_cau_cong_viec" class="col-sm-3 col-form-label">Yêu cầu công việc</label>
             <div class="col-sm-8">
-                <textarea name="yeu_cau_cong_viec" type="text" class="form-control" id="editor" placeholder="Yêu cầu chi tiết" value="{{ old('yeu_cau_cong_viec') }}" required>{{ $jop->yeu_cau_cong_viec }}
+                <textarea name="yeu_cau_cong_viec" type="text" class="form-control" id="editor" placeholder="Yêu cầu chi tiết"  required>{{ $jop->yeu_cau_cong_viec }}
                  </textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="phuc_loi_cong_viec" class="col-sm-3 col-form-label">Phúc lợi</label>
             <div class="col-sm-8">
-                <textarea name="phuc_loi_cong_viec" type="text" class="form-control" id="editor" placeholder="Phúc lợi" value="{{ old('phuc_loi_cong_viec') }}" required>  {{ $jop->phuc_loi_cong_viec }}
+                <textarea name="phuc_loi_cong_viec" type="text" class="form-control" id="editor" placeholder="Phúc lợi"  required>  {{ $jop->phuc_loi_cong_viec }}
                  </textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="yeu_cau_ho_so_dinh_kem" class="col-sm-3 col-form-label">yêu cầu hồ sơ ứng tuyển</label>
             <div class="col-sm-8">
-                <textarea name="yeu_cau_ho_so_dinh_kem" type="text" class="form-control" id="editor" placeholder="yêu cầu hồ sơ ứng tuyển" value="{{ old('yeu_cau_ho_so_dinh_kem') }}" required>{{ $jop->yeu_cau_ho_so_dinh_kem }}
+                <textarea name="yeu_cau_ho_so_dinh_kem" type="text" class="form-control" id="editor" placeholder="yêu cầu hồ sơ ứng tuyển" required>{{ $jop->yeu_cau_ho_so_dinh_kem }}
                  </textarea>
             </div>
         </div>

@@ -6,8 +6,7 @@
         <div class="form-group row">
             <label for="ten_cv" class="col-sm-3 col-form-label">Tên CV</label>
             <div class="col-sm-8">
-                <input name="ten_cv" type="text" class="form-control" id="ten_cv" placeholder="Tên công việc"
-                       value="{{ old('ten_cv') }}" required/>
+                <input name="ten_cv" type="text" class="form-control" id="ten_cv" placeholder="Tên CV của bạn" value="{{ old('ten_cv') }}" required/>
             </div>
         </div>
         <div class="form-group row">
@@ -28,7 +27,7 @@
                     <option> Chọn lĩnh vực cần tuyển</option>
                     @foreach($linhvuc as $linhvuc)
                         <option value="{{ $linhvuc->id }}"
-                                @if(old('Linh_vuc_hoat_dong') == $linhvuc->id) selected @endif>{{ $linhvuc->ten_linh_vuc }}</option>
+                                @if(old('Linh_vuc_hoat_dong') == $linhvuc->id) selected @endif> {{ $linhvuc->ten_linh_vuc }} </option>
                     @endforeach
                 </select>
             </div>
@@ -43,15 +42,13 @@
         <div class="form-group row">
             <label for="gia_tri_hop_dong_lon" class="col-sm-3 col-form-label">Giá trị hợp đồng lớn</label>
             <div class="col-sm-8">
-                <input name="gia_tri_hop_dong_lon" type="number" class="form-control" id="gia_tri_hop_dong_lon" placeholder="Giá trị hợp đồng lớn"
-                       value="{{ old('gia_tri_hop_dong_lon') }}" required/>
+                <input name="gia_tri_hop_dong_lon" type="number" class="form-control" id="gia_tri_hop_dong_lon" placeholder="Giá trị hợp đồng lớn" value="{{ old('gia_tri_hop_dong_lon') }}" required/>
             </div>
         </div>
         <div class="form-group row">
             <label for="so_nam_kinh_nghiem" class="col-sm-3 col-form-label">Số năm kinh nghiệm</label>
             <div class="col-sm-8">
-                <input name="so_nam_kinh_nghiem" type="number" class="form-control" id="so_nam_kinh_nghiem" placeholder="Số năm kinh nghiệm"
-                       value="{{ old('so_nam_kinh_nghiem') }}" required/>
+                <input name="so_nam_kinh_nghiem" type="number" class="form-control" id="so_nam_kinh_nghiem" placeholder="Số năm kinh nghiệm" value="{{ old('so_nam_kinh_nghiem') }}" required/>
             </div>
         </div>
         <div class="form-group row">
@@ -65,10 +62,10 @@
                 </div>
                 <div class="form-group col-md-12">
                     <div class="col-md-7">
-                        <input name="thiet_bi[0][]" type="text" class="form-control col-md-6" id="ten_thiet_bi">
+                        <input name="thiet_bi[0][]" type="text" class="form-control col-md-6" id="ten_thiet_bi" placeholder="Tên thiết bị">
                     </div>
                     <div class="col-md-4">
-                        <input name="thiet_bi[0][]" type="number" class="form-control col-md-6" id="so_luong">
+                        <input name="thiet_bi[0][]" type="number" class="form-control col-md-6" id="so_luong" placeholder="số lượng">
                     </div>
                 </div>
             </div>
@@ -81,14 +78,14 @@
         <div class="form-group row">
             <label for="gioi_thieu" class="col-sm-3 col-form-label">Giới thiệu về cv</label>
             <div class="col-sm-8">
-                <textarea name="gioi_thieu" type="text" class="form-control" id="editor" placeholder="Yêu cầu chi tiết" value="{{ old('gioi_thieu') }}" required>
+                <textarea name="gioi_thieu" type="text" class="form-control" id="editor" value="{{ old('gioi_thieu') }}" required>
                  </textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="dangtin" class="col-sm-3 col-form-label"></label>
             <div class="col-sm-8">
-                <button type="submit" class="form-control btn btn-success" id="company_name">Đăng tin</button>
+                <button type="submit" class="form-control btn btn-success" id="company_name">Tạo mới CV</button>
             </div>
         </div>
     </form>
@@ -117,10 +114,10 @@
                     x++; //text box increment
                     $(wrapper).append('<div class="form-group col-md-12 truong">' +
                         '<p class="col-md-7">' +
-                        '<input name="thiet_bi[' + x + '][]" type="text" class="form-control col-md-6" id="ten_thiet_bi">' +
+                        '<input name="thiet_bi[' + x + '].[]" type="text" class="form-control col-md-6" id="ten_thiet_bi" placeholder="Tên thiết bị">' +
                         '</p>' +
                         '<p class="col-md-4">' +
-                        '<input name="thiet_bi[' + x + '][]" type="number" class="form-control col-md-6" id="so_luong">' +
+                        '<input name="thiet_bi[' + x + '][]" type="number" class="form-control col-md-6" id="so_luong" placeholder="Số lượng">' +
                         '</p>' +
                         '<a href="#" class="remove_field col-md-1">Xóa</a>' +
                         '</div>');

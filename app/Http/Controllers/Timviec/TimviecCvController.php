@@ -113,7 +113,7 @@
             //
             $model = TimviecCv::findOrFail($id);
             $validator = Validator::make($request->all(), [
-                'nganh_id' => 'required',
+                'nganh_id' => 'required|min:5',
                 'ten_cv' => 'required',
                 'diachi_id' => 'required',
                 'gia_tri_hop_dong_lon' => 'required',
@@ -150,5 +150,17 @@
             $cv = TimviecCv::findOrFail($id);
             $cv->delete();
             return redirect()->route('cvtimviec.index');
+        }
+        public function xoacv(Request $request)
+        {
+            //
+//            return $request['id_cv'];
+            $cv = TimviecCv::findOrFail($request['id_cv']);
+            $cv->delete();
+            return response()->json([
+                'error' => false,
+                'message' => 'success'
+            ], 200);
+
         }
     }

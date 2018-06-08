@@ -74,26 +74,24 @@
             <label for="loai_hinh_doanh_nghiep" class="col-sm-3 col-form-label">Loại hình doanh nghiệp</label>
             <div class="col-sm-8">
                 <select name="loai_hinh_doanh_nghiep" id="loai_hinh_doanh_nghiep" class="form-control">
-                    <option value="Công ty TNHH">Công ty TNHH</option>
-                    <option value="Công ty Cổ Phần">Công ty Cổ Phần</option>
-                    <option value="Doanh nghiệp tư nhân">Doanh nghiệp tư nhân</option>
-                    <option value="Công ty Hợp Danh">Công ty Hợp Danh</option>
-                    <option value="Công ty liên doanh">Công ty liên doanh</option>
+                    <option value="Công ty TNHH" @if( old('loai_hinh_doanh_nghiep') === 'Công ty TNHH')  ? selected : '' @endif>Công ty TNHH</option>
+                    <option value="Công ty Cổ Phần" @if( old('loai_hinh_doanh_nghiep') === 'Công ty Cổ Phần')  ? selected : '' @endif>Công ty Cổ Phần</option>
+                    <option value="Doanh nghiệp tư nhân" @if( old('loai_hinh_doanh_nghiep') === 'Doanh nghiệp tư nhân')  ? selected : '' @endif>Doanh nghiệp tư nhân</option>
+                    <option value="Công ty Hợp Danh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty Hợp Danh')  ? selected : '' @endif>Công ty Hợp Danh</option>
+                    <option value="Công ty liên doanh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty liên doanh')  ? selected : '' @endif>Công ty liên doanh</option>
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <label for="gioi_thieu_cong_ty" class="col-sm-3 col-form-label">Giới thiệu về công ty</label>
             <div class="col-sm-8">
-                 <textarea name="gioi_thieu_cong_ty" type="text" class="form-control" id="gioi_thieu_cong_ty" placeholder="Giới thiệu về công ty" rows="6" required>
-                </textarea>
+                 <textarea name="gioi_thieu_cong_ty" type="text" class="form-control" id="gioi_thieu_cong_ty" placeholder="Giới thiệu về công ty" rows="6" required></textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="logo" class="col-sm-3 col-form-label">Tên công ty</label>
             <div class="col-sm-8">
-                <input name="logo" type="file" class="form-control" id="logo"
-                       value="{{ old('logo') }}"/>
+                <input name="logo" type="file" class="form-control" id="logo" value="{{ old('logo') }}"/>
             </div>
         </div>
         <div class="form-group row">
