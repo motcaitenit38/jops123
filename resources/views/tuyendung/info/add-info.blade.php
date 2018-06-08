@@ -89,7 +89,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="logo" class="col-sm-3 col-form-label">Tên công ty</label>
+            <label for="logo" class="col-sm-3 col-form-label">logo công ty</label>
             <div class="col-sm-8">
                 <input name="logo" type="file" class="form-control" id="logo" value="{{ old('logo') }}"/>
             </div>

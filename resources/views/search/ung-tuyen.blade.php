@@ -77,8 +77,9 @@
                                     <label for="cv" class="col-sm-3 col-form-label">Đính kèm file yêu cầu</label>
                                     <div class="col-sm-9">
                                         <input id="filedinhkem" type="file" name="filedinhkem">
-                                        <label for="cv" class="col-sm-12 col-form-label">Nén tất cả file yêu cầu thành
-                                            file Zip hoặc Rar, trừ file thông tin công ty đã có trên hệ thống khi giới thiệu
+                                        <label for="cv" class="col-sm-12 col-form-label" style="color: red">Nén tất cả file yêu cầu thành
+                                            file Zip hoặc Rar, trừ file thông tin công ty đã có trên hệ thống khi giới
+                                            thiệu
                                             công ty</label>
                                         @if ($errors->any())
                                             @foreach ($errors->all() as $error)
@@ -93,9 +94,8 @@
                             </ul>
                             <input type="hidden" id="job_id" name="job_id" value="{{ $jop->id }}">
                             <div class="col-md-12 col-sm-12">
-                                <div class="detail-pannel-footer-btn text-center">
-                                    <input type="submit" href="#" class="footer-btn grn-btn btn-block"
-                                           title="">Gửi CV ứng tuyển</input>
+                                <div class="detail-pannel-footer-btn text-center left-br">
+                                    <input type="submit" href="#" class="footer-btn grn-btn btn-block" title="Gửi CV ứng tuyển" style="background: #07B107;height: 50px;color: white;" value="Gửi CV ứng tuyển">
                                 </div>
                             </div>
                         </div>

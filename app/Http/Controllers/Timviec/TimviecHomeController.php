@@ -94,7 +94,7 @@
         {
             $job_id = $request->job_id;
             $rules = [
-                'filedinhkem' => 'required',
+                'filedinhkem' => 'required|mimes:rar,zip,7zip',
             ];
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {

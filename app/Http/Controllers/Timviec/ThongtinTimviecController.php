@@ -80,19 +80,19 @@
             if ($request->hasFile('logo')) {
                 $logo = $request->file('logo');
                 $logo_name = time() .$logo->getClientOriginalName();
-                $logo_name = $logo->move('upload\timviec_info', $logo_name);
+                $logo_name = $logo->move('upload/timviec_info', $logo_name);
                 $model->logo = $logo_name;
             }
             if ($request->hasFile('file_dinh_kem_kinh_doanh')) {
                 $attach_kinhdoanh = $request->file('file_dinh_kem_kinh_doanh');
                 $attach_kinhdoanh_name = time() . $attach_kinhdoanh->getClientOriginalName();
-                $attach_kinhdoanh_name = $attach_kinhdoanh->move('upload\thongtin_timviec', $attach_kinhdoanh_name);
+                $attach_kinhdoanh_name = $attach_kinhdoanh->move('upload/thongtin_timviec', $attach_kinhdoanh_name);
                 $model->file_dinh_kem_kinh_doanh = $attach_kinhdoanh_name;
             }
             if ($request->hasFile('file_dinh_kem_thong_tin_cong_ty')) {
                 $attach_gioithieu = $request->file('file_dinh_kem_thong_tin_cong_ty');
                 $attach_gioithieu_name = time() . $attach_gioithieu->getClientOriginalName();
-                $attach_gioithieu_name = $attach_gioithieu->move('upload\thongtin_timviec', $attach_gioithieu_name);
+                $attach_gioithieu_name = $attach_gioithieu->move('upload/thongtin_timviec', $attach_gioithieu_name);
                 $model->file_dinh_kem_thong_tin_cong_ty = $attach_gioithieu_name;
             }
             $model->user_id = Auth::user()->id;
@@ -169,19 +169,19 @@
             if ($request->hasFile('logo')) {
                 $logo = $request->file('logo');
                 $logo_name = time() .$logo->getClientOriginalName();
-                $logo_name = $logo->move('upload\timviec_info', $logo_name);
+                $logo_name = $logo->move('upload/timviec_info', $logo_name);
                 $model->logo = $logo_name;
             }
             if ($request->hasFile('file_dinh_kem_kinh_doanh')) {
                 $attach_kinhdoanh = $request->file('file_dinh_kem_kinh_doanh');
                 $attach_kinhdoanh_name = time() . $attach_kinhdoanh->getClientOriginalName();
-                $attach_kinhdoanh_name = $attach_kinhdoanh->move('upload\thongtin_timviec', $attach_kinhdoanh_name);
+                $attach_kinhdoanh_name = $attach_kinhdoanh->move('upload/thongtin_timviec', $attach_kinhdoanh_name);
                 $model->file_dinh_kem_kinh_doanh = $attach_kinhdoanh_name;
             }
             if ($request->hasFile('file_dinh_kem_thong_tin_cong_ty')) {
                 $attach_gioithieu = $request->file('file_dinh_kem_thong_tin_cong_ty');
                 $attach_gioithieu_name = time() . $attach_gioithieu->getClientOriginalName();
-                $attach_gioithieu_name = $attach_gioithieu->move('upload\thongtin_timviec', $attach_gioithieu_name);
+                $attach_gioithieu_name = $attach_gioithieu->move('upload/thongtin_timviec', $attach_gioithieu_name);
                 $model->file_dinh_kem_thong_tin_cong_ty = $attach_gioithieu_name;
             }
             $model->user_id = Auth::user()->id;

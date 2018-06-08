@@ -1,7 +1,8 @@
 @extends('tuyendung.template.app')
 @section('title','Sửa công việc')
 @section('content')
-    <form id="post-form" class="form-group col-md-12" method="post" action="{{ route('job.update', $jop->id) }}" enctype="multipart/form-data" role="form">
+    <form id="post-form" class="form-group col-md-12" method="post" action="{{ route('job.update', $jop->id) }}"
+          enctype="multipart/form-data" role="form">
         @method('PUT')
         @csrf
         <div class="form-group row">
@@ -18,7 +19,8 @@
                 <div class="form-group col-md-6">
                     <label for="email" class="col-md-2" style="padding-left: 0;">Từ</label>
                     <div class="col-md-10">
-                        <input name="gia_tri_cong_viec[]" type="text" class=" form-control col-md-6" id="min" value="@php $a = json_decode($jop->gia_tri_cong_viec); echo $a[0]; @endphp">
+                        <input name="gia_tri_cong_viec[]" type="text" class=" form-control col-md-6" id="min"
+                               value="@php $a = json_decode($jop->gia_tri_cong_viec); echo $a[0]; @endphp">
                         <span id="truongaa"></span><span> Triệu đồng</span>
                     </div>
 
@@ -26,7 +28,8 @@
                 <div class="form-group col-md-6">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Đến:</label>
                     <div class="col-md-10">
-                        <input name="gia_tri_cong_viec[]" type="text" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->gia_tri_cong_viec); echo $a[1]; @endphp">
+                        <input name="gia_tri_cong_viec[]" type="text" class=" form-control col-md-6" id="max"
+                               value="@php $a = json_decode($jop->gia_tri_cong_viec); echo $a[1]; @endphp">
                         <span id="truongaa"></span><span> Triệu đồng</span>
                     </div>
                 </div>
@@ -46,14 +49,16 @@
                 <div class="form-group col-md-6">
                     <label for="date" class="col-md-2" style="padding-left: 0;">Từ</label>
                     <div class="col-md-10">
-                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="min" value="@php $a = json_decode($jop->thoi_gian_thuc_hien); echo $a[0]; @endphp">
+                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="min"
+                               value="@php $a = json_decode($jop->thoi_gian_thuc_hien); echo $a[0]; @endphp">
                     </div>
 
                 </div>
                 <div class="form-group col-md-6">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Đến:</label>
                     <div class="col-md-10">
-                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="max" value="@php $a = json_decode($jop->thoi_gian_thuc_hien); echo $a[1]; @endphp">
+                        <input name="thoi_gian_thuc_hien[]" type="date" class="form-control col-md-6" id="max"
+                               value="@php $a = json_decode($jop->thoi_gian_thuc_hien); echo $a[1]; @endphp">
                     </div>
                 </div>
             </div>
@@ -109,11 +114,19 @@
             <label for="loai_hinh_doanh_nghiep" class="col-sm-3 col-form-label">Loại hình doanh nghiệp</label>
             <div class="col-sm-8">
                 <select name="loai_hinh_doanh_nghiep" id="loai_hinh_doanh_nghiep" class="form-control">
-                    <option value="Công ty TNHH" @if($jop->loai_hinh_doanh_nghiep == 'Công ty TNHH') ? selected : '' @endif>Công ty TNHH</option>
-                    <option value="Công ty Cổ Phần" @if($jop->loai_hinh_doanh_nghiep == 'Công ty Cổ Phần') ? selected : '' @endif>Công ty Cổ Phần</option>
-                    <option value="Doanh nghiệp tư nhân"@if($jop->loai_hinh_doanh_nghiep == 'Doanh nghiệp tư nhân') ? selected : '' @endif>Doanh nghiệp tư nhân</option>
-                    <option value="Công ty Hợp Danh" @if($jop->loai_hinh_doanh_nghiep == 'Công ty Hợp Danh') ? selected : '' @endif>Công ty Hợp Danh</option>
-                    <option value="Công ty liên doanh" @if($jop->loai_hinh_doanh_nghiep == 'Công ty liên doanh') ? selected : '' @endif>Công ty liên doanh</option>
+                    <option value="Công ty TNHH" @if($jop->loai_hinh_doanh_nghiep == 'Công ty TNHH') ? selected :
+                    '' @endif>Công ty TNHH</option>
+                    <option value="Công ty Cổ Phần" @if($jop->loai_hinh_doanh_nghiep == 'Công ty Cổ Phần') ? selected :
+                    '' @endif>Công ty Cổ Phần</option>
+                    <option value="Doanh nghiệp tư nhân" @if($jop->loai_hinh_doanh_nghiep == 'Doanh nghiệp tư nhân') ?
+                            selected :
+                    '' @endif>Doanh nghiệp tư nhân</option>
+                    <option value="Công ty Hợp Danh" @if($jop->loai_hinh_doanh_nghiep == 'Công ty Hợp Danh') ? selected
+                            :
+                    '' @endif>Công ty Hợp Danh</option>
+                    <option value="Công ty liên doanh" @if($jop->loai_hinh_doanh_nghiep == 'Công ty liên doanh') ?
+                            selected :
+                    '' @endif>Công ty liên doanh</option>
                 </select>
             </div>
         </div>
@@ -129,31 +142,36 @@
                 <div class="form-group col-md-12">
                     <label for="date" class="col-md-2" style="padding-left: 0;">Tiến sỹ</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="min" value="@php $a = json_decode($jop->nhan_su); echo $a[0]; @endphp">
+                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="min"
+                               value="@php $a = json_decode($jop->nhan_su); echo $a[0]; @endphp">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Thạc sỹ:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[1]; @endphp">
+                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max"
+                               value="@php $a = json_decode($jop->nhan_su); echo $a[1]; @endphp">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Đại học:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[2]; @endphp">
+                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max"
+                               value="@php $a = json_decode($jop->nhan_su); echo $a[2]; @endphp">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Cao Đẳng:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[3]; @endphp">
+                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max"
+                               value="@php $a = json_decode($jop->nhan_su); echo $a[3]; @endphp">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
                     <label for="pwd" class="col-md-2" style="padding-left: 0;">Công nhân:</label>
                     <div class="col-md-8">
-                        <input name="nhan_su[]" type="number"  min="0" class=" form-control col-md-6" id="max" value="@php $a = json_decode($jop->nhan_su); echo $a[4]; @endphp">
+                        <input name="nhan_su[]" type="number" min="0" class=" form-control col-md-6" id="max"
+                               value="@php $a = json_decode($jop->nhan_su); echo $a[4]; @endphp">
                     </div>
                 </div>
             </div>
@@ -196,28 +214,31 @@
         <div class="form-group row">
             <label for="chi_tiet_cong_viec" class="col-sm-3 col-form-label">Chi tiết công việc</label>
             <div class="col-sm-8">
-                <textarea name="chi_tiet_cong_viec" type="text" class="form-control" id="editor"  required> {{ $jop->chi_tiet_cong_viec }}
+                <textarea name="chi_tiet_cong_viec" type="text" class="form-control" id="editor" required> {{ $jop->chi_tiet_cong_viec }}
                  </textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="yeu_cau_cong_viec" class="col-sm-3 col-form-label">Yêu cầu công việc</label>
             <div class="col-sm-8">
-                <textarea name="yeu_cau_cong_viec" type="text" class="form-control" id="editor" placeholder="Yêu cầu chi tiết"  required>{{ $jop->yeu_cau_cong_viec }}
+                <textarea name="yeu_cau_cong_viec" type="text" class="form-control" id="editor"
+                          placeholder="Yêu cầu chi tiết" required>{{ $jop->yeu_cau_cong_viec }}
                  </textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="phuc_loi_cong_viec" class="col-sm-3 col-form-label">Phúc lợi</label>
             <div class="col-sm-8">
-                <textarea name="phuc_loi_cong_viec" type="text" class="form-control" id="editor" placeholder="Phúc lợi"  required>  {{ $jop->phuc_loi_cong_viec }}
+                <textarea name="phuc_loi_cong_viec" type="text" class="form-control" id="editor" placeholder="Phúc lợi"
+                          required>  {{ $jop->phuc_loi_cong_viec }}
                  </textarea>
             </div>
         </div>
         <div class="form-group row">
             <label for="yeu_cau_ho_so_dinh_kem" class="col-sm-3 col-form-label">yêu cầu hồ sơ ứng tuyển</label>
             <div class="col-sm-8">
-                <textarea name="yeu_cau_ho_so_dinh_kem" type="text" class="form-control" id="editor" placeholder="yêu cầu hồ sơ ứng tuyển" required>{{ $jop->yeu_cau_ho_so_dinh_kem }}
+                <textarea name="yeu_cau_ho_so_dinh_kem" type="text" class="form-control" id="editor"
+                          placeholder="yêu cầu hồ sơ ứng tuyển" required>{{ $jop->yeu_cau_ho_so_dinh_kem }}
                  </textarea>
             </div>
         </div>
@@ -225,7 +246,8 @@
             <label for="attach_spec" class="col-sm-3 col-form-label">Attach SPec</label>
             <div class="col-sm-8">
                 <input name="attach_spec" type="file" class="form-control" id="attach_spec"
-                       value="{{ old('attach_spec') }}" >
+                       value="{{ old('attach_spec') }}">
+                <span>Định dạng file: pdf, doc, docx</span>
 
             </div>
         </div>
@@ -233,8 +255,8 @@
             <label for="attach_boq" class="col-sm-3 col-form-label">Attach Boq</label>
             <div class="col-sm-8">
                 <input name="attach_boq" type="file" class="form-control" id="attach_boq"
-                       value="{{ old('attach_boq') }}" >
-                </input>
+                       value="{{ old('attach_boq') }}">
+                <span>Định dạng file: pdf, doc, docx</span>
             </div>
         </div>
         <div class="form-group row">
@@ -242,7 +264,7 @@
             <div class="col-sm-8">
                 <input name="attach_ban_ve_ket_cau" type="file" class="form-control" id="attach_ban_ve_ket_cau"
                        value="{{ old('attach_ban_ve_ket_cau') }}">
-                </input>
+                <span>Định dạng file: pdf, jpg, jpeg, png</span>
             </div>
         </div>
         <div class="form-group row">
@@ -313,24 +335,22 @@
     </script>
     <script>
         var input1 = document.getElementById('min');
-        input1.addEventListener('keyup', function(e)
-        {
+        input1.addEventListener('keyup', function (e) {
             input1.value = format_number(this.value);
             $('#truongaa').html(format_number(this.value));
         });
 
         var input2 = document.getElementById('max');
-        input2.addEventListener('keyup', function(e)
-        {
+        input2.addEventListener('keyup', function (e) {
             input2.value = format_number(this.value);
             $('#truongbb').html(format_number(this.value));
         });
         var input3 = document.getElementById('von_dieu_le');
-        input3.addEventListener('keyup', function(e)
-        {
+        input3.addEventListener('keyup', function (e) {
             input3.value = format_number(this.value);
             $('#truongcc').html(format_number(this.value));
         });
+
         function format_number(number, prefix, thousand_separator, decimal_separator) {
             var thousand_separator = thousand_separator || ',',
                 decimal_separator = decimal_separator || '.',

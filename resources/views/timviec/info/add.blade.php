@@ -72,11 +72,11 @@
             <label for="loai_hinh_doanh_nghiep" class="col-sm-3 col-form-label">Loại hình doanh nghiệp</label>
             <div class="col-sm-8">
                 <select name="loai_hinh_doanh_nghiep" id="loai_hinh_doanh_nghiep" class="form-control">
-                    <option value="Công ty TNHH" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Công ty TNHH')  ? selected : '' @endif>Công ty TNHH</option>
-                    <option value="Công ty Cổ Phần" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Công ty Cổ Phần')  ? selected : '' @endif>Công ty Cổ Phần</option>
-                    <option value="Doanh nghiệp tư nhân" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Doanh nghiệp tư nhân')  ? selected : '' @endif>Doanh nghiệp tư nhân</option>
-                    <option value="Công ty Hợp Danh" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Công ty Hợp Danh')  ? selected : '' @endif>Công ty Hợp Danh</option>
-                    <option value="Công ty liên doanh" @if( {{ old('loai_hinh_doanh_nghiep') }} === 'Công ty liên doanh')  ? selected : '' @endif>Công ty liên doanh</option>
+                    <option value="Công ty TNHH" @if( old('loai_hinh_doanh_nghiep') === 'Công ty TNHH')  ? selected : '' @endif>Công ty TNHH</option>
+                    <option value="Công ty Cổ Phần" @if( old('loai_hinh_doanh_nghiep') === 'Công ty Cổ Phần')  ? selected : '' @endif>Công ty Cổ Phần</option>
+                    <option value="Doanh nghiệp tư nhân" @if( old('loai_hinh_doanh_nghiep') === 'Doanh nghiệp tư nhân')  ? selected : '' @endif>Doanh nghiệp tư nhân</option>
+                    <option value="Công ty Hợp Danh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty Hợp Danh')  ? selected : '' @endif>Công ty Hợp Danh</option>
+                    <option value="Công ty liên doanh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty liên doanh')  ? selected : '' @endif>Công ty liên doanh</option>
                 </select>
             </div>
         </div>

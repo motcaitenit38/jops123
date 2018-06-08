@@ -73,7 +73,7 @@
             if ($request->hasFile('logo')) {
                 $logo = $request->file('logo');
                 $logo_name = time() .$logo->getClientOriginalName();
-                $logo_name = $logo->move('upload\tuyendung_info', $logo_name);
+                $logo_name = $logo->move('upload/tuyendung_info', $logo_name);
                 $model->logo = $logo_name;
             }
             $model->employer_id = Auth::user()->id;
@@ -143,7 +143,7 @@
             if ($request->hasFile('logo')) {
                 $logo = $request->file('logo');
                 $logo_name = time() .$logo->getClientOriginalName();
-                $logo_name = $logo->move('upload\tuyendung_info', $logo_name);
+                $logo_name = $logo->move('upload/tuyendung_info', $logo_name);
                 $model->logo = $logo_name;
             }
             $model->employer_id = Auth::user()->id;

@@ -95,21 +95,21 @@
             if ($request->hasFile('attach_spec')) {
                 $attach_spec = $request->file('attach_spec');
                 $attach_spec_name = time() .$attach_spec->getClientOriginalName();
-                $attach_spec_name = $attach_spec->move('upload\tuyendung_jobs\spec', $attach_spec_name);
+                $attach_spec_name = $attach_spec->move('upload/tuyendung_jobs/spec', $attach_spec_name);
                 $model->attach_spec = $attach_spec_name;
 
             }
             if ($request->hasFile('attach_boq')) {
                 $attach_boq = $request->file('attach_boq');
                 $attach_boq_name = time() .$attach_boq->getClientOriginalName();
-                $attach_boq_name = $attach_boq->move('upload\tuyendung_jobs\boq', $attach_boq_name);
+                $attach_boq_name = $attach_boq->move('upload/tuyendung_jobs/boq', $attach_boq_name);
                 $model->attach_boq = $attach_boq_name;
 
             }
             if ($request->hasFile('attach_ban_ve_ket_cau')) {
                 $attach_ban_ve_ket_cau = $request->file('attach_ban_ve_ket_cau');
                 $attach_ban_ve_ket_cau_name = time() .$attach_ban_ve_ket_cau->getClientOriginalName();
-                $attach_ban_ve_ket_cau_name = $attach_ban_ve_ket_cau->move('upload\tuyendung_jobs\banve', $attach_ban_ve_ket_cau_name);
+                $attach_ban_ve_ket_cau_name = $attach_ban_ve_ket_cau->move('upload/tuyendung_jobs/banve', $attach_ban_ve_ket_cau_name);
                 $model->attach_ban_ve_ket_cau = $attach_ban_ve_ket_cau_name;
             }
             $model->thoi_gian_thuc_hien = json_encode($request->thoi_gian_thuc_hien);
@@ -205,19 +205,19 @@
             if ($request->hasFile('attach_spec')) {
                 $attach_spec = $request->file('attach_spec');
                 $attach_spec_name = time() .$attach_spec->getClientOriginalName();
-                $attach_spec_name = $attach_spec->move('upload\tuyendung_jobs\spec', $attach_spec_name);
+                $attach_spec_name = $attach_spec->move('upload/tuyendung_jobs/spec', $attach_spec_name);
                 $model->attach_spec = $attach_spec_name;
             }
             if ($request->hasFile('attach_boq')) {
                 $attach_boq = $request->file('attach_boq');
                 $attach_boq_name = time() .$attach_boq->getClientOriginalName();
-                $attach_boq_name = $attach_boq->move('upload\tuyendung_jobs\boq', $attach_boq_name);
+                $attach_boq_name = $attach_boq->move('upload/tuyendung_jobs/boq', $attach_boq_name);
                 $model->attach_boq = $attach_boq_name;
             }
             if ($request->hasFile('attach_ban_ve_ket_cau')) {
                 $attach_ban_ve_ket_cau = $request->file('attach_ban_ve_ket_cau');
                 $attach_ban_ve_ket_cau_name = time() .$attach_ban_ve_ket_cau->getClientOriginalName();
-                $attach_ban_ve_ket_cau_name = $attach_ban_ve_ket_cau->move('upload\tuyendung_jobs\banve', $attach_ban_ve_ket_cau_name);
+                $attach_ban_ve_ket_cau_name = $attach_ban_ve_ket_cau->move('upload/tuyendung_jobs/banve', $attach_ban_ve_ket_cau_name);
                 $model->attach_ban_ve_ket_cau = $attach_ban_ve_ket_cau_name;
             }
             $model->thoi_gian_thuc_hien = json_encode($request->thoi_gian_thuc_hien);
