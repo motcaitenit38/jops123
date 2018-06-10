@@ -76,16 +76,12 @@
                                 <div class="form-group row">
                                     <label for="cv" class="col-sm-3 col-form-label">Đính kèm file yêu cầu</label>
                                     <div class="col-sm-9">
-                                        <input id="filedinhkem" type="file" name="filedinhkem">
-                                        <label for="cv" class="col-sm-12 col-form-label" style="color: red">Nén tất cả file yêu cầu thành
-                                            file Zip hoặc Rar, trừ file thông tin công ty đã có trên hệ thống khi giới
-                                            thiệu
-                                            công ty</label>
+                                        <input id="filedinhkem" type="file" name="filedinhkem" accept=".rar, .zip, .7z">
+                                        <label for="cv" class="col-sm-12 col-form-label" style="color: red">Nén tất cả file yêu cầu thành file Zip hoặc Rar, trừ file thông tin công ty đã có trên hệ thống khi giới thiệu công ty</label>
                                         @if ($errors->any())
                                             @foreach ($errors->all() as $error)
                                                 <p style="color:red;" class="error errorname">{{ $error }}</p>
                                             @endforeach
-
                                         @endif
 
                                     </div>

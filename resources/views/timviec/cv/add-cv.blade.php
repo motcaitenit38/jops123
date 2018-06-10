@@ -114,10 +114,10 @@
                     x++; //text box increment
                     $(wrapper).append('<div class="form-group col-md-12 truong">' +
                         '<p class="col-md-7">' +
-                        '<input name="thiet_bi[' + x + '].[]" type="text" class="form-control col-md-6" id="ten_thiet_bi" placeholder="Tên thiết bị">' +
+                        '<input name="thiet_bi[' + x + '][]" type="text" class="form-control col-md-6" id="ten_thiet_bi">' +
                         '</p>' +
                         '<p class="col-md-4">' +
-                        '<input name="thiet_bi[' + x + '][]" type="number" class="form-control col-md-6" id="so_luong" placeholder="Số lượng">' +
+                        '<input name="thiet_bi[' + x + '][]" type="number" class="form-control col-md-6" id="so_luong">' +
                         '</p>' +
                         '<a href="#" class="remove_field col-md-1">Xóa</a>' +
                         '</div>');

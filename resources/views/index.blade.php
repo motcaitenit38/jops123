@@ -10,7 +10,7 @@
                         <div class="col-md-7 no-padd">
                             <div class="input-group">
                                 <input name="kw" type="text" class="form-control right-bor"
-                                       placeholder="Skills, Designations, Companies"></div>
+                                       placeholder="nhập từ khóa tìm kiếm"></div>
                         </div>
                         <div class="col-md-3 no-padd">
                             <div class="input-group">
@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-md-2 no-padd">
                             <div class="input-group">
-                                <button type="submit" class="btn btn-primary">Search Job</button>
+                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
                             </div>
                         </div>
                     </form>

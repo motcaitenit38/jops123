@@ -219,24 +219,21 @@
         <div class="form-group row">
             <label for="attach_spec" class="col-sm-3 col-form-label">Attach SPec</label>
             <div class="col-sm-8">
-                <input name="attach_spec" type="file" class="form-control" id="attach_spec"
-                       value="{{ old('attach_spec') }}" rows="6" required>
+                <input name="attach_spec" type="file" class="form-control" id="attach_spec" required accept=".pdf, .doc, .docx">
                 <span>Định dạng file: pdf, doc, docx</span>
             </div>
         </div>
         <div class="form-group row">
             <label for="attach_boq" class="col-sm-3 col-form-label">Attach Boq</label>
             <div class="col-sm-8">
-                <input name="attach_boq" type="file" class="form-control" id="attach_boq"
-                       value="{{ old('attach_boq') }}" rows="6" required>
+                <input name="attach_boq" type="file" class="form-control" id="attach_boq" required accept=".pdf, .doc, .docx">
                 <span>Định dạng file: pdf, doc, docx</span>
             </div>
         </div>
         <div class="form-group row">
             <label for="attach_ban_ve_ket_cau" class="col-sm-3 col-form-label">Attach bản vẽ kết cấu</label>
             <div class="col-sm-8">
-                <input name="attach_ban_ve_ket_cau" type="file" class="form-control" id="attach_ban_ve_ket_cau"
-                       value="{{ old('attach_ban_ve_ket_cau') }}" rows="6" required>
+                <input name="attach_ban_ve_ket_cau" type="file" class="form-control" id="attach_ban_ve_ket_cau" required accept=".pdf, .jpg, .jpeg, .png">
                 <span>Định dạng file: pdf, jpg, jpeg, png</span>
             </div>
         </div>
