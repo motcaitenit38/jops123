@@ -26,6 +26,7 @@ class CreateThongtinTuyendungsTable extends Migration
             $table->date('nam_thanh_lap');
             $table->string('loai_hinh_doanh_nghiep');
             $table->text('gioi_thieu_cong_ty');
+            $table->string('logo');
             $table->foreign('employer_id')
                 ->references('id')
                 ->on('employers')

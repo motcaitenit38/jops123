@@ -17,9 +17,8 @@ class CreateTimviecUngtuyensTable extends Migration
             $table->increments('id');
             $table->integer('timviec_cv_id');
             $table->integer('tuyendung_job_id');
-            $table->integer('gia_chao');
-            $table->text('bien_phap_thi_cong');
             $table->string('file_dinh_kem');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

@@ -30,6 +30,7 @@
                 $table->string('tong_cong_suat');
                 $table->string('file_dinh_kem_kinh_doanh');
                 $table->string('file_dinh_kem_thong_tin_cong_ty');
+                $table->string('logo');
                 $table->text('gioi_thieu_cong_ty');
                 $table->foreign('user_id')
                     ->references('id')
