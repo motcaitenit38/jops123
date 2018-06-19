@@ -10,7 +10,7 @@
         </div>
         <div class="navbar-collapse">
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>
                         <span class="count-notification green">7</span>
@@ -124,7 +124,7 @@
                         </li>
                     </ul>
                     <!-- /.dropdown-alerts -->
-                </li>
+                </li> --}}
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -132,8 +132,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="{{ route('info.index') }}"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+                        </li>                       
                         <li class="divider"></li>
                         <li><a href="{{ route('tuyendung.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> {{ __('Đăng Xuất') }}</a>
                             <form id="logout-form" action="{{ route('tuyendung.logout') }}" method="POST" style="display: none;">

@@ -12,8 +12,6 @@
 */
 // include vao day tach rieng cho de nhin
 include('route_authenticate.php');
-//include('route_employer.php');
-//include('route_seekers.php');
 include ('route_timviec.php');
 include('route_tuyendung.php');
 include('route_admin.php');

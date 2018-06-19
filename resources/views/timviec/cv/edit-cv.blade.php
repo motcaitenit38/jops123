@@ -96,8 +96,7 @@
         <div class="form-group row">
             <label for="gioi_thieu" class="col-sm-3 col-form-label">Giới thiệu về cv</label>
             <div class="col-sm-8">
-                <textarea name="gioi_thieu" type="text" class="form-control" id="editor" placeholder="Yêu cầu chi tiết"
-                          required>{{ $cv->gioithieu }}
+                <textarea name="gioi_thieu" type="text" class="form-control" id="editor" placeholder="Yêu cầu chi tiết" required>{{ $cv->gioi_thieu }}
                  </textarea>
             </div>
         </div>

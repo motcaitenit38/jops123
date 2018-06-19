@@ -121,12 +121,12 @@
                     <option value="Doanh nghiệp tư nhân" @if($jop->loai_hinh_doanh_nghiep == 'Doanh nghiệp tư nhân') ?
                             selected :
                     '' @endif>Doanh nghiệp tư nhân</option>
-                    <option value="Công ty Hợp Danh" @if($jop->loai_hinh_doanh_nghiep == 'Công ty Hợp Danh') ? selected
+                    <option value="Công ty Hợp Doanh" @if($jop->loai_hinh_doanh_nghiep == 'Công ty Hợp Doanh') ? selected
                             :
                     '' @endif>Công ty Hợp Danh</option>
-                    <option value="Công ty liên doanh" @if($jop->loai_hinh_doanh_nghiep == 'Công ty liên doanh') ?
+                    <option value="Công ty Liên Doanh" @if($jop->loai_hinh_doanh_nghiep == 'Công ty Liên Doanh') ?
                             selected :
-                    '' @endif>Công ty liên doanh</option>
+                    '' @endif>Công ty Liên Doanh</option>
                 </select>
             </div>
         </div>

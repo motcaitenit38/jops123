@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="gia_tri_hop_dong_lon" class="col-sm-3 col-form-label">Giá trị hợp đồng lớn</label>
+            <label for="gia_tri_hop_dong_lon" class="col-sm-3 col-form-label">Giá trị hợp đồng lớn nhất</label>
             <div class="col-sm-8">
                 <input name="gia_tri_hop_dong_lon" type="number" class="form-control" id="gia_tri_hop_dong_lon" placeholder="Giá trị hợp đồng lớn" value="{{ old('gia_tri_hop_dong_lon') }}" required/>
             </div>

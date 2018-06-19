@@ -114,8 +114,8 @@
                     <option value="Công ty TNHH" @if( old('loai_hinh_doanh_nghiep') === 'Công ty TNHH')  ? selected : '' @endif>Công ty TNHH</option>
                     <option value="Công ty Cổ Phần" @if( old('loai_hinh_doanh_nghiep') === 'Công ty Cổ Phần')  ? selected : '' @endif>Công ty Cổ Phần</option>
                     <option value="Doanh nghiệp tư nhân" @if( old('loai_hinh_doanh_nghiep') === 'Doanh nghiệp tư nhân')  ? selected : '' @endif>Doanh nghiệp tư nhân</option>
-                    <option value="Công ty Hợp Danh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty Hợp Danh')  ? selected : '' @endif>Công ty Hợp Danh</option>
-                    <option value="Công ty liên doanh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty liên doanh')  ? selected : '' @endif>Công ty liên doanh</option>
+                    <option value="Công ty Hợp Doanh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty Hợp Doanh')  ? selected : '' @endif>Công ty Hợp Doanh</option>
+                    <option value="Công ty liên doanh" @if( old('loai_hinh_doanh_nghiep') === 'Công ty liên doanh')  ? selected : '' @endif>Công ty Liên Doanh</option>
                 </select>
             </div>
         </div>

@@ -2,7 +2,7 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li class="active">
-                <a href="{{ route('timviec.index') }}"><i class="fa fa-cog" aria-hidden="true"></i>Dashboard</a>
+                <a href="{{ route('trangchu.index') }}" target="_blank"><i class="fa fa-cog" aria-hidden="true"></i>Xem trang chủ</a>
             </li>
 
             <li>
