@@ -1,6 +1,38 @@
 @extends('search.template.app')
 @section('title','Kết quả tìm kiếm ')
 @section('content')
+
+ @php
+        function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'năm',
+        'm' => 'tháng',
+        'w' => 'tuần',
+        'd' => 'ngày',
+        'h' => 'giờ',
+        'i' => 'phút',
+        's' => 'giây',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' trước' : 'Vừa xong';
+}
+    @endphp
+
     <section class="brows-job-category">
         <div class="container">
             <div class="row extra-mrg">
@@ -18,7 +50,7 @@
                             </select>
                         </div>
                         <div class="col-md-2 col-sm-2">
-                            <button type="submit" class="btn btn-primary">Filter</button>
+                            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
                         </div>
                     </form>
                 </div>
@@ -49,7 +81,7 @@
                                 <div class="brows-job-type"><span class="full-time">Ứng tuyển</span></div>
                             </div>
                         </div>
-                        <span class="tg-themetag tg-featuretag">Premium</span></article>
+                        <span class="tg-themetag tg-featuretag">{{time_elapsed_string($jop->created_at)}}</span></article>
                 </a>
             @endforeach
             <div class="row">

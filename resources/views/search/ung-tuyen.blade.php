@@ -3,6 +3,38 @@
     Chi tiết việc {{ $jop->jop_name }}
 @endsection
 @section('content')
+
+ @php
+        function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'năm',
+        'm' => 'tháng',
+        'w' => 'tuần',
+        'd' => 'ngày',
+        'h' => 'giờ',
+        'i' => 'phút',
+        's' => 'giây',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' trước' : 'Vừa xong';
+}
+    @endphp
+    
     <div class="clearfix"></div>
     <section class="inner-header-title">
         <div class="container">
@@ -16,7 +48,7 @@
                 <div class="row">
                     <div class="detail-pic"><img src="" class="img" alt=""/><a
                                 href="#" class="detail-edit" title="edit"><i class="fa fa-pencil"></i></a></div>
-                    <div class="detail-status"><span>2 Days Ago</span></div>
+                    <div class="detail-status"><span>{{time_elapsed_string($jop->created_at)}}</span></div>
                 </div>
                 <div class="row bottom-mrg">
                     <div class="col-md-8 col-sm-8">
