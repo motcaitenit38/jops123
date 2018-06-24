@@ -51,7 +51,7 @@
             <label for="ma_so_thue" class="col-sm-3 col-form-label">Mã số thuế</label>
             <div class="col-sm-8">
                 <input name="ma_so_thue" type="text" class="form-control" id="ma_so_thue"
-                       placeholder="mã số thuế công ty" value=" {{ $info->ma_so_thue }}" required/>
+                       placeholder="mã số thuế công ty" value=" {{ $info->ma_so_thue }}" required />
             </div>
         </div>
         <div class="form-group row">

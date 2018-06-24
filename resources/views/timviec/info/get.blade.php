@@ -43,7 +43,7 @@
         <div class="form-group row">
             <label for="von_dieu_le" class="col-sm-3 col-form-label">Vốn điều lệ</label>
             <div class="col-sm-8">
-                {{ $info->von_dieu_le }}
+                {{ $info->von_dieu_le }} Triệu
             </div>
         </div>
         <div class="form-group row">

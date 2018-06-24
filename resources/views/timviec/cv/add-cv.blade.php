@@ -24,7 +24,7 @@
             <label for="Linh_vuc_hoat_dong" class="col-sm-3 col-form-label">Lĩnh vực hoạt động</label>
             <div class="col-sm-8">
                 <select name="Linh_vuc_hoat_dong" id="Linh_vuc_hoat_dong" class="form-control">
-                    <option> Chọn lĩnh vực cần tuyển</option>
+                    <option value="0"> Chọn lĩnh vực cần tuyển</option>
                     @foreach($linhvuc as $linhvuc)
                         <option value="{{ $linhvuc->id }}"
                                 @if(old('Linh_vuc_hoat_dong') == $linhvuc->id) selected @endif> {{ $linhvuc->ten_linh_vuc }} </option>
@@ -36,19 +36,21 @@
             <label for="career" class="col-sm-3 col-form-label">Ngành</label>
             <div class="col-sm-8">
                 <select name="nganh_id" id="career" class="form-control career" required>
+                    <option>Vui lòng chọn lĩnh vực trước</option>
                 </select>
             </div>
         </div>
         <div class="form-group row">
             <label for="gia_tri_hop_dong_lon" class="col-sm-3 col-form-label">Giá trị hợp đồng lớn nhất</label>
             <div class="col-sm-8">
-                <input name="gia_tri_hop_dong_lon" type="number" class="form-control" id="gia_tri_hop_dong_lon" placeholder="Giá trị hợp đồng lớn" value="{{ old('gia_tri_hop_dong_lon') }}" required/>
+                <input name="gia_tri_hop_dong_lon" type="text" class="form-control" id="gia_tri_hop_dong_lon" placeholder="Giá trị hợp đồng lớn" value="{{ old('gia_tri_hop_dong_lon') }}" required />
+                <span id="truongcc"></span><span> Triệu đồng</span>
             </div>
         </div>
         <div class="form-group row">
             <label for="so_nam_kinh_nghiem" class="col-sm-3 col-form-label">Số năm kinh nghiệm</label>
             <div class="col-sm-8">
-                <input name="so_nam_kinh_nghiem" type="number" class="form-control" id="so_nam_kinh_nghiem" placeholder="Số năm kinh nghiệm" value="{{ old('so_nam_kinh_nghiem') }}" required/>
+                <input name="so_nam_kinh_nghiem" type="number" class="form-control" id="so_nam_kinh_nghiem" placeholder="Số năm kinh nghiệm" value="{{ old('so_nam_kinh_nghiem') }}" required min="0" />
             </div>
         </div>
         <div class="form-group row">
@@ -65,7 +67,7 @@
                         <input name="thiet_bi[0][]" type="text" class="form-control col-md-6" id="ten_thiet_bi" placeholder="Tên thiết bị">
                     </div>
                     <div class="col-md-4">
-                        <input name="thiet_bi[0][]" type="number" class="form-control col-md-6" id="so_luong" placeholder="số lượng">
+                        <input name="thiet_bi[0][]" type="number" class="form-control col-md-6" id="so_luong" placeholder="số lượng" min="0">
                     </div>
                 </div>
             </div>
@@ -91,6 +93,31 @@
     </form>
 @endsection
 @section('script')
+<script type="text/javascript">
+     var input3 = document.getElementById('gia_tri_hop_dong_lon');
+        input3.addEventListener('keyup', function(e)
+        {
+            input3.value = format_number(this.value);
+            $('#truongcc').html(format_number(this.value));
+        });
+        function format_number(number, prefix, thousand_separator, decimal_separator) {
+            var thousand_separator = thousand_separator || ',',
+                decimal_separator = decimal_separator || '.',
+                regex = new RegExp('[^' + decimal_separator + '\\d]', 'g'),
+                number_string = number.replace(regex, '').toString(),
+                split = number_string.split(decimal_separator),
+                rest = split[0].length % 3,
+                result = split[0].substr(0, rest),
+                thousands = split[0].substr(rest).match(/\d{3}/g);
+
+            if (thousands) {
+                separator = rest ? thousand_separator : '';
+                result += separator + thousands.join(thousand_separator);
+            }
+            result = split[1] != undefined ? result + decimal_separator + split[1] : result;
+            return prefix == undefined ? result : (result ? prefix + result : '');
+        };
+</script>
     <script type="text/javascript">
         $(document).ready(function () {
             $("#Linh_vuc_hoat_dong").change(function () {
@@ -117,7 +144,7 @@
                         '<input name="thiet_bi[' + x + '][]" type="text" class="form-control col-md-6" id="ten_thiet_bi">' +
                         '</p>' +
                         '<p class="col-md-4">' +
-                        '<input name="thiet_bi[' + x + '][]" type="number" class="form-control col-md-6" id="so_luong">' +
+                        '<input name="thiet_bi[' + x + '][]" type="number" class="form-control col-md-6" id="so_luong" min="0">' +
                         '</p>' +
                         '<a href="#" class="remove_field col-md-1">Xóa</a>' +
                         '</div>');

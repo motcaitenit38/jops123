@@ -84,7 +84,7 @@
             <label for="Linh_vuc_hoat_dong" class="col-sm-3 col-form-label">Lĩnh vực hoạt động</label>
             <div class="col-sm-8">
                 <select name="Linh_vuc_hoat_dong" id="Linh_vuc_hoat_dong" class="form-control">
-                    <option> Chọn lĩnh vực cần tuyển</option>
+                    <option value="0"> Chọn lĩnh vực cần tuyển</option>
                     @foreach($linhvuc as $linhvuc)
                         <option value="{{ $linhvuc->id }}"
                                 @if(old('Linh_vuc_hoat_dong') == $linhvuc->id) selected @endif>{{ $linhvuc->ten_linh_vuc }}</option>

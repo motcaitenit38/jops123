@@ -108,10 +108,15 @@
 
         public function getNganh($idLinhvuc)
         {
-            $nganh = Nganh::where('linh_vuc_id', $idLinhvuc)->get();
+            if($idLinhvuc == 0){
+                echo "<option value='0'>Vui lòng chọn lĩnh vực trước</option>";
+            }else{
+                $nganh = Nganh::where('linh_vuc_id', $idLinhvuc)->get();
             foreach ($nganh as $value) {
                 echo "<option value='" . $value->id . "'>" . $value->ten_nganh . "</option>";
             }
+            }
+            
         }
 // hiển thị thông tin công ty tìm việc, sau khi truy cập từ email. kiểm tra xem quan tâm hay chưa. email được gửi sau khi thằng tìm việc quan tâm công việc bạn đã đăng
 //    hiển thị cho thằng tuyển dụng xem
