@@ -25,4 +25,7 @@
         public function ungtuyen(){
             return $this->belongsToMany('App\Model\Tuyendung\TuyendungJob','timviec_ungtuyens');
         }
+        public function getthongtin(){
+            return $this->belongsTo('App\Model\Timviec\ThongtinTimviec','user_id','user_id');
+        }
     }
