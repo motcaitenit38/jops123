@@ -10,7 +10,7 @@
                             <div class="brows-job-list">
                                 <div class="col-md-1 col-sm-2 small-padding">
                                     <div class="brows-job-company-img">
-                                        <img src="assets/img/com-1.jpg" class="img-responsive" alt="" />
+                                        <img src="{{ asset($jop->getlogo->logo) }}" class="img-responsive img-circle" alt=""/>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-5">

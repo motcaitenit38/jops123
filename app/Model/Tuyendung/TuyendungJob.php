@@ -50,6 +50,7 @@
 
 //        lấy thông tin nhà tuyển dụng
     public function getlogo(){
-            return $this->belongsTo('App\Model\Tuyendung\ThongtinTuyendung','employer_id','id');
+            return $this->belongsTo('App\Model\Tuyendung\ThongtinTuyendung','employer_id','employer_id');
     }
+    
     }

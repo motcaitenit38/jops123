@@ -39,7 +39,8 @@
             $job = TuyendungJob::where('employer_id', Auth::user()->id)->where('thoi_gian_bao_gia', '>=',
                 date('Y-m-d'))->where('trangthai',0)->orderBy('id',
                 'DESC')->paginate(10);
-            return view('tuyendung.job.get_job', ['jobs' => $job]);
+            $title = "Danh sách công việc";
+            return view('tuyendung.job.get_job', ['jobs' => $job,'title'=>$title]);
         }
 
         /**
@@ -252,7 +253,8 @@
             $job = TuyendungJob::where('employer_id', Auth::user()->id)->where('thoi_gian_bao_gia', '<=',
                 date('Y-m-d'))->orderBy('id',
                 'DESC')->paginate(10);
-            return view('tuyendung.job.get_job', ['jobs' => $job]);
+                $title = "Công việc đã hết hạn";
+            return view('tuyendung.job.get_job', ['jobs' => $job,'title'=>$title]);
 
         }
 
@@ -271,6 +273,7 @@
         public function daxoa(){
             $job = TuyendungJob::where('employer_id', Auth::user()->id)->where('trangthai',1)->orderBy('id',
                 'DESC')->paginate(10);
-            return view('tuyendung.job.get_job', ['jobs' => $job]);
+            $title = "Công việc đã huỷ";
+            return view('tuyendung.job.get_job', ['jobs' => $job,'title'=>$title]);
         }
     }

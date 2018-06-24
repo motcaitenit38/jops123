@@ -1,6 +1,5 @@
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
-<script type="text/javascript" src="{{ asset('adminassets/assets/js/plugins/loaders/pace.min.js')}}"></script>
 <script src="{{ asset('asset-uea/js/jquery-1.10.2.js') }}"></script>
 <script src="{{ asset('asset-uea/js/ckeditor.js') }}"></script>
 <!-- BOOTSTRAP SCRIPTS -->

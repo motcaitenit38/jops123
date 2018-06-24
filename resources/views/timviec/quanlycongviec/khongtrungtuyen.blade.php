@@ -1,5 +1,5 @@
 @extends('timviec.template.app')
-@section('title','Danh sách công việc đã lưu')
+@section('title','Danh sách công việc không trúng tuyển')
 @section('content')
     <div id="page-inner">
         <div class="row">
@@ -16,12 +16,15 @@
                                 <div class="col-md-6 col-sm-5">
                                     <div class="brows-job-position">
                                         <h3><a href="{{route('home.detail',$jop->id)}}" target="_blank">{{ $jop->ten_cong_viec }}</a></h3>
-                                        <p><span class="brows-job-status"><strong>Ngày đăng:</strong> {{ date('d-m-Y', strtotime($jop->created_at)) }}</span></p>
+                                        <p>
+                                            <span class="brows-job-status"><strong>Ngày đăng:</strong> {{ date('d-m-Y', strtotime($jop->created_at)) }}</span>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-3">
                                     <div class="brows-job-location">
-                                        <p><i class="fa fa-map-marker">Hạn nộp hồ sơ:</i>{{ date('d-m-Y', strtotime($jop->thoi_gian_bao_gia)) }}</p>
+                                        <p><i class="fa fa-map-marker">Hạn nộp hồ
+                                                sơ:</i>{{ date('d-m-Y', strtotime($jop->thoi_gian_bao_gia)) }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-sm-2">
@@ -46,5 +49,8 @@
         </div>
         <!-- /. ROW  -->
     </div>
+
+@endsection
+@section('script')
 
 @endsection

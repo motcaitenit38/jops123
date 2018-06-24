@@ -85,7 +85,7 @@
                         array_push($toanbojobungtuyen, $jobchuan);
                     }
                 }
-                return view('timviec.quanlycongviec.datrungtuyen', ['jobs' => $toanbojobungtuyen]);
+                return view('timviec.quanlycongviec.khongtrungtuyen', ['jobs' => $toanbojobungtuyen]);
             }
         }
     }
