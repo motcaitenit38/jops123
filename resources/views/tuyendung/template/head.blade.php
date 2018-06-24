@@ -9,6 +9,8 @@
     <title>@yield('title')</title>
     <!-- BOOTSTRAP STYLES-->
 
+    <link rel="stylesheet" href="{{ asset('asset-uea/css/pace-theme-loading-bar.css') }}">
+    <script type="text/javascript" src="{{ asset('search/js/pace.min.js')}}"></script>
 
     <link href="{{ asset('asset-uea/css/bootstrap.css') }}" rel="stylesheet"/>
     <link href="{{ asset('asset-uea/css/jquery-ui.css') }}" rel="stylesheet"/>

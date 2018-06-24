@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Admin;
+use App\User;
+use App\Employer;
+use App\Model\Tuyendung\Tuyendungjob;
+use App\Model\Timviec\TimviecCv;
+use App\Model\Timviec\TimviecUngtuyen;
 
 class AdminController extends Controller
 {
@@ -28,6 +33,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $timviec = User::all()->count();
+        $tuyendung = Employer::all()->count();
+        $job = Tuyendungjob::all()->count();
+        $cv = TimviecCv::all()->count();
+        $ungtuyen = TimviecUngtuyen::all()->count();
+        return view('admin.home',['timviec'=>$timviec, 'tuyendung'=>$tuyendung,'job'=>$job,'cv'=>$cv,'ungtuyen'=>$ungtuyen]);
     }
 }

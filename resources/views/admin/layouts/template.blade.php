@@ -109,6 +109,7 @@
    <script type="text/javascript" src="{{ asset('template/js/bootstrap.min.js') }}"></script>
    <script type="text/javascript" src="{{ asset('template/js/intro.min.js') }}"></script>
    <script type="text/javascript" src="{{ asset('template/js/admin.js') }}"></script>
+   
 
    @yield('script')
 </body>

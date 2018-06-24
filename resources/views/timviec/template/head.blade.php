@@ -7,6 +7,9 @@
     <meta name="robots" content="index,follow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
+    
+    <link rel="stylesheet" href="{{ asset('asset-uea/css/pace-theme-loading-bar.css') }}">
+    <script type="text/javascript" src="{{ asset('search/js/pace.min.js')}}"></script>
     <!-- BOOTSTRAP STYLES-->
     <link href="{{ asset('asset-uea/css/bootstrap.css') }}" rel="stylesheet"/>
     <!-- FONTAWESOME STYLES-->

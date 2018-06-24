@@ -7,7 +7,10 @@
     <meta name="robots" content="index,follow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
+    <link rel="stylesheet" href="{{ asset('asset-uea/css/pace-theme-loading-bar.css') }}">
+    <script type="text/javascript" src="{{ asset('search/js/pace.min.js')}}"></script>
     <link rel="stylesheet" href="{{ asset('search/css/bootstrap.min.css') }}">
+    
     <link rel="stylesheet" href="{{ asset('search/css/bootstrap-theme.min.css') }}">
     <link rel="stylesheet" href="{{ asset('search/css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('search/css/bootstrap-wysihtml5.css') }}">

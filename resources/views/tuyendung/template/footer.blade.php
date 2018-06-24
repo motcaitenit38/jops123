@@ -2,5 +2,5 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.1
     </div>
-    <strong>©Copyright 2017 <a href="index.html">Job Stock</a>.</strong> All rights reserved.
+    <strong>©Copyright 2018 <a href="index.html">Job Stock</a>.</strong> All rights reserved.
 </footer>

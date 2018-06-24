@@ -19,9 +19,10 @@ class AdminRegistController extends Controller
     }
 
     public function submitRegist(Request $request){
+
     	$this->validate($request,[
     		'name' => 'required|max:255|min:5',
-            'email' => 'required|email|max:255|unique:tuyendungs',
+            'email' => 'required|email|max:255|unique:admins',
             'password' => 'required|min:6|confirmed',
     	],
     	[
@@ -41,6 +42,7 @@ class AdminRegistController extends Controller
     	$tuyendung->name = $request['name'];
     	$tuyendung->email = $request['email'];
     	$tuyendung->password = bcrypt($request['password']);
+
     	$tuyendung->save();
     	return redirect(route('admin.home'));
 
