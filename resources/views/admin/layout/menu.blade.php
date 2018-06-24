@@ -21,8 +21,7 @@
 								<li class="navigation-header"><span>QUẢN TRỊ</span> <i class="icon-menu" title="Main pages"></i></li>
 								<li><a href="{{ route('list-job') }}"><i class="icon-home4"></i> <span>Danh Công việc</span></a></li>
 								<li><a href="{{ route('list-user') }}"><i class="icon-user-check"></i><span> Danh sách ứng viên</span></a></li>
-								<li><a href="{{ route('list-employer') }}"><i class="icon-bubble-notification"></i><span> Danh sách nhà tuyển dụng</span></a></li>
-								<li><a href="admin/thongke"><i class="icon-pie-chart8"></i><span> Thống kê</span></a></li>
+								<li><a href="{{ route('list-employer') }}"><i class="icon-bubble-notification"></i><span> Danh sách nhà tuyển dụng</span></a></li>								
 								<li><a href=""><i class="icon-home2"></i><span> Xem Trang chủ</span></a></li>
 								
 								
